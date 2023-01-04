@@ -2,3 +2,14 @@ body {
     opacity: 0;
     transition: 1.5s;
 }
+
+.popup_accountOptionsPopup {
+    position: fixed;
+    top: 8%;
+    right: 2%;
+    height: 500px;
+    width: 300px;
+    text-align: center;
+    background-color: #3a3b3a;
+    color: white;
+}
