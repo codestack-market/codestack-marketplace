@@ -16,7 +16,7 @@ def index():
 
 @app.route('/favicon.ico')
 def favicon():
-    return send_from_directory('./', 'favicon.ico')
+    return send_from_directory('./', 'favicon.ico.png')
 
 @app.route('/catalog')
 def catalog():

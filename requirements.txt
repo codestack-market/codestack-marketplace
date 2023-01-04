@@ -1,2 +1,2 @@
-flask
-stripe
+flask >= 2.2.2
+stripe >= 5.0.0
