@@ -2,6 +2,8 @@ from flask import Flask, request, render_template as rt, send_from_directory
 import stripe
 from db import Database
 
+import bp
+
 app = Flask(__name__)
 products = Database('/products/')
 
@@ -16,6 +18,8 @@ def favicon():
 @app.route('/catalog')
 def catalog():
     return rt('catalog.html', top_products=products.values()[0:100])
+
+app.register_blueprint(bp.stripe.blueprint)
 
 if __name__ == '__main__':
     app.run('0.0.0.0', 80)
