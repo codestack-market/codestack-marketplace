@@ -55,6 +55,7 @@ html {
     width: 100%;
     height: 90%;
     text-align: center;
+    overflow: scroll;
 }
 
 .links_mainLink {
@@ -77,4 +78,9 @@ html {
 
 .topbarOption:hover {
     text-decoration: underline;
+}
+
+.text_description {
+    color: rgb(143, 141, 141);
+    font-family: var(--poppins);
 }
