@@ -5,6 +5,9 @@ from db import Database
 import bp
 
 app = Flask(__name__)
+app.config['STRIPE_SECRET'] = 'sk_test_51MMNE4Gc3J3VBJP2YlMeztqt8XTuKuzGKBvPqm0jTOEsyi2aIae87dBjhqHUi9w9T2XOtCVBHH0mspkNrPYXIAIH00YCQ10hME'
+app.config['STRIPE_PUB'] = 'pk_test_51MMNE4Gc3J3VBJP2vuqxUNYGksRHmjgzS1YftjeqfvF8h2BkiqZey57cLN4NpqXl8WExdx2hWszGQO2xlV4jDJiR00zUFkGM2I'
+
 products = Database('/products/')
 
 @app.route('/')
@@ -22,4 +25,4 @@ def catalog():
 app.register_blueprint(bp.stripe.blueprint)
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', 80)
+    app.run('0.0.0.0', 80, debug=True)
