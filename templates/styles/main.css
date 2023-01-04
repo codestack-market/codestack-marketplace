@@ -3,13 +3,19 @@
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --bg: #000000
+        --bg: #000000;
+        --tobarBg: #ed9863;
+        --poppins: 'Poppins', serif;
+        --notosans: 'Noto Sans', serif;
     }
 }
 
 @media (prefers-color-scheme: light) {
     :root {
-        --bg: #ffffff
+        --bg: #ffffff;
+        --tobarBg: #f0ac6c;
+        --poppins: 'Poppins', serif;
+        --notosans: 'Noto Sans', serif;
     }
 }
 
@@ -30,4 +36,24 @@
     left: 0%;
     width: 100%;
     height: 10%;
+    background-color: var(--tobarBg);
+}
+
+.container_scrollerMain {
+    position: fixed;
+    left: 0%;
+    top: 10%;
+    width: 100%;
+    height: 90%;
+    text-align: center;
+}
+
+.links_mainLink {
+    color: #4a8abe;
+    text-decoration: underline;
+}
+
+.links_mainLink_nounderline {
+    color: #4a8abe;
+    text-decoration: none;
 }
