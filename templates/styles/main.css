@@ -4,10 +4,12 @@
 @media (prefers-color-scheme: light) {:root{--bg:#ffffff}}
 
 .titles.mainTitle {
+    font-family: 'Noto Sans', serif;
     
 }
 
 .titles.largeTitle {
     font-size: 48px;
     font-weight: bold;
+    font-family: 'Noto Sans', serif;
 }
