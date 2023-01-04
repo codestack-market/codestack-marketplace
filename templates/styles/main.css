@@ -3,7 +3,7 @@
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --bg: #000000;
+        --bg: #3a3b3a;
         --tobarBg: #ed9863;
         --poppins: 'Poppins', serif;
         --notosans: 'Noto Sans', serif;
@@ -12,11 +12,19 @@
 
 @media (prefers-color-scheme: light) {
     :root {
-        --bg: #ffffff;
+        --bg: #454545;
         --tobarBg: #f0ac6c;
         --poppins: 'Poppins', serif;
         --notosans: 'Noto Sans', serif;
     }
+}
+
+body {
+    background-color: var(--bg);
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 .titles_mainTitle {
@@ -36,7 +44,8 @@
     left: 0%;
     width: 100%;
     height: 10%;
-    background-color: var(--tobarBg);
+    background-color: #4a8abe;
+    text-align: center;
 }
 
 .container_scrollerMain {
@@ -56,4 +65,16 @@
 .links_mainLink_nounderline {
     color: #4a8abe;
     text-decoration: none;
+}
+
+.topbarOption {
+    vertical-align: middle;
+    font-family: var(--poppins);
+    cursor: pointer;
+    color: white;
+    transition: 0.5s;
+}
+
+.topbarOption:hover {
+    text-decoration: underline;
 }
