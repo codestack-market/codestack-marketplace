@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins"); /* Main text font */
+@import url("https://fonts.googleapis.com/css?family=Noto%20Sans"); /* Main title font */
+@media (prefers-color-scheme: dark) {:root{--bg:#000000}}
+@media (prefers-color-scheme: light) {:root{--bg:#ffffff}}
+
+.titles.mainTitle {
+    font-family: 'Noto Sans', serif;
+    
+}
+
+.titles.largeTitle {
+    font-size: 48px;
+    font-weight: bold;
+    font-family: 'Noto Sans', serif;
+}
