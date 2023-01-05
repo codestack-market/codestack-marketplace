@@ -1,2 +1,4 @@
 flask >= 2.2.2
 stripe >= 5.0.0
+bs4
+requests
