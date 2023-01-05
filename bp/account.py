@@ -1,4 +1,4 @@
-from flask import Blueprint, request
+from flask import Blueprint, request, redirect, url_for, flash, render_template
 from ..utils import encrypt
 from ..db import Database
 
@@ -12,7 +12,12 @@ def login():
         password = encrypt(request.form.get('password'))
         try:
             user = users[email]
-            if user['password'] == password:
+            if user['password'] == password: # type: ignore
                 return redirect(url_for('catalog'))
             else:
-                flash('')
+                flash('Incorrect password!')
+        except KeyError:
+            flash('Incorrect email!')
+        return redirect(url_for('account.login'))
+
+    return render_template('templates/login.html')
