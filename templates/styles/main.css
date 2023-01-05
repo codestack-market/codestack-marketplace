@@ -84,3 +84,7 @@ html {
     color: rgb(143, 141, 141);
     font-family: var(--poppins);
 }
+
+input:focus, textarea:focus {
+    outline: 0;
+}
