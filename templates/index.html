@@ -5,11 +5,60 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Codestack Market - The place for all your coding needs</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="shortcut icon" href="assets/favicon.ico">
 </head>
 
 <body>
-
+    <div class="bars_topMain">
+        <br>
+        <img src="assets/favicon.png" onclick="window.location = ''" width="50px" height="50px" alt="Codestack Logo"
+            class="logos_logoMain"
+            style="vertical-align: middle; font-family: var(--poppins); cursor: pointer; position: absolute; transform: translate(-50%, -50%); left: 3%; top: 50%;">
+        <span class="topbarOption" onclick="window.location = '#codestack_why'" id="topbarOption_why"
+            style="position: absolute; transform: translate(-50%, -50%); top: 50%; left: 30%;">Why?</span>
+        <span class="topbarOption" onclick="window.location = '#container_scrollerMain'" id="topbarOption_why"
+            style="position: absolute; transform: translate(-50%, -50%); top: 50%; left: 45%;">Get started</span>
+        <span id="buyNTbarOption" class="topbarOption" onclick="window.location = '/marketplace/'"
+            style="position: absolute; transform: translate(-50%, -50%); top: 50%; left: 60%; ">Buy Now</span>
+        <span id="loginTBarOption"
+            style="position: absolute; transform: translate(-50%, -50%); top: 50%; right: 3%; color: #c44a56; cursor: pointer; font-family: var(--poppins);">{template
+            user}</span>
+    </div>
+    <div class="popup_accountOptionsPopup" style="opacity: 0;">
+        <br>
+        <span style="font-family: var(--notosans);"><b>Hello, {user}</b></span>
+        <hr style="width: 85%;">
+        <br>
+    </div>
+    <div class="container_scrollerMain" style="scroll-behavior: smooth;">
+        <div style="position: absolute; top: 20%; width: 100%; height: 100%;">
+            <img src="assets/favicon.png" height="120px" width="120px">
+            <br>
+            <span class="titles_mainTitle" style="color: white; font-size: 70px; font-weight: bold;">Codestack</span>
+            <p class="text_description" style="font-size: 20px;">
+                A place for developers to easily locate & buy API's, code, and more!
+            </p>
+            <br><br>
+            <hr style="width: 85%;">
+        </div>
+        <div class="codestack_why" id="codestack_why" style="position: absolute; top: 100%; width: 100%; height: 100%;">
+            <br>
+            <span class="titles_mainTitle" style="color: white; font-size: 50px; font-weight: bold;">Why?</span>
+            <div id="efficent_tab">
+                <p class="text_description" style="font-size: 20px;">
+                    Instead of having to search through the internet to find all the API's and code you need,
+                    <br>
+                    you can easily go through the organized codestack market!
+                </p>
+            </div>
+        </div>
+    </div>
+    <script src="scripts/loaders/loader.js"></script>
+    <script src="scripts/utils/forge.js"></script>
+    <script src="scripts/index.js"></script>
 </body>
 
 </html>
