@@ -8,17 +8,31 @@
     <title>Whoops!</title>
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/404.css">
+    <link rel="shortcut icon" href="assets/favicon.ico">
 </head>
 
 <body>
-    <div class="bars_topMain"></div>
+    <div class="bars_topMain">
+        <br>
+        <img src="assets/favicon.png" onclick="window.location = ''" width="50px" height="50px" alt="Codestack Logo"
+            class="logos_logoMain"
+            style="vertical-align: middle; font-family: var(--poppins); cursor: pointer; position: absolute; transform: translate(-50%, -50%); left: 3%; top: 50%;">
+        <span class="topbarOption" onclick="window.location = '#codestack_why'" id="topbarOption_why"
+            style="position: absolute; transform: translate(-50%, -50%); top: 50%; left: 35%;">Why?</span>
+        <span class="topbarOption" onclick="window.location = '#container_scrollerMain'" id="topbarOption_why"
+            style="position: absolute; transform: translate(-50%, -50%); top: 50%; left: 50%;">Get started</span>
+        <span id="buyNTbarOption" class="topbarOption" onclick="window.location = '/marketplace/'"
+            style="position: absolute; transform: translate(-50%, -50%); top: 50%; left: 65%; ">Buy Now</span>
+    </div>
     <div class="container_scrollerMain">
-        <h1 class="titles_404label">404</h1>
-        <h1 class="titles_mainTitle titles_404notfound">Page not found!</h1>
-        <div class="scroller_404info">
-            <p>We have no idea how you got here...</p>
-            <p>But you can find your way back...</p>
-            <p><a href="./index.html" class="links_mainLink"><i>Return to home</i></a></p>
+        <div style="position: absolute; width: 100%; height: 100%; top: 10%;">
+            <h1 class="titles_404label">404</h1>
+            <h1 class="titles_mainTitle titles_404notfound" style="color: white;">Page not found!</h1>
+            <div class="scroller_404info">
+                <p class="text_description">We have no idea how you got here...</p>
+                <p class="text_description">But you can find your way back...</p>
+                <p><a href="./index.html" class="links_mainLink"><i>Return to home</i></a></p>
+            </div>
         </div>
     </div>
 
