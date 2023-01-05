@@ -29,7 +29,7 @@ try {
             email = ''
         } else {
             _(".modalTitle").iText("Invalid email")
-            _(".modalDesc").iText("The inputted email is invalid. Please try agian.")
+            _(".modalDesc").iText("The inputted email is invalid. Please try again.")
             email = ''
         }
     })
