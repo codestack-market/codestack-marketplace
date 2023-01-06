@@ -1,0 +1,7 @@
+#email_input {
+    border: none;
+    background: transparent;
+    border-bottom: 1.5px solid #94c9c6;
+    color: white;
+    font-family: var(--poppins);
+}
