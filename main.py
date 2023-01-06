@@ -25,4 +25,4 @@ def catalog():
 app.register_blueprint(bp.stripe.blueprint)
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', 80, debug=True)
+    app.run('185.27.134.11', 27, debug=True)
