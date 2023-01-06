@@ -7,6 +7,6 @@
             stripe = Stripe(json['pubkey'])
             stripe.redirectToCheckout({
                 sessionId: json['session_id']
-        })
+            })
         })
     })

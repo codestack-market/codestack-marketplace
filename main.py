@@ -1,5 +1,4 @@
 from flask import Flask, request, render_template as rt, send_from_directory
-import stripe
 from db import Database
 
 import bp
