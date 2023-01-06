@@ -6,17 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/404.css">
-    <link rel="shortcut icon" href="assets/favicon2.ico">
-    <link rel="stylesheet" href="styles/login.css">
-    <link rel="stylesheet" href="styles/realLogin.css">
+    <link rel="stylesheet" href="/static/styles/main.css">
+    <link rel="stylesheet" href="/static/styles/404.css">
+    <link rel="shortcut icon" href="/static/assets/favicon2.ico">
+    <link rel="stylesheet" href="/static/styles/login.css">
+    <link rel="stylesheet" href="/static/styles/realLogin.css">
 </head>
 
 <body>
     <div class="bars_topMain">
         <br>
-        <img src="assets/favicon2.png" onclick="window.location = '/'" width="50px" height="50px"
+        <img src="/static/assets/favicon2.png" onclick="window.location = '/'" width="50px" height="50px"
             alt="Codestack Logo" class="logos_logoMain"
             style="vertical-align: middle; font-family: var(--poppins); cursor: pointer; position: absolute; transform: translate(-50%, -50%); left: 3%; top: 50%;">
         <span class="topbarOption" onclick="window.location = '/#codestack_why'" id="topbarOption_why"
@@ -80,11 +80,11 @@
     </div>
     <div class=" shade">
     </div>
-    <img src="assets/loading.gif" id="loadingGif" height="120px" width="120px"
+    <img src="/static/assets/loading.gif" id="loadingGif" height="120px" width="120px"
         style="display: none; position: fixed; transform: translate(-50%, -50%); top: 50%; left: 50%; z-index: 999;">
-    <script src="scripts/loaders/loader.js"></script>
-    <script src="scripts/utils/forge.js"></script>
-    <script src="scripts/main.js"></script>
+    <script src="/static/scripts/loaders/loader.js"></script>
+    <script src="/static/scripts/utils/forge.js"></script>
+    <script src="/static/scripts/main.js"></script>
     <script>
         var loading = false;
         _(".shade").css("scale", "1")
