@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/404.css">
+    <link rel="shortcut icon" href="assets/favicon2.ico">
+    <link rel="stylesheet" href="styles/login.css">
+    <link rel="stylesheet" href="styles/realLogin.css">
+</head>
+
+<body>
+    <div class="bars_topMain">
+        <br>
+        <img src="assets/favicon2.png" onclick="window.location = 'index.html'" width="50px" height="50px"
+            alt="Codestack Logo" class="logos_logoMain"
+            style="vertical-align: middle; font-family: var(--poppins); cursor: pointer; position: absolute; transform: translate(-50%, -50%); left: 3%; top: 50%;">
+        <span class="topbarOption" onclick="window.location = 'index.html#codestack_why'" id="topbarOption_why"
+            style="position: absolute; transform: translate(-50%, -50%); top: 50%; left: 35%;">Why?</span>
+        <span class="topbarOption" onclick="window.location = 'index.html#container_scrollerMain'" id="topbarOption_why"
+            style="position: absolute; transform: translate(-50%, -50%); top: 50%; left: 50%;">Get started</span>
+        <span id="buyNTbarOption" class="topbarOption" onclick="window.location = '/marketplace/'"
+            style="position: absolute; transform: translate(-50%, -50%); top: 50%; left: 65%; ">Buy Now</span>
+    </div>
+    <div class="container_scrollerMain">
+        <div style="position: absolute; width: 100%; height: 100%; top: 10%;">
+            <div id="innitLogin" style="display: none">
+                <h2 style="font-family: var(--notosans); color: yellow;">Initializing Login Pannel...</h2>
+                <span id="loadingDots" style="font-size: 65px; color: white;"></span>
+                <p class="text_description">Please wait!</p>
+            </div>
+            <div id="emailPannel" style="display: block;" class='loginPannel'>
+                <div style="margin-left: 50px;">
+                    <h2 style="font-family: var(--notosans);">Sign In</h2>
+                    <b style="font-size: 12px;">Email or phone number</b>
+                    <br>
+                    <input id="emailInput" type="email">
+                    <br><br>
+                    <button id="nextButton" onclick="goToPassword()">Continue</button>
+                    <br><br>
+                    <a style="color: rgb(0, 136, 255); cursor: pointer; text-decoration: underline; font-size: 12px;">
+                        Forgot password?
+                    </a>
+                </div>
+            </div>
+            <div id="passwordPannel" class='loginPannel' style="display: none;">
+                <div style="margin-left: 50px;">
+                    <h2 style="font-family: var(--notosans);">Sign In</h2>
+                    <b style="font-size: 12px;">Password</b>
+                    <br>
+                    <input id="passwordInput" type="password">
+                    <br><br>
+                    <button id="nextButton" onclick="goToPassword()">Continue</button>
+                    <br><br>
+                    <a style="color: rgb(0, 136, 255); cursor: pointer; text-decoration: underline; font-size: 12px;">
+                        Forgot password?
+                    </a>
+                    <br>
+                    <a onclick="showHidePswrd()"
+                        style="color: rgb(0, 136, 255); cursor: pointer; text-decoration: underline; font-size: 12px;">
+                        Show/Hide password
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modalPopup" id="modal_erroremail">
+        <br>
+        <span class="modalTitle">Email/Password invalid.</span>
+        <br>
+        <p class="modalDesc">Please try again.</p>
+        <button class="modalOk" onclick="hideModal()"">Done</button>
+    </div>
+    <div class=" shade">
+    </div>
+    <img src="assets/loading.gif" id="loadingGif" height="120px" width="120px"
+        style="display: none; position: fixed; transform: translate(-50%, -50%); top: 50%; left: 50%; z-index: 999;">
+    <script src="scripts/loaders/loader.js"></script>
+    <script src="scripts/utils/forge.js"></script>
+    <script src="scripts/main.js"></script>
+    <script>
+        var loading = false;
+        _(".shade").css("scale", "1")
+        _("#loadingGif").show()
+        loading = true;
+        setTimeout(() => {
+            loading = false;
+            _("#loadingGif").hide()
+            _(".shade").css("scale", "0")
+        }, Math.random() * (1200 - 550) + 550);
+
+        if (document.URL.includes("?true")) {
+            _("#passwordPannel").show()
+            _("#emailPannel").hide()
+        }
+
+        function showHidePswrd() {
+            if (_("#passwordInput").getAttribute("type") == "password") {
+                _("#passwordInput").setAttribute("type", "text")
+            } else {
+                _("#passwordInput").setAttribute("type", "password")
+            }
+        }
+
+        _("#emailInput").addEventListener("keydown", (e) => {
+            if (e.keyCode == 13) {
+                goToPassword();
+            } else if (e.keyCode == 32) {
+                e.preventDefault()
+                _("#emailInput").value += "-"
+            }
+        })
+
+        _("#loadingDots").iText(".")
+        setTimeout(() => {
+            _("#loadingDots").iText("..")
+            setTimeout(() => {
+                _("#loadingDots").iText("..")
+                setTimeout(() => {
+                    _("#loadingDots").iText("...")
+                    setTimeout(() => {
+                        _("#innitLogin").hide()
+                        _("#emailPannel").show()
+                    }, 500)
+                }, 200)
+            }, 200)
+        }, 500)
+
+        function goToPassword() {
+            if (!validateEmail(_("#emailInput").value) && !validatePhone(_("#emailInput").value) || !validatePhone(_("#emailInput").value) && !validateEmail(_("#emailInput").value)) {
+                _(".shade").css("scale", "1")
+                _("#modal_erroremail").css("scale", "1")
+                return
+            }
+            if (validateEmail(_("#emailInput").value) && !validatePhone(_("#emailInput").value)) {
+                window.location = `
+            ?true-email-${_("#emailInput").value}
+            `
+            } else {
+                window.location = `
+            ?true-phone-${_("#emailInput").value}
+            `
+            }
+
+        }
+
+        document.addEventListener("keydown", (e) => {
+            if (e.keyCode == 27 && !loading) hideModal();
+        })
+    </script>
+</body>
+
+</html>
