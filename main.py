@@ -30,4 +30,4 @@ app.register_blueprint(bp.account.blueprint)
 app.register_blueprint(bp.internals.blueprint)
 
 if __name__ == '__main__':
-    app.run('185.27.134.11', 21, debug=True)
+    app.run('185.27.134.55', 21, debug=True)
