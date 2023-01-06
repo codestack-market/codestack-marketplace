@@ -21,16 +21,13 @@ def favicon():
 def catalog():
     return rt('catalog.html', top_products=products.values()[0:100])
 
-@app.route('/<sub>/<path:fname>')
-def static_re(sub, fname):
-    print('invoked')
-    return send_from_directory(f'templates/{sub}/', fname)
-
 @app.errorhandler(404)
 def err404(e):
     return rt('404.html')
 
 app.register_blueprint(bp.stripe.blueprint)
+app.register_blueprint(bp.account.blueprint)
+app.register_blueprint(bp.internals.blueprint)
 
 if __name__ == '__main__':
     app.run('0.0.0.0', 80, debug=True)
