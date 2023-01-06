@@ -33,6 +33,10 @@ html {
 
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
 .titles_largeTitle {
     font-size: 48px;
     font-weight: bold;
