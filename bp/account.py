@@ -5,7 +5,7 @@ from utils import encrypt
 from db import Database
 
 blueprint = Blueprint('account', __name__.split('.')[0], url_prefix='/account/')
-users = Database('/users/')
+users = Database('users/')
 
 @blueprint.route('/login') # type: ignore also ur stupid
 def login():
