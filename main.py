@@ -30,4 +30,4 @@ app.register_blueprint(bp.account.blueprint)
 app.register_blueprint(bp.internals.blueprint)
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', 80, debug=True)
+   
