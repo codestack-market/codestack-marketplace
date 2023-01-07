@@ -7,7 +7,7 @@ from db import Database
 blueprint = Blueprint('account', __name__.split('.')[0], url_prefix='/account/')
 users = Database('users/')
 
-@blueprint.route('/login') # type: ignore also ur stupid
+@blueprint.route('/login')
 def login():
     if request.method == 'POST':
         email = request.form.get('email')

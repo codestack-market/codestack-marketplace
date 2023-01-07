@@ -17,7 +17,7 @@ def index():
 def favicon():
     return send_from_directory('./', 'favicon.ico.png')
 
-@app.route('/catalog')
+@app.route('/marketplace/')
 def catalog():
     return rt('catalog.html', top_products=products.values()[0:100])
 
