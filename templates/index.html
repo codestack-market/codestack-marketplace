@@ -24,12 +24,11 @@
         <span id="buyNTbarOption" class="topbarOption" onclick="window.location = '/marketplace/'"
             style="position: absolute; transform: translate(-50%, -50%); top: 50%; left: 60%; ">Buy Now</span>
         <span id="loginTBarOption"
-            style="position: absolute; transform: translate(-50%, -50%); top: 50%; right: 3%; color: #c44a56; cursor: pointer; font-family: var(--poppins);">{template
-            user}</span>
+            style="position: absolute; transform: translate(-50%, -50%); top: 50%; right: 3%; color: #c44a56; cursor: pointer; font-family: var(--poppins);">{%if user%}{{user}}{%else%}<a href='/account/login'>Login<a>{%endif%}</span>
     </div>
     <div class="popup_accountOptionsPopup" style="opacity: 0;">
         <br>
-        <span style="font-family: var(--notosans);"><b>Hello, {user}</b></span>
+        <span style="font-family: var(--notosans);"><b>{%if user%}Hello, {{user}}{%else%}<a href='/account/login'>Login</a>{%endif%}</b></span>
         <hr style="width: 85%;">
         <br>
     </div>
