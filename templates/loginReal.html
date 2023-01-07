@@ -40,7 +40,7 @@
                     <br>
                     <input id="emailInput" type="email">
                     <br><br>
-                    <button id="nextButton" onclick="goToPassword()">Continue</button>
+                    <button id="nextButton">Continue</button>
                     <br><br>
                     <a style="color: rgb(0, 136, 255); cursor: pointer; text-decoration: underline; font-size: 12px;">
                         Forgot password?
@@ -55,7 +55,7 @@
                     <form>
                         <input id="passwordInput" type="password">
                         <br><br>
-                        <button id="nextButton" onclick="goToPassword()">Continue</button>
+                        <button id="nextButton2">Continue</button>
                     </form>
                     <br><br>
                     <a style="color: rgb(0, 136, 255); cursor: pointer; text-decoration: underline; font-size: 12px;">
@@ -86,6 +86,8 @@
     <script src="/static/scripts/utils/forge.js"></script>
     <script src="/static/scripts/main.js"></script>
     <script>
+        _("#nextButton").addEventListener("click", goToPassword);
+
         var loading = false;
         _(".shade").css("scale", "1")
         _("#loadingGif").show()
