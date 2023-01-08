@@ -9,9 +9,9 @@ def scrape(query):
   web = BeautifulSoup(response.content, "html.parser")
 
   # Find all the h3 elements that contain the package names
-  package_elements = web.find_all("h3")
+  package_elements = web.find_all('span', class_='package-snippet__name'
 
-  # Extract the package names from the h3 elements
+  # Extract the package names 
   packages = []
   for package_element in package_elements:
     packages.append(f'https://pypi.com/project/{package_element.text.strip().split()[0]}')
