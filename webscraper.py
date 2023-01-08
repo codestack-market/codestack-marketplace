@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-def scrape(query):
+def scrape_py(query):
   # Make a request to the PyPI search page
   response = requests.get("https://pypi.org/search/?q=" + query)
 
@@ -9,7 +9,7 @@ def scrape(query):
   web = BeautifulSoup(response.content, "html.parser")
 
   # Find all the h3 elements that contain the package names
-  package_elements = web.find_all('span', class_='package-snippet__name'
+  package_elements = web.find_all(class_='package-snippet__name')
 
   # Extract the package names 
   packages = []
