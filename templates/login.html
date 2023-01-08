@@ -6,21 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/404.css">
-    <link rel="shortcut icon" href="assets/favicon.ico">
-    <link rel="stylesheet" href="styles/login.css">
+    <link rel="stylesheet" href="/static/styles/main.css">
+    <link rel="stylesheet" href="/static/styles/404.css">
+    <link rel="shortcut icon" href="/static/assets/favicon.ico">
+    <link rel="stylesheet" href="/static/styles/login.css">
 </head>
 
 <body>
     <div class="bars_topMain">
         <br>
-        <img src="assets/favicon.png" onclick="window.location = 'index.html'" width="50px" height="50px" alt="Codestack Logo"
+        <img src="/static/assets/favicon.png" onclick="window.location = '/'" width="50px" height="50px" alt="Codestack Logo"
             class="logos_logoMain"
             style="vertical-align: middle; font-family: var(--poppins); cursor: pointer; position: absolute; transform: translate(-50%, -50%); left: 3%; top: 50%;">
-        <span class="topbarOption" onclick="window.location = 'index.html#codestack_why'" id="topbarOption_why"
+        <span class="topbarOption" onclick="window.location = '/#codestack_why'" id="topbarOption_why"
             style="position: absolute; transform: translate(-50%, -50%); top: 50%; left: 35%;">Why?</span>
-        <span class="topbarOption" onclick="window.location = 'index.html#container_scrollerMain'" id="topbarOption_why"
+        <span class="topbarOption" onclick="window.location = '/#container_scrollerMain'" id="topbarOption_why"
             style="position: absolute; transform: translate(-50%, -50%); top: 50%; left: 50%;">Get started</span>
         <span id="buyNTbarOption" class="topbarOption" onclick="window.location = '/marketplace/'"
             style="position: absolute; transform: translate(-50%, -50%); top: 50%; left: 65%; ">Buy Now</span>
@@ -33,7 +33,20 @@
                 <p class="text_description">Unfortunately we do not have this ready yet.</p>
                 <p class="text_description">However, you can input your email so we can notify you when we are ready!</p>
                 <input type="email" id="email_input" placeholder="Input your email here.">
-                <p><a href="./index.html" class="links_mainLink"><i>Return to home</i></a></p>
+                <br>
+                <button id="applyEmailBtn" style="color: white;
+                font-family: var(--poppins);
+                font-size: 16px;
+                background-color: #4a8abe;
+                cursor: pointer;
+                width: 90px;
+                height: 40px;
+                border: none;
+                border-radius: 2%;
+                margin-top: 15px;">
+                    Apply
+                </button>
+                <p><a href="/" class="links_mainLink"><i>Return to home</i></a></p>
             </div>
         </div>
     </div>
@@ -46,10 +59,10 @@
         <button class="modalOk" onclick="hideModal()"">Done</button>
     </div>
     <div class="shade"></div>
-    <script src="scripts/loaders/loader.js"></script>
-    <script src="scripts/utils/forge.js"></script>
-    <script src="scripts/login.js"></script>
-    <script src="scripts/main.js"></script>
+    <script src="/static/scripts/loaders/loader.js"></script>
+    <script src="/static/scripts/utils/forge.js"></script>
+    <script src="/static/scripts/login.js"></script>
+    <script src="/static/scripts/main.js"></script>
 </body>
 
 </html>

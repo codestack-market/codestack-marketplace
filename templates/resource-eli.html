@@ -1,0 +1,12 @@
+<!--Product page script-->
+<!--All ids are fake, replace them-->
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+    document.getElementById('buybtn').addEventListener('click', function() {
+        fetch('/payment/create_session').then(function(res){return res.json()}).then(function(json) {
+            stripe = Stripe(json['pubkey'])
+            stripe.redirectToCheckout({
+                sessionId: json['session_id']
+            })
+        })
+    })

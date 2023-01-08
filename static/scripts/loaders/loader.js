@@ -1,5 +1,5 @@
 // Opacity to 1 for body transition
-// _ is prefix for forge query (scripts/utils/forge.js)
+// _ is prefix for forge query (/static/scripts/utils/forge.js)
 
 document.body.onload = function() {
     document.body.style.opacity = "1";
