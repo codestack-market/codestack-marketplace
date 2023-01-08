@@ -25,6 +25,10 @@ def catalog():
 def err404(e):
     return rt('404.html')
 
+@app.errorhandler(500)
+def err500(e):
+    return rt('500.html')
+
 app.register_blueprint(bp.stripe.blueprint)
 app.register_blueprint(bp.account.blueprint)
 app.register_blueprint(bp.internals.blueprint)
