@@ -31,6 +31,6 @@ def scrape_js(query):
   # Extract the package names 
   packages = []
   for package_element in package_elements:
-    packages.append(f'https://npmjs.com/package/{package_element.text.strip().split()[0]}')
+    packages.append(f'https://npmjs.com/package/{package_element.text.strip()}')
 
   return packages
