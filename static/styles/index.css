@@ -7,10 +7,29 @@ body {
     position: fixed;
     top: 8%;
     right: 2%;
-    height: 500px;
+    height: 200px;
     width: 300px;
     text-align: center;
-    background-color: #3a3b3a;
+    background-color: #ed9863;
     color: white;
     transition: 0.5s;
+    text-align: left;
+    z-index: 888;
+}
+
+.popup_accountOptionsPopup img {
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+.acO_listItem {
+    margin-left: 25px;
+    font-family: var(--poppins);
+    vertical-align: middle;
+    cursor: pointer;
+    color: black;
+}
+
+.acO_listItem:hover {
+    text-decoration: underline;
 }
