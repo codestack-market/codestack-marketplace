@@ -29,6 +29,10 @@ def err404(e):
 def err500(e):
     return rt('500.html')
 
+@app.errorhandler(429)
+def err429(e):
+    return rt('429.html')
+
 app.register_blueprint(bp.stripe.blueprint)
 app.register_blueprint(bp.account.blueprint)
 app.register_blueprint(bp.internals.blueprint)
