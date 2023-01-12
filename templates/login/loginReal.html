@@ -42,8 +42,8 @@
                     <br><br>
                     <button id="nextButton">Continue</button>
                     <br><br>
-                    <a href='../signup.html' style="color: rgb(0, 136, 255); cursor: pointer; text-decoration: underline; font-size: 12px;">
-                        Don't have an account?
+                    <a style="color: rgb(0, 136, 255); cursor: pointer; text-decoration: underline; font-size: 12px;">
+                        Forgot password?
                     </a>
                 </div>
             </div>
@@ -72,21 +72,12 @@
     </div>
 
     <div class="modalPopup" id="modal_erroremail">
-        <form onsubmit="login">
-        <input id="passwordInput" type="password">
         <br>
-        <br>
-        <button id="nextButton">Continue</button>
-        </form>
-        <br>
-        <br>
-        <a style="color: rgb(0, 136, 255); cursor: pointer; text-decoration: underline; font-size: 12px;">
-	@@ -76,7 +76,7 @@
-        <h2 style="font-family: var(--notosans);">Sign In</h2>
         <span class="modalTitle">Email/Password invalid.</span>
         <br>
         <p class="modalDesc">Please try again.</p>
-        <button class="modalOk" onclick="hideModal()">Done</button>
+        <button class="modalOk" onclick="hideModal()"">Done</button>
+    </div>
     <div class=" shade">
     </div>
     <img src="/static/assets/loading.gif" id="loadingGif" height="120px" width="120px"
