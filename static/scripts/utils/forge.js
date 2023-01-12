@@ -277,6 +277,19 @@ try {
       .replace(/"/g, "&quot;")
       .replace(/'/g, "&#039;");
   }
+
+  String.prototype.ascii = function() {
+    let charCodes = [];
+    for (let i = 0; i < this.toString().length; i++) {
+      charCodes.push(this.charCodeAt(i));
+    }
+    return charCodes;
+  }
+
+  String.prototype.asciiStr = function() {
+    return String.fromCharCode(...this.split(","));
+  }
+
   // var encrypt = "how are you doing today my friend".encrypt("132761837419283857291928386919293")
   //var decrypt = encrypt.decrypt("132761837419283857291928386919293")
   //_("#text").iText(decrypt)
