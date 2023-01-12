@@ -40,10 +40,10 @@
                     <br>
                     <input id="emailInput" type="email">
                     <br><br>
-                    <button id="nextButton">Continue</button>
+                    <button id="nextButton" onclick="goToPassword()">Continue</button>
                     <br><br>
-                    <a style="color: rgb(0, 136, 255); cursor: pointer; text-decoration: underline; font-size: 12px;">
-                        Forgot password?
+                    <a href='../signup.html' style="color: rgb(0, 136, 255); cursor: pointer; text-decoration: underline; font-size: 12px;">
+                        Don't have an account?
                     </a>
                 </div>
             </div>
@@ -52,10 +52,10 @@
                     <h2 style="font-family: var(--notosans);">Sign In</h2>
                     <b style="font-size: 12px;">Password</b>
                     <br>
-                    <form>
+                    <form onsubmit="login">
                         <input id="passwordInput" type="password">
                         <br><br>
-                        <button id="nextButton2">Continue</button>
+                        <button id="nextButton">Continue</button>
                     </form>
                     <br><br>
                     <a style="color: rgb(0, 136, 255); cursor: pointer; text-decoration: underline; font-size: 12px;">
@@ -76,7 +76,7 @@
         <span class="modalTitle">Email/Password invalid.</span>
         <br>
         <p class="modalDesc">Please try again.</p>
-        <button class="modalOk" onclick="hideModal()"">Done</button>
+        <button class="modalOk" onclick="hideModal()">Done</button>
     </div>
     <div class=" shade">
     </div>
@@ -86,8 +86,6 @@
     <script src="/static/scripts/utils/forge.js"></script>
     <script src="/static/scripts/main.js"></script>
     <script>
-        _("#nextButton").addEventListener("click", goToPassword);
-
         var loading = false;
         _(".shade").css("scale", "1")
         _("#loadingGif").show()
