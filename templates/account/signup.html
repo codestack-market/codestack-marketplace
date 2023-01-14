@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<code>
+    returnp|safe
+</code>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,14 +18,14 @@
 <body>
     <div class="bars_topMain">
         <br>
-        <img src="assets/favicon2.png" onclick="window.location = 'index.html'" width="50px" height="50px"
+        <img src="/static/assets/favicon2.png" onclick="window.location = 'index.html'" width="50px" height="50px"
             alt="Codestack Logo" class="logos_logoMain"
             style="vertical-align: middle; font-family: var(--poppins); cursor: pointer; position: absolute; transform: translate(-50%, -50%); left: 3%; top: 50%;">
-        <span class="topbarOption" onclick="window.location = 'index.html#codestack_why'" id="topbarOption_why"
+        <span class="topbarOption" onclick="window.location = 'codestack_why'" id="topbarOption_why"
             style="position: absolute; transform: translate(-50%, -50%); top: 50%; left: 35%;">Why?</span>
-        <span class="topbarOption" onclick="window.location = 'index.html#container_scrollerMain'" id="topbarOption_why"
+        <span class="topbarOption" onclick="window.location = '/signup'" id="topbarOption_why"
             style="position: absolute; transform: translate(-50%, -50%); top: 50%; left: 50%;">Get started</span>
-        <span id="buyNTbarOption" class="topbarOption" onclick="window.location = '/marketplace/'"
+        <span id="buyNTbarOption" class="topbarOption" onclick="window.location = '/soon'"
             style="position: absolute; transform: translate(-50%, -50%); top: 50%; left: 65%; ">Buy Now</span>
     </div>
     <div class="container_scrollerMain">
@@ -33,6 +35,7 @@
                 <span id="loadingDots" style="font-size: 65px; color: white;"></span>
                 <p class="text_description">Please wait!</p>
             </div>
+            <form action="/signup" method="post">
             <div id="emailPannel" style="display: block;" class='loginPannel'>
                 <div style="margin-left: 50px;">
                     <h2 style="font-family: var(--notosans);">Create an account</h2>
@@ -42,11 +45,12 @@
                     <br><br>
                     <button id="nextButton" onclick="goToPassword()">Continue</button>
                     <br><br>
-                    <a style="color: rgb(0, 136, 255); cursor: pointer; text-decoration: underline; font-size: 12px;" href="/loginReal.html">
+                    <a style="color: rgb(0, 136, 255); cursor: pointer; text-decoration: underline; font-size: 12px;" href="/account/login">
                         Already have an account?
                     </a>
                 </div>
             </div>
+            <form action="{{ url_for('signup') }}" method="post">
             <div id="passwordPannel" class='loginPannel' style="display: none;">
                 <div style="margin-left: 50px;">
                     <h2 style="font-family: var(--notosans);">Create an account</h2>
@@ -60,19 +64,6 @@
                         style="color: rgb(0, 136, 255); cursor: pointer; text-decoration: underline; font-size: 12px;">
                         Show/Hide password
                     </a>
-                </div>
-            </div>
-            <div class="loginPannel" id="reviewDataPannel" style="display: none;">
-                <div style="margin-left: 50px;">
-                    <h2 style="font-family: var(--notosans);">Review your data</h2>
-                    <b style="font-size: 12px;">Email or phone number</b>
-                    <input id="rEmailInput" disabled type="text">
-                    <br><br>
-                    <b style="font-size: 12px;">Password</b>
-                    <br>
-                    <input id="rPswrdInput" disabled type="text">
-                    <br><br>
-                    <button id="nextButton" onclick="goToPassword()">All Good!</button>
                 </div>
             </div>
         </div>
@@ -103,26 +94,9 @@
             _(".shade").css("scale", "0")
         }, Math.random() * (1200 - 550) + 550);
 
-        if (document.URL.includes("?true-email-") && !document.URL.includes("-pswrd-")) {
+        if (document.URL.includes("?true")) {
             _("#passwordPannel").show()
             _("#emailPannel").hide()
-        }
-
-        if (document.URL.includes("-pswrd-")) {
-            // show pannels
-            _("#emailPannel").hide()
-            _("#reviewDataPannel").show()
-
-            // set inputs
-            
-            let password = document.URL.split("-pswrd-")[1].asciiStr();
-            let filler = "";
-            for (let i = 0; i < password.length - 3; i++) {
-                filler += "*"
-            }
-            
-            _("#rEmailInput").value = document.URL.split("?true-email-")[1].replace("-pswrd-" + document.URL.split("-pswrd-")[1], "")
-            _("#rPswrdInput").value = filler + password.slice(-3);
         }
 
         function showHidePswrd() {
@@ -142,14 +116,6 @@
             }
         })
 
-        _("#passwordInput").addEventListener("keydown", (e) => {
-            if (e.keyCode == 13) reviewLogin();
-        })
-
-        function reviewLogin() {
-            window.location = document.URL + `-pswrd-${_("#passwordInput").value.ascii()}` 
-        }
-        
         _("#loadingDots").iText(".")
         setTimeout(() => {
             _("#loadingDots").iText("..")
@@ -182,6 +148,7 @@
             }
 
         }
+        
 
         document.addEventListener("keydown", (e) => {
             if (e.keyCode == 27 && !loading) hideModal();

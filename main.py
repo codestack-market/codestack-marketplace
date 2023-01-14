@@ -1,6 +1,5 @@
 from flask import Flask, request, render_template as rt, send_from_directory
 from db import Database
-
 import bp
 
 app = Flask(__name__)
@@ -20,6 +19,26 @@ def favicon():
 @app.route('/marketplace/')
 def catalog():
     return rt('catalog.html', top_products=products.values()[0:100])
+
+@app.route('/soon', methods=["GET", "POST"])
+def soon():
+    if request.method == 'POST':
+        email = request.form.get('email_input')
+        with open("emails.csv", "w+") as data:
+            data.write(email)
+        return rt('soon.html')
+    return rt('soon.html')
+
+@app.route('/signup', methods =["GET", "POST"])
+def signup():
+    if request.method == "POST":
+        email = request.form.get('emailInput')
+        password = request.form.get('passwordInput')
+        with open("accounts.csv", "w+") as data:
+            data.write(f"{email}, {password}")
+        return rt('/account/signup.html', email=email, password=password)
+    return rt("/account/signup.html", returnp='')
+1
 
 @app.errorhandler(404)
 def err404(e):

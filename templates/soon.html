@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<code>
+    {{ returnp|safe }}
+</code>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,9 +22,9 @@
             style="vertical-align: middle; font-family: var(--poppins); cursor: pointer; position: absolute; transform: translate(-50%, -50%); left: 3%; top: 50%;">
         <span class="topbarOption" onclick="window.location = '/#codestack_why'" id="topbarOption_why"
             style="position: absolute; transform: translate(-50%, -50%); top: 50%; left: 35%;">Why?</span>
-        <span class="topbarOption" onclick="window.location = '/#container_scrollerMain'" id="topbarOption_why"
+        <span class="topbarOption" onclick="window.location = '/signup'" id="topbarOption_why"
             style="position: absolute; transform: translate(-50%, -50%); top: 50%; left: 50%;">Get started</span>
-        <span id="buyNTbarOption" class="topbarOption" onclick="window.location = '/marketplace/'"
+        <span id="buyNTbarOption" class="topbarOption" onclick="window.location = '/soon'"
             style="position: absolute; transform: translate(-50%, -50%); top: 50%; left: 65%; ">Buy Now</span>
     </div>
     <div class="container_scrollerMain">
@@ -32,6 +34,7 @@
             <div class="scroller_404info">
                 <p class="text_description">Unfortunately we do not have this ready yet.</p>
                 <p class="text_description">However, you can input your email so we can notify you when we are ready!</p>
+                <form action="/" method="post">
                 <input type="email" id="email_input" placeholder="Input your email here.">
                 <br>
                 <button id="applyEmailBtn" style="color: white;
