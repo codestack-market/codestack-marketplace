@@ -20,12 +20,17 @@ def favicon():
 def catalog():
     return rt('catalog.html', top_products=products.values()[0:100])
 
+@app.route('/thanks')
+def thanks():
+    return rt('thanks.html')
+
 @app.route('/soon', methods=["GET", "POST"])
 def soon():
     if request.method == 'POST':
         email = request.form.get('email_input')
         with open("emails.csv", "w+") as data:
-            data.write(email)
+            data.write(str(email))
+            data.write('\n')
         return rt('soon.html')
     return rt('soon.html')
 
@@ -36,8 +41,9 @@ def signup():
         password = request.form.get('passwordInput')
         with open("accounts.csv", "w+") as data:
             data.write(f"{email}, {password}")
-        return rt('/account/signup.html', email=email, password=password)
-    return rt("/account/signup.html", returnp='')
+            data.write('\n')
+        return rt('/account/signup.html')
+    return rt("/account/signup.html")
 1
 
 @app.errorhandler(404)

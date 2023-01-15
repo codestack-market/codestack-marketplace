@@ -1,8 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<code>
-    {{ returnp|safe }}
-</code>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,6 +12,7 @@
 </head>
 
 <body>
+    <form action="{{ url_for('soon') }}" method="PORT">
     <div class="bars_topMain">
         <br>
         <img src="../static/assets/favicon.png" onclick="window.location = '/'" width="50px" height="50px" alt="Codestack Logo"
@@ -34,10 +32,9 @@
             <div class="scroller_404info">
                 <p class="text_description">Unfortunately we do not have this ready yet.</p>
                 <p class="text_description">However, you can input your email so we can notify you when we are ready!</p>
-                <form action="/" method="post">
                 <input type="email" id="email_input" placeholder="Input your email here.">
                 <br>
-                <button id="applyEmailBtn" style="color: white;
+                <button id="applyEmailBtn" onclick="window.location = '/thanks'" style="color: white;
                 font-family: var(--poppins);
                 font-size: 16px;
                 background-color: #4a8abe;
