@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Codestack Market - The place for all your coding needs</title>
+    <title>CodeStack Market - The place for all your coding needs</title>
     <link rel="stylesheet" href="/static/styles/main.css">
     <link rel="stylesheet" href="/static/styles/index.css">
     <link rel="shortcut icon" href="/static/assets/favicon2.ico">
@@ -19,16 +19,16 @@
             style="vertical-align: middle; font-family: var(--poppins); cursor: pointer; position: absolute; transform: translate(-50%, -50%); left: 3%; top: 50%;">
         <span class="topbarOption" onclick="window.location = '#codestack_why'" id="topbarOption_why"
             style="position: absolute; transform: translate(-50%, -50%); top: 50%; left: 30%;">Why?</span>
-        <span class="topbarOption" onclick="window.location = '#container_scrollerMain'" id="topbarOption_why"
+        <span class="topbarOption" onclick="window.location = '/signup'" id="topbarOption_why"
             style="position: absolute; transform: translate(-50%, -50%); top: 50%; left: 45%;">Get started</span>
-        <span id="buyNTbarOption" class="topbarOption" onclick="window.location = '/marketplace/'"
+        <span id="buyNTbarOption" class="topbarOption" onclick="window.location = '/soon'"
             style="position: absolute; transform: translate(-50%, -50%); top: 50%; left: 60%; ">Buy Now</span>
         <span id="loginTBarOption"
             style="position: absolute; transform: translate(-50%, -50%); top: 50%; right: 3%; color: #c44a56; cursor: pointer; font-family: var(--poppins);">{%if user%}{{user}}{%else%}<a href='/account/login'>Login<a>{%endif%}</span>
     </div>
     <div class="popup_accountOptionsPopup" style="opacity: 0;">
         <br>
-        <span style="font-family: var(--notosans);"><b>{%if user%}Hello, {{user}}{%else%}<a href='/account/login' style="color: blue;">Login</a>{%endif%}</b></span>
+        <span style="font-family: var(--notosans);"><b>{%if user%}Hello, {{user}}{%else%}<a href='/account/login'>Login</a>{%endif%}</b></span>
         <hr style="width: 85%;">
         <br>
         <span class="acO_listItem">- Basket</span> <span class="acO_listItem">Account Settings -</span>
@@ -41,7 +41,7 @@
         <div style="position: absolute; top: 20%; width: 100%; height: 100%;">
             <img src="/static/assets/favicon2.png" height="120px" width="120px">
             <br>
-            <span class="titles_mainTitle" style="color: white; font-size: 70px; font-weight: bold;">Codestack</span>
+            <span class="titles_mainTitle" style="color: white; font-size: 70px; font-weight: bold;">CodeStack</span>
             <p class="text_description" style="font-size: 20px;">
                 A place for developers to easily locate & buy API's, code, and more!
             </p>
