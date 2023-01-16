@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-
+#functions!!!!
 def scrape_py(query):
   # Make a request to the PyPI search page
   response = requests.get("https://pypi.org/search/?q=" + query)
