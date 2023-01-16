@@ -44,7 +44,6 @@ def signup():
             data.write('\n')
         return rt('/account/signup.html')
     return rt("/account/signup.html")
-1
 
 @app.errorhandler(404)
 def err404(e):
