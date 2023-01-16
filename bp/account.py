@@ -22,4 +22,4 @@ def login():
             flash('Incorrect email!')
         return redirect(url_for('account.login'))
 
-    return render_template('loginReal.html')
+    return render_template('account/loginReal.html')
