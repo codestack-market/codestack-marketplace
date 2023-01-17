@@ -1,4 +1,5 @@
 from flask import Flask, request, render_template as rt, send_from_directory
+import csv
 from db import Database
 import bp
 
@@ -28,9 +29,9 @@ def thanks():
 def soon():
     if request.method == 'POST':
         email = request.form.get('email_input')
-        with open("emails.csv", "w+") as data:
-            data.write(str(email))
-            data.write('\n')
+        with open("emails.csv", "a+) as data:
+            writer = csv.writer(f)
+            writer.writerows(str(email))
         return rt('soon.html')
     return rt('soon.html')
 
@@ -62,4 +63,4 @@ app.register_blueprint(bp.account.blueprint)
 app.register_blueprint(bp.internals.blueprint)
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', 80, debug=True)
+    app.run('0.0.0.0', 5000, debug=True)
