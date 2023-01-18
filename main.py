@@ -1,5 +1,5 @@
-from flask import Flask, request, render_template as rt, send_from_directory
 import csv
+from flask import Flask, request, render_template as rt, send_from_directory
 from db import Database
 import bp
 
@@ -28,23 +28,25 @@ def thanks():
 @app.route('/soon', methods=["GET", "POST"])
 def soon():
     if request.method == 'POST':
-        email = request.form.get('email_input')
-        with open("emails.csv", "a+) as data:
-            writer = csv.writer(f)
-            writer.writerows(str(email))
-        return rt('soon.html')
+        email = [request.forms.get("email_input")]
+        print(email)
+        with open("emails.csv", "w+") as data:
+            writer = csv.writer(data)
+            writer.writerow("email\n")
+        return rt('thanks.html')
     return rt('soon.html')
 
 @app.route('/signup', methods =["GET", "POST"])
 def signup():
     if request.method == "POST":
-        email = request.form.get('emailInput')
-        password = request.form.get('passwordInput')
+        email = request.forms.get('emailInput')
+        password = request.forms.get('passwordInput')
         with open("accounts.csv", "w+") as data:
             data.write(f"{email}, {password}")
             data.write('\n')
         return rt('/account/signup.html')
     return rt("/account/signup.html")
+
 
 @app.errorhandler(404)
 def err404(e):
@@ -63,4 +65,4 @@ app.register_blueprint(bp.account.blueprint)
 app.register_blueprint(bp.internals.blueprint)
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', 5000, debug=True)
+    app.run('0.0.0.0', 69420, debug=True)

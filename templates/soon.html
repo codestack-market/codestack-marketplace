@@ -7,15 +7,15 @@
     <title>Coming Soon!</title>
     <link rel="stylesheet" href="../static/styles/main.css">
     <link rel="stylesheet" href="../static/styles/404.css">
-    <link rel="shortcut icon" href="../static/assets/favicon.ico">
+    <link rel="shortcut icon" href="../static/assets/favicon2.ico">
     <link rel="stylesheet" href="../static/styles/login.css">
 </head>
 
 <body>
-    <form action="{{ url_for('soon') }}" method="PORT">
+    <form action="{{ url_for('soon') }}" method="post">
     <div class="bars_topMain">
         <br>
-        <img src="../static/assets/favicon.png" onclick="window.location = '/'" width="50px" height="50px" alt="Codestack Logo"
+        <img src="../static/assets/favicon2.png" onclick="window.location = '/'" width="50px" height="50px" alt="Codestack Logo"
             class="logos_logoMain"
             style="vertical-align: middle; font-family: var(--poppins); cursor: pointer; position: absolute; transform: translate(-50%, -50%); left: 3%; top: 50%;">
         <span class="topbarOption" onclick="window.location = '/#codestack_why'" id="topbarOption_why"
@@ -32,9 +32,10 @@
             <div class="scroller_404info">
                 <p class="text_description">Unfortunately we do not have this ready yet.</p>
                 <p class="text_description">However, you can input your email so we can notify you when we are ready!</p>
+                <form action="{{ url_for("soon")}}" method="POST">
                 <input type="email" id="email_input" placeholder="Input your email here.">
                 <br>
-                <button id="applyEmailBtn" onclick="window.location = '/thanks'" style="color: white;
+                <span id="applyEmailBtn" onclick="window.location = '/thanks'", "fetchData()" style="color: white;
                 font-family: var(--poppins);
                 font-size: 16px;
                 background-color: #4a8abe;
@@ -45,12 +46,11 @@
                 border-radius: 2%;
                 margin-top: 15px;">
                     Apply
-                </button>
+            </span>
                 <p><a href="/" class="links_mainLink"><i>Return to home</i></a></p>
             </div>
         </div>
     </div>
-
     <div class="modalPopup" id="modal_erroremail">
         <br>
         <span class="modalTitle"></span>
@@ -58,11 +58,21 @@
         <p class="modalDesc"></p>
         <button class="modalOk" onclick="hideModal()"">Done</button>
     </div>
-    <div class="shade"></div>
     <script src="../static/scripts/loaders/loader.js"></script>
     <script src="../static/scripts/utils/forge.js"></script>
     <script src="../static/scripts/login.js"></script>
     <script src="../static/scripts/main.js"></script>
+    <script>
+        function fetchData(){
+        fetch("/signup")
+            .then(response=>{
+                alert(response);
+            })
+            .then(data => {
+                //handle data
+                alert(data);
+              })}
+    </script>
 </body>
 
 </html>
