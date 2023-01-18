@@ -1,4 +1,3 @@
-import csv
 from flask import Flask, request, render_template as rt, send_from_directory
 from db import Database
 import bp
@@ -25,22 +24,24 @@ def catalog():
 def thanks():
     return rt('thanks.html')
 
-@app.route('/soon', methods=["GET", "POST"])
+@app.route('/soon', methods=["GET"])
 def soon():
-    if request.method == 'POST':
-        email = [request.forms.get("email_input")]
+    if request.method == 'GET':
+        email = request.form.get("email_input")
+        if email == None:
+            email = 'empty'
         print(email)
-        with open("emails.csv", "w+") as data:
-            writer = csv.writer(data)
-            writer.writerow("email\n")
-        return rt('thanks.html')
+        with open("emails.txt", "w+") as data:
+            data.write(f'{email}\n')
+        return rt('soon.html')
     return rt('soon.html')
 
 @app.route('/signup', methods =["GET", "POST"])
 def signup():
+    print('e')
     if request.method == "POST":
-        email = request.forms.get('emailInput')
-        password = request.forms.get('passwordInput')
+        email = request.form.get('emailInput')
+        password = request.form.get('passwordInput')
         with open("accounts.csv", "w+") as data:
             data.write(f"{email}, {password}")
             data.write('\n')

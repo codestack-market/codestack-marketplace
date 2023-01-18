@@ -12,7 +12,6 @@
 </head>
 
 <body>
-    <form action="{{ url_for('soon') }}" method="post">
     <div class="bars_topMain">
         <br>
         <img src="../static/assets/favicon2.png" onclick="window.location = '/'" width="50px" height="50px" alt="Codestack Logo"
@@ -32,10 +31,10 @@
             <div class="scroller_404info">
                 <p class="text_description">Unfortunately we do not have this ready yet.</p>
                 <p class="text_description">However, you can input your email so we can notify you when we are ready!</p>
-                <form action="{{ url_for("soon")}}" method="POST">
-                <input type="email" id="email_input" placeholder="Input your email here.">
+                <form action="{{ url_for('soon')}}" method="get">
+                <input type="text" id="email_input" name="email_input" placeholder="Input your email here.">
                 <br>
-                <span id="applyEmailBtn" onclick="window.location = '/thanks'", "fetchData()" style="color: white;
+                <span id="applyEmailBtn" onclick="window.location = '/thanks'" style="color: white;
                 font-family: var(--poppins);
                 font-size: 16px;
                 background-color: #4a8abe;
@@ -62,17 +61,6 @@
     <script src="../static/scripts/utils/forge.js"></script>
     <script src="../static/scripts/login.js"></script>
     <script src="../static/scripts/main.js"></script>
-    <script>
-        function fetchData(){
-        fetch("/signup")
-            .then(response=>{
-                alert(response);
-            })
-            .then(data => {
-                //handle data
-                alert(data);
-              })}
-    </script>
 </body>
 
 </html>
