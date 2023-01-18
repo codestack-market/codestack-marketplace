@@ -32,9 +32,9 @@
                 <p class="text_description">Unfortunately we do not have this ready yet.</p>
                 <p class="text_description">However, you can input your email so we can notify you when we are ready!</p>
                 <form action="{{ url_for('soon')}}" method="get">
-                <input type="text" id="email_input" name="email_input" placeholder="Input your email here.">
+                <input type="text" id="email_input" name="emailInput" placeholder="Input your email here.">
                 <br>
-                <span id="applyEmailBtn" onclick="window.location = '/thanks'" style="color: white;
+                <span id="applyEmailBtn" onclick="window.location = '{{ url_for('thanks') }}'" style="color: white;
                 font-family: var(--poppins);
                 font-size: 16px;
                 background-color: #4a8abe;
@@ -49,13 +49,6 @@
                 <p><a href="/" class="links_mainLink"><i>Return to home</i></a></p>
             </div>
         </div>
-    </div>
-    <div class="modalPopup" id="modal_erroremail">
-        <br>
-        <span class="modalTitle"></span>
-        <br>
-        <p class="modalDesc"></p>
-        <button class="modalOk" onclick="hideModal()"">Done</button>
     </div>
     <script src="../static/scripts/loaders/loader.js"></script>
     <script src="../static/scripts/utils/forge.js"></script>
