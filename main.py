@@ -4,11 +4,13 @@ from db import Database
 import bp
 
 app = Flask(__name__)
-app.config['STRIPE_SECRET'] = '''sk_test_51MMNE4Gc3J3VBJP2YlMeztqt8XTuKuzGKBvPqm0j
-TOEsyi2aIae87dBjhqHUi9w9T2XOtCVBHH0mspkNrPYXIAIH00YCQ10hME'''
+app.config['STRIPE_SECRET'] = '''sk_test_51MMNE4Gc3J3VBJP2v4I1FAEgZl8A5kHpkpiFezF
+PEmfjODE8fuqnyzD4BoNSP6VPdYp84qPM
+RlUwFJu1XReTOXr500UAfpxUuf'''
 
-app.config['STRIPE_PUB'] = '''pk_test_51MMNE4Gc3J3VBJP2vuqxUNYGksRHmjgzS1YftjeqfvF
-8h2BkiqZey57cLN4NpqXl8WExdx2hWszGQO2xlV4jDJiR00zUFkGM2I'''
+app.config['STRIPE_PUB'] = '''pk_test_51MMNE4Gc3J3VBJP2CerBgZNbOV1DG
+kfcQh672TAF4zQSKejz46AHOuRztD
+ceTnvvkVYhloAAOMbRBm4b50JlhISs004iChl6sU'''
 
 products = Database('products/')
 
@@ -49,17 +51,22 @@ def soon():
 @app.route('/signup', methods =["GET", "POST"])
 def signup():
     '''signup'''
-    print('e')
     if request.method == "POST":
-        email = request.form.get('emailInput')
-        password = request.form.get('passwordInput')
+        print(response.json())
+        email = request.form.get("email")
+        phone = request.form.get("phone")
+        password = request.form.get('password')
+        print(email)
+        print(password)
         with open("accounts.csv", "w+", encoding='utf-8') as data:
             data.write(f"{email}, {password}")
             data.write('\n')
         return rt('/account/signup.html')
     return rt("/account/signup.html")
 
-
+@app.route('/confirmSignup')
+def confirmSignup():
+    return rt('thanks.html')
 @app.errorhandler(404)
 def err404(e):
     '''error'''
