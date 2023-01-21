@@ -1,67 +1,98 @@
+'''Flask errors'''
+import json 
 from flask import Flask, request, render_template as rt, send_from_directory
 from db import Database
 import bp
 
 app = Flask(__name__)
-app.config['STRIPE_SECRET'] = 'sk_test_51MMNE4Gc3J3VBJP2YlMeztqt8XTuKuzGKBvPqm0jTOEsyi2aIae87dBjhqHUi9w9T2XOtCVBHH0mspkNrPYXIAIH00YCQ10hME'
-app.config['STRIPE_PUB'] = 'pk_test_51MMNE4Gc3J3VBJP2vuqxUNYGksRHmjgzS1YftjeqfvF8h2BkiqZey57cLN4NpqXl8WExdx2hWszGQO2xlV4jDJiR00zUFkGM2I'
+app.config['STRIPE_SECRET'] = '''sk_test_51MMNE4Gc3J3VBJP2v4I1FAEgZl8A5kHpkpiFezF
+PEmfjODE8fuqnyzD4BoNSP6VPdYp84qPM
+RlUwFJu1XReTOXr500UAfpxUuf'''
+
+app.config['STRIPE_PUB'] = '''pk_test_51MMNE4Gc3J3VBJP2CerBgZNbOV1DG
+kfcQh672TAF4zQSKejz46AHOuRztD
+ceTnvvkVYhloAAOMbRBm4b50JlhISs004iChl6sU'''
 
 products = Database('products/')
 
 @app.route('/')
 def index():
+    '''Homepage'''
     return rt('index.html')
 
 @app.route('/favicon.ico')
 def favicon():
+    '''Favicon route'''
     return send_from_directory('./', 'favicon.ico.png')
 
 @app.route('/marketplace/')
 def catalog():
+    '''Test catalog'''
     return rt('catalog.html', top_products=products.values()[0:100])
 
 @app.route('/thanks')
 def thanks():
+    '''Thanks'''
     return rt('thanks.html')
 
-@app.route('/soon', methods=["GET", "POST"])
+@app.route('/soon', methods=["GET"])
 def soon():
-    if request.method == 'POST':
-        email = request.form.get('email_input')
-        with open("emails.csv", "w+") as data:
-            data.write(str(email))
-            data.write('\n')
+    '''Soon'''
+    if request.method == 'GET':
+        email = request.form.get("emailInput")
+        print(request.form)
+        if email is None:
+            email = 'empty'
+        print(email)
+        with open("emails.txt", "w+",encoding='utf-8') as data:
+            data.write(f'{email}\n')
         return rt('soon.html')
     return rt('soon.html')
 
-@app.route('/signup', methods =["POST"])
+@app.route('/signup', methods =["GET", "POST"])
 def signup():
+    '''signup'''
     if request.method == "POST":
-        email = request.get("email")
-        phone = request.get("phone")
-        password = request.get('password')
-        console.log(email, phone, password)
-        with open("accounts.csv", "w+") as data:
+        response = json.dumps(request.get_json())
+        response = json.loads(response)
+        email = response["email"]
+        phone = response["phone"]
+        password = response['password']
+        print(email)
+        print(password)
+        print(phone)
+        if phone == "none":
+          with open("accounts.csv", "w+", encoding='utf-8') as data:
             data.write(f"{email}, {password}")
             data.write('\n')
+        else:
+            with open("accounts.csv", "w+", encoding='utf-8') as data:
+                data.write(f"{phone}, {password}")
+                data.write('\n')  
         return rt('/account/signup.html')
     return rt("/account/signup.html")
 
+@app.route('/confirmSignup')
+def confirmSignup():
+    return rt('thanks.html')
+
 @app.errorhandler(404)
 def err404(e):
+    '''error'''
     return rt('404.html')
 
 @app.errorhandler(500)
 def err500(e):
+    '''error'''
     return rt('500.html')
 
 @app.errorhandler(429)
 def err429(e):
+    '''error'''
     return rt('429.html')
 
-app.register_blueprint(bp.stripe.blueprint)
 app.register_blueprint(bp.account.blueprint)
 app.register_blueprint(bp.internals.blueprint)
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', 3000, debug=True)
+    app.run('0.0.0.0', 69420, debug=True)

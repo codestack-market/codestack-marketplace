@@ -191,7 +191,11 @@
         function finishSignup() {
             const email = document.URL.split("?true-email-")[1].replace("-pswrd-" + document.URL.split("-pswrd-")[1], "")
             const password = document.URL.split("-pswrd-")[1].asciiStr();
-            const phone = document.URL.split("?true-phone-")
+            var phone = document.URL.split("?true-phone-")
+            if (phone == document.URL) {
+                phone = "none";
+            }
+            console.log(phone)
             postData("/signup", { email: email, phone: phone, password: password })
                 .then((data) => {
                     console.dir(data);
