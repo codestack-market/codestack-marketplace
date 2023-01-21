@@ -1,6 +1,7 @@
 '''Flask errors'''
 import json
-from pymongo import MongoClient
+from pymongo.mongo_client import MongoClient
+from pymongo.server_api import ServerApi
 from flask import Flask, request, render_template as rt, send_from_directory
 from db import Database
 import bp
@@ -16,9 +17,9 @@ ceTnvvkVYhloAAOMbRBm4b50JlhISs004iChl6sU'''
 
 products = Database('products/')
 
-client = MongoClient("mongodb+srv://codestack:KZJt76xSwkPhlxeb@cluster0.jsufux8.mongodb.net/?retryWrites=true&w=majority")
-db = client["local"]
-accounts = db["accounts"]
+client = MongoClient("mongodb+srv://codestack:avneh@cluster0.jsufux8.mongodb.net/?retryWrites=true&w=majority", server_api=ServerApi('1'))
+db = client['CodeStack']
+accs = db["accounts"]
 
 @app.route('/')
 def index():
@@ -61,13 +62,12 @@ def signup():
         response = json.dumps(request.get_json())
         response = json.loads(response)
         email = response["email"]
-        print(email)
         phone = response["phone"]
         password = response['password']
-        if phone == "none":
-            accounts.insert_one({"contact":phone, "password":password})
+        if phone != "none":
+            accs.insert_one({"contact":phone, "password":password})
         else:
-            accounts.insert_one({"contact":email, "password":password})
+            accs.insert_one({"contact":email, "password":password})
         return rt('/account/signup.html')
     return rt("/account/signup.html")
 
