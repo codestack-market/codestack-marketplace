@@ -32,7 +32,8 @@
                 <p class="text_description">Unfortunately we do not have this ready yet.</p>
                 <p class="text_description">However, you can input your email so we can notify you when we are ready!</p>
                 <form action="{{ url_for('soon')}}" method="get">
-                <input type="text" id="email_input" name="emailInput" placeholder="Input your email here.">
+                <input type="text" id="emailInput" name="emailInput" placeholder="Input your email here.">
+                </form>
                 <br>
                 <span id="applyEmailBtn" onclick="window.location = '/thanks'" style="color: white;
                 font-family: var(--poppins);

@@ -192,9 +192,9 @@
             const email = document.URL.split("?true-email-")[1].replace("-pswrd-" + document.URL.split("-pswrd-")[1], "")
             const password = document.URL.split("-pswrd-")[1].asciiStr();
             const phone = document.URL.split("?true-phone-")
-            postData("/signup?true-email-${email}-pswrd-${password}", { email: email, phone: phone, password: password })
-                .then((response) => {
-                    console.log(response);
+            postData("/confirmSignup", { email: email, phone: phone, password: password })
+                .then((data) => {
+                    console.dir(data);
                     // redirect to
                 })
         }

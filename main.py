@@ -38,7 +38,8 @@ def thanks():
 def soon():
     '''Soon'''
     if request.method == 'GET':
-        email = request.args.get("emailInput")
+        email = request.form.get("emailInput")
+        print(request.form)
         if email is None:
             email = 'empty'
         print(email)
