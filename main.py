@@ -71,6 +71,31 @@ def signup():
         return rt('/account/signup.html')
     return rt("/account/signup.html")
 
+@app.route('/login', methods =["GET", "POST"])
+def login():
+    if request.method =="POST":
+        contact = json.dumps(request.get_json())
+        contact = json.loads(contact)
+        email = contact["email"]
+        phone = contact["phone"]
+        password = contact["password"]
+        if phone != "none":
+            query = accs.find({"contact": email})
+            for x in query:
+                if x["password"] == "password":
+                    return rt("/account/loginReal.html", auth="pass")
+                else:
+                    return rt("/account/loginReal.html", auth="fail")
+        else:
+            query = accs.find({"contact": phone})
+            for x in query:
+                if x["password"] == "password":
+                    return rt("/account/loginReal.html", auth="pass")
+                else:
+                    return rt("/account/loginReal.html", auth="fail")
+    return rt("/account/loginReal.html", auth ='')
+                    
+                
 @app.route('/confirmSignup')
 def confirmSignup():
     return rt('thanks.html')
@@ -90,7 +115,6 @@ def err429(e):
     '''error'''
     return rt('429.html')
 
-app.register_blueprint(bp.account.blueprint)
 app.register_blueprint(bp.internals.blueprint)
 
 if __name__ == '__main__':
