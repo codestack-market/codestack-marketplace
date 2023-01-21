@@ -1,4 +1,5 @@
 '''Flask errors'''
+import json 
 from flask import Flask, request, render_template as rt, send_from_directory
 from db import Database
 import bp
@@ -52,10 +53,10 @@ def soon():
 def signup():
     '''signup'''
     if request.method == "POST":
-        print(response.json())
-        email = request.form.get("email")
-        phone = request.form.get("phone")
-        password = request.form.get('password')
+        response = json.loads(request.get_json())
+        email = response["email"]
+        phone = response["phone"]
+        password = response['password']
         print(email)
         print(password)
         with open("accounts.csv", "w+", encoding='utf-8') as data:
@@ -67,6 +68,7 @@ def signup():
 @app.route('/confirmSignup')
 def confirmSignup():
     return rt('thanks.html')
+
 @app.errorhandler(404)
 def err404(e):
     '''error'''
@@ -82,7 +84,6 @@ def err429(e):
     '''error'''
     return rt('429.html')
 
-app.register_blueprint(bp.stripe.blueprint)
 app.register_blueprint(bp.account.blueprint)
 app.register_blueprint(bp.internals.blueprint)
 
