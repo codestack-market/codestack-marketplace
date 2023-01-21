@@ -1,5 +1,6 @@
 '''Flask errors'''
-import json 
+import json
+from pymongo import MongoClient
 from flask import Flask, request, render_template as rt, send_from_directory
 from db import Database
 import bp
@@ -14,6 +15,10 @@ kfcQh672TAF4zQSKejz46AHOuRztD
 ceTnvvkVYhloAAOMbRBm4b50JlhISs004iChl6sU'''
 
 products = Database('products/')
+
+client = MongoClient("mongodb+srv://codestack:KZJt76xSwkPhlxeb@cluster0.jsufux8.mongodb.net/?retryWrites=true&w=majority")
+db = client["local"]
+accounts = db["accounts"]
 
 @app.route('/')
 def index():
@@ -53,15 +58,16 @@ def soon():
 def signup():
     '''signup'''
     if request.method == "POST":
-        response = json.loads(request.get_json())
+        response = json.dumps(request.get_json())
+        response = json.loads(response)
         email = response["email"]
+        print(email)
         phone = response["phone"]
         password = response['password']
-        print(email)
-        print(password)
-        with open("accounts.csv", "w+", encoding='utf-8') as data:
-            data.write(f"{email}, {password}")
-            data.write('\n')
+        if phone == "none":
+            accounts.insert_one({"contact":phone, "password":password})
+        else:
+            accounts.insert_one({"contact":email, "password":password})
         return rt('/account/signup.html')
     return rt("/account/signup.html")
 
@@ -88,4 +94,4 @@ app.register_blueprint(bp.account.blueprint)
 app.register_blueprint(bp.internals.blueprint)
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', 69420, debug=True)
+    app.run('0.0.0.0', 5000, debug=True)
