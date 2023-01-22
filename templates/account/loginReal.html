@@ -140,11 +140,11 @@
             }
             if (validateEmail(_("#emailInput").value) && !validatePhone(_("#emailInput").value)) {
                 window.location = `
-            ?true-email-${_("#emailInput").value}
+            /login?true-email-${_("#emailInput").value}
             `
             } else {
                 window.location = `
-            ?true-phone-${_("#emailInput").value}
+            /login?true-phone-${_("#emailInput").value}
             `
             }
 
@@ -175,7 +175,9 @@
                     console.dir(data);
                     // redirect to
                 })
+            window.location = '/'
             }
+
 
         async function postData(url = '', data = {}) {
             const response = await fetch(url, {

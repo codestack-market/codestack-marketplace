@@ -20,6 +20,7 @@ products = Database('products/')
 client = MongoClient("mongodb+srv://codestack:avneh@cluster0.jsufux8.mongodb.net/?retryWrites=true&w=majority", server_api=ServerApi('1'))
 db = client['CodeStack']
 accs = db["accounts"]
+emails = db["emails"]
 
 @app.route('/')
 def index():
@@ -41,17 +42,14 @@ def thanks():
     '''Thanks'''
     return rt('thanks.html')
 
-@app.route('/soon', methods=["GET"])
+@app.route('/soon', methods=["GET", "POST"])
 def soon():
     '''Soon'''
-    if request.method == 'GET':
-        email = request.form.get("emailInput")
-        print(request.form)
-        if email is None:
-            email = 'empty'
-        print(email)
-        with open("emails.txt", "w+",encoding='utf-8') as data:
-            data.write(f'{email}\n')
+    if request.method == 'POST':
+        response = json.dumps(request.get_json())
+        response = json.loads(response)
+        email = response["email"]
+        emails.insert_one({"email":email})
         return rt('soon.html')
     return rt('soon.html')
 
