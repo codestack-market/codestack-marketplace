@@ -158,7 +158,7 @@
             const email = document.URL.split("?true-email-")[1].replace("-pswrd-" + document.URL.split("-pswrd-")[1], "")
             const password = _("#passwordInput").value;
             const phone = document.URL.split("?true-phone-")
-            var auth = {{auth}}
+            var auth = {auth}
             if(auth == 'pass') {
                 window.location = `/`
             }
