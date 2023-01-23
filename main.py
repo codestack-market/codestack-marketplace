@@ -2,11 +2,14 @@
 import json
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
-from flask import Flask, request, render_template as rt, send_from_directory
+from flask import Flask, request, render_template as rt, send_from_directory,session
 from db import Database
 import bp
 
 app = Flask(__name__)
+
+app.secret_key = "b'[\xc6\x11\x0b8\x1am\xc5\xdf\xb8Snd(\r\x9b'"
+
 app.config['STRIPE_SECRET'] = '''sk_test_51MMNE4Gc3J3VBJP2v4I1FAEgZl8A5kHpkpiFezF
 PEmfjODE8fuqnyzD4BoNSP6VPdYp84qPM
 RlUwFJu1XReTOXr500UAfpxUuf'''
@@ -60,6 +63,7 @@ def signup():
     if request.method == "POST":
         response = json.dumps(request.get_json())
         response = json.loads(response)
+        print(response)
         email = response["email"].lower()
         phone = str(response["phone"].lower())
         password = str(response["password"].lower())
@@ -98,8 +102,7 @@ def login():
                 else:
                     return rt("/account/loginReal.html", auth="fail")
     return rt("/account/loginReal.html", auth ='')
-                    
-                
+                                 
 @app.route('/confirmSignup')
 def confirmSignup():
     return rt('thanks.html')

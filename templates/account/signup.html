@@ -40,6 +40,10 @@
                     <br>
                     <input id="emailInput" type="email">
                     <br><br>
+                    <input id="fname" type="email">
+                    <br><br>
+                    <input id="lname" type="email">
+                    <br><br>
                     <button id="nextButton" onclick="goToPassword()">Continue</button>
                     <br><br>
                     <a style="color: rgb(0, 136, 255); cursor: pointer; text-decoration: underline; font-size: 12px;"
@@ -174,11 +178,11 @@
             }
             if (validateEmail(_("#emailInput").value) && !validatePhone(_("#emailInput").value)) {
                 window.location = `
-            ?true-email-${_("#emailInput").value}
+            ?true-email-${_("#emailInput").value}-fname-${_("#fname")}-lname-${_("#lname")}
             `
             } else {
                 window.location = `
-            ?true-phone-${_("#emailInput").value}
+            ?true-phone-${_("#emailInput").value}-fname-${_("#fname")}-lname-${_("#lname")}
             `
             }
 
@@ -191,11 +195,13 @@
         function finishSignup() {
             const email = document.URL.split("?true-email-")[1].replace("-pswrd-" + document.URL.split("-pswrd-")[1], "")
             const password = document.URL.split("-pswrd-")[1].asciiStr();
+            const fname = document.URL.split("-fname-")[1]
+            const lname = document.URL.split("-lname-")[1]
             var phone = document.URL.split("?true-phone-")
             if (phone == document.URL) {
                 phone = "none"
             }
-            postData("/signup", { email: email, phone: phone, password: password })
+            postData("/signup", { email: email, phone: phone, password: password, fname:fname, lname:lname })
                 .then((data) => {
                     console.dir(data);
                     // redirect to
