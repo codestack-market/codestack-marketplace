@@ -48,6 +48,7 @@ def soon():
     if request.method == 'POST':
         response = json.dumps(request.get_json())
         response = json.loads(response)
+        print(response)
         email = response["email"]
         emails.insert_one({"email":email})
         return rt('soon.html')
@@ -59,9 +60,9 @@ def signup():
     if request.method == "POST":
         response = json.dumps(request.get_json())
         response = json.loads(response)
-        email = response["email"]
-        phone = response["phone"]
-        password = response['password']
+        email = response["email"].lower()
+        phone = str(response["phone"].lower())
+        password = str(response["password"].lower())
         if phone != "none":
             accs.insert_one({"contact":phone, "password":password})
         else:
@@ -74,20 +75,25 @@ def login():
     if request.method =="POST":
         contact = json.dumps(request.get_json())
         contact = json.loads(contact)
-        email = contact["email"]
-        phone = contact["phone"]
-        password = contact["password"]
+        email = contact["email"].lower()
+        phone = str(contact["phone"].lower())
+        password = str(contact["password"].lower())
         if phone != "none":
+            print("e")
             query = accs.find({"contact": email})
+            print(query)
             for x in query:
-                if x["password"] == "password":
-                    return rt("/account/loginReal.html", auth="pass")
+                print(x)
+                if x["password"] == password:
+                    auth = 'pass'
+                    return rt("/account/loginReal.html", auth=auth)
                 else:
-                    return rt("/account/loginReal.html", auth="fail")
+                    auth = 'fail'
+                    return rt("/account/loginReal.html", auth=auth)
         else:
             query = accs.find({"contact": phone})
             for x in query:
-                if x["password"] == "password":
+                if x["password"] == password:
                     return rt("/account/loginReal.html", auth="pass")
                 else:
                     return rt("/account/loginReal.html", auth="fail")
