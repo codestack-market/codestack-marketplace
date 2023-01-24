@@ -39,15 +39,22 @@
                     <b style="font-size: 12px;">Email or phone number</b>
                     <br>
                     <input id="emailInput" type="email">
-                    <br><br>
+                    <br>
+                    <br>
+                    <b style="font-size: 12px;">First Name</b>
+                    <br>
                     <input id="fname" type="email">
-                    <br><br>
+                    <br>
+                    <br>
+                    <b style="font-size: 12px;">Last Name</b>
+                    <br>
                     <input id="lname" type="email">
-                    <br><br>
+                    <br>
+                    <br>
                     <button id="nextButton" onclick="goToPassword()">Continue</button>
                     <br><br>
-                    <a style="color: rgb(0, 136, 255); cursor: pointer; text-decoration: underline; font-size: 12px;"
-                        href="account/login">
+                    <a style="color: rgb(0, 0, 0); cursor: pointer; text-decoration: none; font-size: 10px;"
+                        href="account/login" id="nextButton">
                         Already have an account?
                     </a>
                 </div>
@@ -126,7 +133,7 @@
                 filler += "*"
             }
 
-            _("#rEmailInput").value = document.URL.split("?true-email-")[1].replace("-pswrd-" + document.URL.split("-pswrd-")[1], "")
+            _("#rEmailInput").value = document.URL.split("?true-email-")[1].replace("-fname-" + document.URL.split("-fname-")[1], "").replace("-lname-" + document.URL.split("-lname-")[1],"").replace("-pswrd-" + document.URL.split("-pswrd-")[1], "")
             _("#rPswrdInput").value = filler + password.slice(-3);
         }
 
@@ -178,11 +185,11 @@
             }
             if (validateEmail(_("#emailInput").value) && !validatePhone(_("#emailInput").value)) {
                 window.location = `
-            ?true-email-${_("#emailInput").value}-fname-${_("#fname")}-lname-${_("#lname")}
+            ?true-email-${_("#emailInput").value}-fname-${_("#fname").value}-lname-${_("#lname").value}
             `
             } else {
                 window.location = `
-            ?true-phone-${_("#emailInput").value}-fname-${_("#fname")}-lname-${_("#lname")}
+            ?true-phone-${_("#emailInput").value}-fname-${_("#fname").value}-lname-${_("#lname").value}
             `
             }
 
@@ -193,10 +200,10 @@
         })
 
         function finishSignup() {
-            const email = document.URL.split("?true-email-")[1].replace("-pswrd-" + document.URL.split("-pswrd-")[1], "")
+            const email = document.URL.split("?true-email-")[1].replace("-fname-" + document.URL.split("-fname-")[1], "").replace("-lname-" + document.URL.split("-lname-")[1],"").replace("-pswrd-" + document.URL.split("-pswrd-")[1], "")
             const password = document.URL.split("-pswrd-")[1].asciiStr();
-            const fname = document.URL.split("-fname-")[1]
-            const lname = document.URL.split("-lname-")[1]
+            const fname = document.URL.split("-fname-")[1].replace("-lname-" + document.URL.split("-lname-")[1],"").replace("-pswrd-" + document.URL.split("-pswrd-")[1],"")
+            const lname = document.URL.split("-lname-")[1].replace("-pswrd-" + document.URL.split("-pswrd-")[1],"")
             var phone = document.URL.split("?true-phone-")
             if (phone == document.URL) {
                 phone = "none"

@@ -8,7 +8,7 @@ import bp
 
 app = Flask(__name__)
 
-app.secret_key = "b'[\xc6\x11\x0b8\x1am\xc5\xdf\xb8Snd(\r\x9b'"
+app.secret_key = '[\xc6\x11\x0b8\x1am\xc5\xdf\xb8Snd(\r\x9b'
 
 app.config['STRIPE_SECRET'] = '''sk_test_51MMNE4Gc3J3VBJP2v4I1FAEgZl8A5kHpkpiFezF
 PEmfjODE8fuqnyzD4BoNSP6VPdYp84qPM
@@ -66,11 +66,14 @@ def signup():
         print(response)
         email = response["email"].lower()
         phone = str(response["phone"].lower())
-        password = str(response["password"].lower())
+        password = str(response["password"])
+        fname = response["fname"].lower()
+        session['username'] = fname
+        lname = response["lname"].lower()
         if phone != "none":
-            accs.insert_one({"contact":phone, "password":password})
+            accs.insert_one({"contact":phone, "password":password, "firstname":fname, "lastname":lname})
         else:
-            accs.insert_one({"contact":email, "password":password})
+            accs.insert_one({"contact":email, "password":password, "firstname":fname, "lastname":lname})
         return rt('/account/signup.html')
     return rt("/account/signup.html")
 
