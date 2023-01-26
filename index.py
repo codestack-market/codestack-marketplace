@@ -17,8 +17,6 @@ app.config['STRIPE_PUB'] = '''pk_test_51MMNE4Gc3J3VBJP2CerBgZNbOV1DG
 kfcQh672TAF4zQSKejz46AHOuRztD
 ceTnvvkVYhloAAOMbRBm4b50JlhISs004iChl6sU'''
 
-products = Database('products/')
-
 client = MongoClient("mongodb+srv://codestack:avneh@cluster0.jsufux8.mongodb.net/?retryWrites=true&w=majority", server_api=ServerApi('1'))
 db = client['CodeStack']
 accs = db["accounts"]
