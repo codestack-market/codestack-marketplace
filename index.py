@@ -5,7 +5,6 @@ from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 from flask import Flask, request, render_template as rt, send_from_directory,session
 from db import Database
-import bp
 
 app = Flask(__name__)
 
@@ -139,7 +138,6 @@ def err429(e):
     '''error'''
     return rt('429.html')
 
-app.register_blueprint(bp.internals.blueprint)
 
 if __name__ == '__main__':
     app.run('0.0.0.0', 5000, debug=True)
