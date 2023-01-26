@@ -1,6 +1,5 @@
 '''Flask errors'''
 import json
-import smtplib
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 from flask import Flask, request, render_template as rt, send_from_directory,session
@@ -70,19 +69,6 @@ def signup():
         fname = response["fname"]
         session['username'] = fname
         lname = response["lname"]
-        FROM = 'help.codestack@gmail.com'
-        TO = [f"{email}"]
-        SUBJECT = "CodeStack Authentication Email."
-        TEXT = "This message was sent in regards to your current signup with CodeStack.\nIf this was you, please click this link:\nIf not, ignore this email."
-        message = """\
-        From: %s
-        To: %s
-        Subject: %s
-        %s
-        """ % (FROM, ", ".join(TO), SUBJECT, TEXT)
-        server = smtplib.SMTP('myserver')
-        server.sendmail(FROM, TO, message)
-        server.quit()
         if phone != "none":
             accs.insert_one({"contact":phone, "password":password, "firstname":fname, "lastname":lname})
         else:
