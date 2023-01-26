@@ -85,6 +85,10 @@ html {
     text-decoration: underline;
 }
 
+.bars_topMain:hover {
+    text-decoration: underline;
+}
+
 .text_description {
     color: rgb(143, 141, 141);
     font-family: var(--poppins);
