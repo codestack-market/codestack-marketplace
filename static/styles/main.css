@@ -5,7 +5,7 @@
 @media (prefers-color-scheme: dark) {
     :root {
         --bg: #3a3b3a;
-        --tobarBg: #ed9863;
+        --tobarBg: #aa6337;
         --poppins: 'Poppins', serif;
         --notosans: 'Noto Sans', serif;
     }
@@ -13,7 +13,7 @@
 
 @media (prefers-color-scheme: light) {
     :root {
-        --bg: #454545;
+        --bg: #bcbcbc;
         --tobarBg: #f0ac6c;
         --poppins: 'Poppins', serif;
         --notosans: 'Noto Sans', serif;
