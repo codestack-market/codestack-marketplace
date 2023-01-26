@@ -13,7 +13,7 @@
 
 @media (prefers-color-scheme: light) {
     :root {
-        --bg: #bcbcbc;
+        --bg: #3a3b3a;
         --tobarBg: #f0ac6c;
         --poppins: 'Poppins', serif;
         --notosans: 'Noto Sans', serif;
