@@ -158,18 +158,6 @@
             const email = document.URL.split("?true-email-")[1].replace("-pswrd-" + document.URL.split("-pswrd-")[1], "")
             const password = _("#passwordInput").value;
             const phone = document.URL.split("?true-phone-")
-<<<<<<< HEAD
-=======
-            var auth = {auth}
-            if(auth == 'pass') {
-                window.location = `/`
-            }
-            if(auth=='fail') {
-                _(".shade").css("scale", "1")
-                _("#modal_erroremail").css("scale", "1")
-                return
-            }
->>>>>>> 9680173335275cea700b5ca15d0c7a2b0f64f216
             if (phone == document.URL) {
                 phone = "none"
             }

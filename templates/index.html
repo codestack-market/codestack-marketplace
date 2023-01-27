@@ -23,13 +23,15 @@
             style="position: absolute; transform: translate(-50%, -50%); top: 50%; left: 45%;">Get started</span>
         <span id="buyNTbarOption" class="topbarOption" onclick="window.location = '/soon'"
             style="position: absolute; transform: translate(-50%, -50%); top: 50%; left: 60%; ">Buy Now</span>
-        <span id="loginTBarOption" class="topbarOption"
-            style="position: absolute; transform: translate(-50%, -50%); top: 50%; right: 3%; color: #c44a56; cursor: pointer; font-family: var(--poppins);">{%if session["username"]%}<h1>Hello, {{ session["username"] }}.</h1>{%else%}<a href="{{ url_for('login') }}">Login</a>{%endif%}</span>
+        <span id="user_name" class="topbarOption"
+            style="position: absolute; transform: translate(-50%, -50%); top: 50%;
+             right: 3%; cursor: pointer; 
+             font-family: var(--poppins);">{%if session["username"]%}<h1>Hello, {{ session["username"] }}.</h1>{%else%}<a href="{{ url_for('login') }}">Login</a>{%endif%}</span>
     </div>
     <div class="popup_accountOptionsPopup" style="opacity: 0;">
         <br>
-        <span class="topbarOption" style="font-family: var(--notosans);"><b>{%if session["username"]%}Hello, {{ session["username"] }}{%else%}<a href='/account/login'>Login</a>{%endif%}</span>
-        <hr style="width: 85%;">
+        <span class="topbarOption" style="font-family: var(--poppins);">{%if session["username"]%}<h1>Hello, {{ session["username"] }}.</h1>{%else%}<a href='/account/login'>Login</a>{%endif%}</span>
+        <hr style="width: 50%;">
         <br>
         <span class="acO_listItem">- Basket</span> <span class="acO_listItem">Account Settings -</span>
         <br>
