@@ -8,6 +8,7 @@
     border-radius: 5px / 2.5px;
     background-color: white;
     text-align: left;
+    display: none;
 }
 
 .acTitle {
@@ -19,7 +20,6 @@
     font-family: 'Noto Sans', serif;
     background-color: #ce5458;
     border: 1px solid #c44a56;
-    border-radius: 10px / 5px;
     cursor: pointer;
     text-align: center;
     width: 85%;
