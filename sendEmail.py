@@ -1,9 +1,13 @@
 import smtplib
 import json
+import urllib.parse
+import requests
 import random
 import base64
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+
+appid = '7PV9WP-5PE6EG69QT'
 
 def sendMail(receiver,url):
     sender_address = 'help.codestack@gmail.com'
@@ -49,8 +53,19 @@ def decodeEmail(json_object):
     print(res)
     res = int.from_bytes(res,"big")
     print(res)
-    res = int(res/int(dictionary['key']))
-    print(res)
+    query = urllib.parse.quote_plus(f"solve {res}")
+    query_url = f"http://api.wolframalpha.com/v2/query?" \
+                f"appid={appid}" \
+                f"&input={query}" \
+                f"&includepodid=Result" \
+                f"&output=json"
+
+    r = requests.get(query_url).json()
+
+    data = r["queryresult"]["pods"][0]["subpods"][0]
+    plaintext = data["plaintext"]
+    print(plaintext)
+
 
 x = encodeEmail("ab7552@pleasantonusd.net")
 print(x)
