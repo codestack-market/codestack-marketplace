@@ -115,7 +115,7 @@ def sudoMode():
 
 @app.route("/email-auth")
 def emailAuth():
-    return rt("/account/auth.html")
+    return rt("/account/email-auth.html")
 
 @app.errorhandler(404)
 def err404(e):
