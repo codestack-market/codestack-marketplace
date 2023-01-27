@@ -3,13 +3,24 @@
     transform: translate(-50%, -50%);
     left: 50%;
     top: 50%;
-    width: 65%;
+    width: 55%;
     height: 75%;
     border-radius: 5px / 2.5px;
     background-color: white;
-    text-align: center;
 }
 
 .acTitle {
     font-family: var(--notosans);
+}
+
+.okButton {
+    color: black;
+    font-family: 'Noto Sans', serif;
+    background-color: #ce5458;
+    border: 1px solid #c44a56;
+    border-radius: 3%;
+    cursor: pointer;
+    text-align: center;
+    width: 85%;
+    height: 35px;
 }
