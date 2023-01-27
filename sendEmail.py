@@ -33,26 +33,24 @@ def encodeEmail(email):
     res = int(''.join(format(ord(i), '08b') for i in email))
     res_int = random.randint(0,10)
     res = res_int*res
-    res = res_int.to_bytes(100,"big")
+    res = res.to_bytes(100,"big")
     res = base64.urlsafe_b64encode(res)
     res = res.decode("utf-8") 
-    key_dict = {"id": res, "key": res_int}
+    key_dict = {"bin": res, "key": res_int}
     json_object = json.dumps(key_dict, indent = 4) 
     return json_object
 
 def decodeEmail(json_object):
-    res = json_object["id"]
+    dictionary = json.loads(json_object)
+    res = dictionary["bin"]
     res = bytes(res ,'utf-8')
+    print(res)
     res = base64.urlsafe_b64decode(res)
-    res = int.from_bytes(100, "big")
-    res = res/int(json_object['key'])
-    binary_values = str(res)
-    ascii_string = ""
-    for binary_value in binary_values:
-        an_integer = int(binary_value, 2)
-        ascii_character = chr(an_integer)
-        ascii_string += ascii_character
-    return ascii_string 
+    print(res)
+    res = int.from_bytes(res,"big")
+    print(res)
+    res = int(res/int(dictionary['key']))
+    print(res)
 
 x = encodeEmail("ab7552@pleasantonusd.net")
 print(x)
