@@ -39,22 +39,11 @@
                     <b style="font-size: 12px;">Email or phone number</b>
                     <br>
                     <input id="emailInput" type="email">
-                    <br>
-                    <br>
-                    <b style="font-size: 12px;">First Name</b>
-                    <br>
-                    <input id="fname" type="email">
-                    <br>
-                    <br>
-                    <b style="font-size: 12px;">Last Name</b>
-                    <br>
-                    <input id="lname" type="email">
-                    <br>
-                    <br>
+                    <br><br>
                     <button id="nextButton" onclick="goToPassword()">Continue</button>
                     <br><br>
-                    <a style="color: rgb(0, 0, 0); cursor: pointer; text-decoration: none; font-size: 10px;"
-                        href="account/login" id="nextButton">
+                    <a style="color: rgb(0, 106, 255); cursor: pointer; text-decoration: underline; font-size: 12px;"
+                        href="account/login">
                         Already have an account?
                     </a>
                 </div>
@@ -115,25 +104,25 @@
             _(".shade").css("scale", "0")
         }, Math.random() * (1200 - 550) + 550);
 
-        if (document.URL.includes("?true-email-") && !document.URL.includes("-pswrd-")) {
+        if (document.URL.includes("?s=2") && !sessionStorage.getItem("password")) {
             _("#passwordPannel").show()
             _("#emailPannel").hide()
         }
 
-        if (document.URL.includes("-pswrd-")) {
+        if (sessionStorage.getItem("password")) {
             // show pannels
             _("#emailPannel").hide()
             _("#reviewDataPannel").show()
 
             // set inputs
 
-            let password = document.URL.split("-pswrd-")[1].asciiStr();
+            let password = sessionStorage.getItem("password").asciiStr();
             let filler = "";
             for (let i = 0; i < password.length - 3; i++) {
                 filler += "*"
             }
 
-            _("#rEmailInput").value = document.URL.split("?true-email-")[1].replace("-fname-" + document.URL.split("-fname-")[1], "").replace("-lname-" + document.URL.split("-lname-")[1],"").replace("-pswrd-" + document.URL.split("-pswrd-")[1], "")
+            _("#rEmailInput").value = sessionStorage.getItem("email") || sessionStorage.getItem("phone")
             _("#rPswrdInput").value = filler + password.slice(-3);
         }
 
@@ -159,7 +148,8 @@
         })
 
         function reviewLogin() {
-            window.location = document.URL + `-pswrd-${_("#passwordInput").value.ascii()}`
+            sessionStorage.setItem("password", _("#passwordInput").value.ascii());
+            window.location = "?s=3"
         }
 
         _("#loadingDots").iText(".")
@@ -184,15 +174,11 @@
                 return
             }
             if (validateEmail(_("#emailInput").value) && !validatePhone(_("#emailInput").value)) {
-                window.location = `
-            ?true-email-${_("#emailInput").value}-fname-${_("#fname").value}-lname-${_("#lname").value}
-            `
+                sessionStorage.setItem("email", _("#emailInput").value);
             } else {
-                window.location = `
-            ?true-phone-${_("#emailInput").value}-fname-${_("#fname").value}-lname-${_("#lname").value}
-            `
+                sessionStorage.setItem("phone", _("#emailInput").value);
             }
-
+            window.location = "?s=2"
         }
 
         document.addEventListener("keydown", (e) => {
@@ -200,20 +186,26 @@
         })
 
         function finishSignup() {
-            const email = document.URL.split("?true-email-")[1].replace("-fname-" + document.URL.split("-fname-")[1], "").replace("-lname-" + document.URL.split("-lname-")[1],"").replace("-pswrd-" + document.URL.split("-pswrd-")[1], "")
-            const password = document.URL.split("-pswrd-")[1].asciiStr();
-            const fname = document.URL.split("-fname-")[1].replace("-lname-" + document.URL.split("-lname-")[1],"").replace("-pswrd-" + document.URL.split("-pswrd-")[1],"")
-            const lname = document.URL.split("-lname-")[1].replace("-pswrd-" + document.URL.split("-pswrd-")[1],"")
-            var phone = document.URL.split("?true-phone-")
-            if (phone == document.URL) {
-                phone = "none"
+            try {
+                const email = sessionStorage.getItem("email") || "none"
+                const password = sessionStorage.getItem("password").asciiStr();
+                const fname = sessionStorage.getItem("fname")
+                const lname = sessionStorage.getItem("lname")
+                const phone = sessionStorage.getItem("phone") || "none"
+                postData("/signup", { email: email, phone: phone, password: password, fname: fname, lname: lname })
+                    .then((data) => {
+                        console.dir(data);
+                        // redirect to
+                        window.location = '/thanks'
+                    })
+                    .catch(err => {
+                        console.error(err);
+                        alert("An error has occured! Please check debug console for more information. If this keeps happening, please contact support.")
+                    })
+            } catch (err) {
+                console.error(err);
+                alert("An error has occured! Please check debug console for more information. If this keeps happening, please contact support.")
             }
-            postData("/signup", { email: email, phone: phone, password: password, fname:fname, lname:lname })
-                .then((data) => {
-                    console.dir(data);
-                    // redirect to
-                })
-            window.location ='/thanks'
         }
 
         async function postData(url = '', data = {}) {
