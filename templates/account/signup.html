@@ -16,7 +16,7 @@
 <body>
     <div class="bars_topMain">
         <br>
-        <img src="assets/favicon2.png" onclick="window.location = 'index.html'" width="50px" height="50px"
+        <img src="/static/assets/favicon2.png" onclick="window.location = '/'" width="50px" height="50px"
             alt="Codestack Logo" class="logos_logoMain"
             style="vertical-align: middle; font-family: var(--poppins); cursor: pointer; position: absolute; transform: translate(-50%, -50%); left: 3%; top: 50%;">
         <span class="topbarOption" onclick="window.location = 'index.html#codestack_why'" id="topbarOption_why"
@@ -40,9 +40,29 @@
                     <br>
                     <input id="emailInput" type="email">
                     <br><br>
+                    <button id="nextButton" onclick="goToName()">Continue</button>
+                    <br><br>
+                    <a style="color: rgb(0, 106, 255); cursor: pointer; text-decoration: underline; font-size: 12px;"
+                        href="account/login">
+                        Already have an account?
+                    </a>
+                </div>
+            </div>
+            <div id="namePannel" class="loginPannel" style="display: none;">
+                <div style="margin-left: 50px;">
+                    <h2 style="font-family: var(--notosans);">Create an account</h2>
+                    <b style="font-size: 12px;">First Name</b>
+                    <br>
+                    <input id="fName" type="text">
+                    <br><br>
+                    <b style="font-size: 12px;">Last Name</b>
+                    <br>
+                    <input type="text" id="lName">
+                    <br><br>
                     <button id="nextButton" onclick="goToPassword()">Continue</button>
                     <br><br>
-                    <a style="color: rgb(0, 136, 255); cursor: pointer; text-decoration: underline; font-size: 12px;" href="/loginReal.html">
+                    <a style="color: rgb(0, 106, 255); cursor: pointer; text-decoration: underline; font-size: 12px;"
+                        href="account/login">
                         Already have an account?
                     </a>
                 </div>
@@ -54,7 +74,7 @@
                     <br>
                     <input id="passwordInput" type="password">
                     <br><br>
-                    <button id="nextButton" onclick="goToPassword()">Continue</button>
+                    <button id="nextButton" onclick="reviewLogin()">Continue</button>
                     <br><br>
                     <a onclick="showHidePswrd()"
                         style="color: rgb(0, 136, 255); cursor: pointer; text-decoration: underline; font-size: 12px;">
@@ -62,17 +82,22 @@
                     </a>
                 </div>
             </div>
-            <div class="loginPannel" id="reviewDataPannel" style="display: none;">
+            <div class="loginPannel" id="reviewDataPannel" style="display: none; height: 450px;">
                 <div style="margin-left: 50px;">
                     <h2 style="font-family: var(--notosans);">Review your data</h2>
+                    <b style="font-size: 12px;">First Name & Last Name</b>
+                    <br>
+                    <input type="text" id="rNameInput" disabled>
+                    <br>
                     <b style="font-size: 12px;">Email or phone number</b>
+                    <br>
                     <input id="rEmailInput" disabled type="text">
-                    <br><br>
+                    <br>
                     <b style="font-size: 12px;">Password</b>
                     <br>
                     <input id="rPswrdInput" disabled type="text">
                     <br><br>
-                    <button id="nextButton" onclick="goToPassword()">All Good!</button>
+                    <button id="nextButton" onclick="finishSignup()">All Good!</button>
                 </div>
             </div>
         </div>
@@ -80,7 +105,7 @@
 
     <div class="modalPopup" id="modal_erroremail">
         <br>
-        <span class="modalTitle">Email/Password invalid.</span>
+        <span class="modalTitle">Email/Password/Names invalid.</span>
         <br>
         <p class="modalDesc">Please try again.</p>
         <button class="modalOk" onclick="hideModal()"">Done</button>
@@ -103,26 +128,48 @@
             _(".shade").css("scale", "0")
         }, Math.random() * (1200 - 550) + 550);
 
-        if (document.URL.includes("?true-email-") && !document.URL.includes("-pswrd-")) {
+        if (document.URL.includes("?s=2") && !sessionStorage.getItem("password")) {
+            _("#namePannel").show()
+            _("#emailPannel").hide()
+        }
+        
+        if (document.URL.includes("?s=3") && !sessionStorage.getItem("password")) {
             _("#passwordPannel").show()
             _("#emailPannel").hide()
         }
 
-        if (document.URL.includes("-pswrd-")) {
+        if (sessionStorage.getItem("password")) {
             // show pannels
             _("#emailPannel").hide()
             _("#reviewDataPannel").show()
 
             // set inputs
-            
-            let password = document.URL.split("-pswrd-")[1].asciiStr();
+
+            let password = sessionStorage.getItem("password").asciiStr();
             let filler = "";
             for (let i = 0; i < password.length - 3; i++) {
                 filler += "*"
             }
-            
-            _("#rEmailInput").value = document.URL.split("?true-email-")[1].replace("-pswrd-" + document.URL.split("-pswrd-")[1], "")
+
+            _("#rEmailInput").value = sessionStorage.getItem("email") || sessionStorage.getItem("phone")
             _("#rPswrdInput").value = filler + password.slice(-3);
+            _("#rNameInput").value = sessionStorage.getItem("fname") + " " + sessionStorage.getItem("lname")
+        }
+
+        function goToName() {
+            if (!validateEmail(_("#emailInput").value) && !validatePhone(_("#emailInput").value) || !validatePhone(_("#emailInput").value) && !validateEmail(_("#emailInput").value)) {
+                _(".shade").css("scale", "1")
+                _("#modal_erroremail").css("scale", "1")
+                return
+            }
+            if (validateEmail(_("#emailInput").value) && !validatePhone(_("#emailInput").value)) {
+                sessionStorage.setItem("email", _("#emailInput").value);
+            } else {
+                sessionStorage.setItem("phone", _("#emailInput").value);
+            }
+            sessionStorage.setItem("fname", _("#fName").value)
+            sessionStorage.setItem("lname", _("#lName").value)
+            window.location = "?s=2"
         }
 
         function showHidePswrd() {
@@ -147,9 +194,10 @@
         })
 
         function reviewLogin() {
-            window.location = document.URL + `-pswrd-${_("#passwordInput").value.ascii()}` 
+            sessionStorage.setItem("password", _("#passwordInput").value.ascii());
+            window.location = "?s=4"
         }
-        
+
         _("#loadingDots").iText(".")
         setTimeout(() => {
             _("#loadingDots").iText("..")
@@ -166,26 +214,59 @@
         }, 500)
 
         function goToPassword() {
-            if (!validateEmail(_("#emailInput").value) && !validatePhone(_("#emailInput").value) || !validatePhone(_("#emailInput").value) && !validateEmail(_("#emailInput").value)) {
+            if (_("#fName").value.replaceAll(" ", "") == "" && _("#lName").value.replaceAll(" ", "") == "") {
                 _(".shade").css("scale", "1")
                 _("#modal_erroremail").css("scale", "1")
                 return
             }
-            if (validateEmail(_("#emailInput").value) && !validatePhone(_("#emailInput").value)) {
-                window.location = `
-            ?true-email-${_("#emailInput").value}
-            `
-            } else {
-                window.location = `
-            ?true-phone-${_("#emailInput").value}
-            `
+            var specialChars =  /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+            if (_("#fName").value.match(specialChars) || _("#lName").value.match(specialChars)) {
+                _(".shade").css("scale", "1")
+                _("#modal_erroremail").css("scale", "1")
+                return
             }
-
+            sessionStorage.setItem("fname", _("#fName").value)
+            sessionStorage.setItem("lname", _("#lName").value)
+            window.location = "?s=3"
         }
 
         document.addEventListener("keydown", (e) => {
             if (e.keyCode == 27 && !loading) hideModal();
         })
+
+        function finishSignup() {
+            try {
+                const email = sessionStorage.getItem("email") || "none"
+                const password = sessionStorage.getItem("password").asciiStr();
+                const fname = sessionStorage.getItem("fname")
+                const lname = sessionStorage.getItem("lname")
+                const phone = sessionStorage.getItem("phone") || "none"
+                postData("/signup", { email: email, phone: phone, password: password, fname: fname, lname: lname })
+                    .then((data) => {
+                        console.dir(data);
+                        window.location = '/thanks'
+                    })
+                    .catch(err => {
+                        console.error(err);
+                        console.dir(data);
+                        alert("An error has occured! Please check debug console for more information. If this keeps happening, please contact support.")
+                    })
+            } catch (err) {
+                console.error(err);
+                alert("An error has occured! Please check debug console for more information. If this keeps happening, please contact support.")
+            }
+        }
+
+        async function postData(url = '', data = {}) {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+            return response.json();
+        }
     </script>
 </body>
 

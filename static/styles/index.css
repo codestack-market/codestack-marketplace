@@ -33,3 +33,20 @@ body {
 .acO_listItem:hover {
     text-decoration: underline;
 }
+
+.helloUname {
+    font-size: 18px;
+}
+
+#logoutPopup {
+    position: absolute;
+    bottom: 2%;
+    right: 2%;
+    cursor: pointer;
+    color: red;
+    font-family: var(--notosans);
+}
+
+#logoutPopup:hover {
+    text-decoration: underline;
+}

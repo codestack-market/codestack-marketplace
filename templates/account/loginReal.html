@@ -42,7 +42,8 @@
                     <br><br>
                     <button id="nextButton" onclick="goToPassword()">Continue</button>
                     <br><br>
-                    <a href='../signup.html' style="color: rgb(0, 136, 255); cursor: pointer; text-decoration: underline; font-size: 12px;">
+                    <a href='../signup.html'
+                        style="color: rgb(0, 136, 255); cursor: pointer; text-decoration: underline; font-size: 12px;">
                         Don't have an account?
                     </a>
                 </div>
@@ -52,11 +53,9 @@
                     <h2 style="font-family: var(--notosans);">Sign In</h2>
                     <b style="font-size: 12px;">Password</b>
                     <br>
-                    <form onsubmit="login">
-                        <input id="passwordInput" type="password">
-                        <br><br>
-                        <button id="nextButton">Continue</button>
-                    </form>
+                    <input id="passwordInput" type="password">
+                    <br><br>
+                    <button id="nextButton" onclick="finishSignup()">Continue</button>
                     <br><br>
                     <a style="color: rgb(0, 136, 255); cursor: pointer; text-decoration: underline; font-size: 12px;">
                         Forgot password?
@@ -141,11 +140,11 @@
             }
             if (validateEmail(_("#emailInput").value) && !validatePhone(_("#emailInput").value)) {
                 window.location = `
-            ?true-email-${_("#emailInput").value}
+            /login?true-email-${_("#emailInput").value}
             `
             } else {
                 window.location = `
-            ?true-phone-${_("#emailInput").value}
+            /login?true-phone-${_("#emailInput").value}
             `
             }
 
@@ -154,6 +153,43 @@
         document.addEventListener("keydown", (e) => {
             if (e.keyCode == 27 && !loading) hideModal();
         })
+
+        function finishSignup() {
+            const email = document.URL.split("?true-email-")[1].replace("-pswrd-" + document.URL.split("-pswrd-")[1], "")
+            const password = _("#passwordInput").value;
+            const phone = document.URL.split("?true-phone-")
+            if (phone == document.URL) {
+                phone = "none"
+            }
+            postData("/login", { email: email, phone: phone, password: password })
+                .then((data) => {
+                    console.dir(data);
+                    // redirect to
+                })
+            }
+            authLogin()
+
+        async function postData(url = '', data = {}) {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+            return response.json();
+        }
+
+        function authLogin() {
+            if({{ auth }} == 'pass') {
+                window.location = `/`
+            }
+            if({{ auth }} =='fail') {
+                _(".shade").css("scale", "1")
+                _("#modal_erroremail").css("scale", "1")
+                return
+            }
+        }
     </script>
 </body>
 

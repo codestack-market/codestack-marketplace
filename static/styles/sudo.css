@@ -1,0 +1,61 @@
+.container {
+    position: fixed;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 45%;
+    width: 25%;
+    height: 50%;
+    text-align: center;
+}
+
+.containerTitle {
+    font-family: var(--notosans);
+    font-size: 35px;
+    color: white;
+}
+
+.passwordContainer {
+    border-radius: 10px / 5px;
+    border: 1px solid gray;
+    height: 200px;
+}
+
+.confirm {
+    color: black;
+    font-family: 'Noto Sans', serif;
+    background-color: #ce5458;
+    border: 1px solid #c44a56;
+    cursor: pointer;
+    text-align: center;
+    width: 85%;
+    height: 35px;
+}
+
+.forgot {
+    color: rgb(0, 136, 255);
+    cursor: pointer;
+    font-size: 13px;
+    font-family: var(--notosans);
+    text-align: right;
+    margin-right: 15px;
+}
+
+.forgot:hover {
+    text-decoration: underline;
+}
+
+#passwordInput {
+    border-radius: 10px / 5px;
+    border: 1px solid gray;
+    height: 40px;
+    width: 90%;
+    font-size: 15px;
+    background: transparent;
+    color: lightgray;
+}
+
+.funFact {
+    font-size: 14px;
+    font-family: var(--notosans);
+    color: white;
+}
