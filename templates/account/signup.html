@@ -219,6 +219,12 @@
                 _("#modal_erroremail").css("scale", "1")
                 return
             }
+            var specialChars =  /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+            if (_("#fName").value.match(specialChars) || _("#lName").value.match(specialChars)) {
+                _(".shade").css("scale", "1")
+                _("#modal_erroremail").css("scale", "1")
+                return
+            }
             sessionStorage.setItem("fname", _("#fName").value)
             sessionStorage.setItem("lname", _("#lName").value)
             window.location = "?s=3"
