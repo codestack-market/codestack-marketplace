@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="static/styles/support.css">
 </head>
 <body>
-    
+    <div class="supportTopBar">
+        <img src="static/assets/favicon2.png" alt="Codestack Logo" height="50px" width="50px">
+    </div>
+    <h1 class="supportTitle">{%if session["username"]%}Hello, {{ session["username"] }}. How can we help you today?{%else%}Hello, how can we help you today?{%endif%}</h1>
 </body>
 </html>
