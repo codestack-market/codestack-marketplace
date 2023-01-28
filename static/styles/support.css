@@ -42,3 +42,11 @@
 svg {
     vertical-align: middle;
 }
+
+.supportTopBarTitle {
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+    vertical-align: middle;
+    font-family: var(--notosans);
+}
