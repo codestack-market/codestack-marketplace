@@ -76,6 +76,14 @@ def signup():
         )
     return rt("/account/signup.html")
 
+@app.route('/logout', methods =["POST"])
+def logout():
+    '''logout'''
+    if request.method == "POST":
+        print(request)
+        # logout
+
+
 @app.route('/login', methods =["GET", "POST"])
 def login():
     if request.method =="POST":
