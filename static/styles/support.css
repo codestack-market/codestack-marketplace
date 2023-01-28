@@ -73,6 +73,8 @@ svg {
     cursor: pointer;
     font-family: var(--poppins);
     font-weight: 400;
+    margin-right: 50px;
+    vertical-align: middle;
     transition: 0.5s;
 }
 
