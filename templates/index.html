@@ -23,21 +23,19 @@
             style="position: absolute; transform: translate(-50%, -50%); top: 50%; left: 45%;">Get started</span>
         <span id="buyNTbarOption" class="topbarOption" onclick="window.location = '/soon'"
             style="position: absolute; transform: translate(-50%, -50%); top: 50%; left: 60%; ">Buy Now</span>
-        <span id="user_name" class="topbarOption"
-            style="position: absolute; transform: translate(-50%, -50%); top: 50%;
-             right: 3%; cursor: pointer; 
-             font-family: var(--poppins);">{%if session["username"]%}<h1>Hello, {{ session["username"] }}.</h1>{%else%}<a href="{{ url_for('login') }}">Login</a>{%endif%}</span>
+<span id="loginTBarOption"
+            style="position: absolute; transform: translate(-50%, -50%); top: 50%; right: 3%; color: #c44a56; cursor: pointer; font-family: var(--poppins);">{%if session["username"]%}<span class="helloUname">Hello, {{ session["username"] }}.</span>{%else%}<a href="{{ url_for('login') }}">Login</a>{%endif%}</span>
     </div>
     <div class="popup_accountOptionsPopup" style="opacity: 0;">
-        <br>
-        <span class="topbarOption" style="font-family: var(--poppins);">{%if session["username"]%}<h1>Hello, {{ session["username"] }}.</h1>{%else%}<a href='/account/login'>Login</a>{%endif%}</span>
-        <hr style="width: 50%;">
+        <p style="font-family: var(--notosans); font-size: 15px; text-align: center;"><b>{%if session["username"]%}<span>Hello, {{ session["username"] }}</span>{%else%}<a href='/account/login' style="color: blue;">Login</a>{%endif%}</p>
+        <hr style="width: 85%;">
         <br>
         <span class="acO_listItem">- Basket</span> <span class="acO_listItem">Account Settings -</span>
         <br>
         <span class="acO_listItem">- Orders</span> <span class="acO_listItem">Payment Info -</span>
         <br>
         <p style="text-align: center; margin: 0; margin-top: 20px;" class="acO_listItem">All Settings</p>
+        <span id="logoutPopup">Logout</span>
     </div>
     <div class="container_scrollerMain"  id="container_scrollerMain" style="scroll-behavior: smooth;">
         <div style="position: absolute; top: 20%; width: 100%; height: 100%;">

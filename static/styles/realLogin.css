@@ -3,21 +3,21 @@
 .loginPannel {
     position: absolute;
     transform: translate(-50%, -50%);
-    top: 25%;
+    top: 30%;
     left: 50%;
     width: 550px;
-    height: 425px;
-    border: .5px solid gray;
+    height: 325px;
     background-color: white;
     text-align: left;
     font-family: var(--notosans);
 }
 
-#emailInput, #passwordInput {
+#emailInput, #passwordInput, #fName, #lName, #rNameInput, #rEmailInput, #rPswrdInput {
     height: 25px;
     width: 85%;
     font-size: 16px;
     margin-top: 5px;
+    border: 1.5px solid gray;
 }
 
 #nextButton {
@@ -25,7 +25,6 @@
     font-family: 'Noto Sans', serif;
     background-color: #ce5458;
     border: 1px solid #c44a56;
-    border-radius: 3%;
     cursor: pointer;
     text-align: center;
     width: 85%;
@@ -37,7 +36,6 @@
     font-family: 'Noto Sans', serif;
     background-color: #ce5458;
     border: 1px solid #c44a56;
-    border-radius: 3%;
     cursor: pointer;
     text-align: center;
     width: 85%;
