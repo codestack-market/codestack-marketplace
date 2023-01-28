@@ -10,8 +10,18 @@
 </head>
 <body>
     <div class="supportTopBar">
-        <img src="static/assets/favicon2.png" alt="Codestack Logo" height="50px" width="50px">
+        <img src="static/assets/favicon2.png" alt="Codestack Logo" height="50px" width="50px" style="vertical-align: middle; cursor: pointer;" onclick="window.location = '/'">
+        <span class="supportTopBarTitle">Codestack Support</span>
     </div>
-    <h1 class="supportTitle">{%if session["username"]%}Hello, {{ session["username"] }}. How can we help you today?{%else%}Hello, how can we help you today?{%endif%}</h1>
+    <div class="container">
+        <br>
+        <h1 class="supportTitle">{%if session["username"]%}Hello, {{ session["username"] }}. How can we help you today?{%else%}Hello, how can we help you today?{%endif%}</h1>
+        <svg class="octicon octicon-search subnav-search-icon mt-1" height="26" viewBox="0 0 16 16" version="1.1" width="26" aria-hidden="true"><path fill="white" fill-rule="evenodd" d="M11.5 7a4.499 4.499 0 11-8.998 0A4.499 4.499 0 0111.5 7zm-.82 4.74a6 6 0 111.06-1.06l3.04 3.04a.75.75 0 11-1.06 1.06l-3.04-3.04z"></path></svg>
+        <input type="text" id="articleSearch" placeholder="Search for any article in the Codestack library">
+    </div>
+    <div class="container2">
+        <p style="color: white; font-family: monospace; font-size: 16px;">Popular</p>
+        <button class="articleOptionButton" id="option1">placeholder #1</button>
+    </div>
 </body>
 </html>
