@@ -6,3 +6,39 @@
     height: 50px;
     border-bottom: 1.5px solid white;
 }
+
+.container {
+    position: fixed;
+    top: 5%;
+    left: 0%;
+    height: 90%;
+    width: 100%;
+    text-align: center;
+}
+
+.supportTitle {
+    color: white;
+    font-weight: 900;
+    font-family: var(--notosans);
+}
+
+#articleSearch {
+    width: 80%;
+    vertical-align: middle;
+    height: 45px;
+    font-size: 15px;
+    outline: 0;
+    border-radius: 10px / 5px;
+    border: 1px solid gray;
+    background-color: black;
+    color: white;
+    font-family: var(--notosans);
+    -moz-box-sizing: border-box; 
+    -webkit-box-sizing: border-box; 
+    box-sizing: border-box; 
+    padding-left: 10px;
+}
+
+svg {
+    vertical-align: middle;
+}
