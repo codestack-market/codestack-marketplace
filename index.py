@@ -2,8 +2,10 @@
 import json
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
-from flask import Flask, request, render_template as rt, send_from_directory, session, jsonify
-from db import Database
+from flask import Flask, request, render_template as rt, send_from_directory,session
+from stripe_internal import charge
+from webscraper import scrape_py, scrape_js
+from sendEmail import sendMail, encodeEmail, decodeEmail
 
 app = Flask(__name__)
 
@@ -35,7 +37,7 @@ def favicon():
 @app.route('/marketplace/')
 def catalog():
     '''Test catalog'''
-    return rt('catalog.html', top_products=products.values()[0:100])
+    return rt('catalog.html')
 
 @app.route('/thanks')
 def thanks():

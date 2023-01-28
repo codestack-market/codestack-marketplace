@@ -23,7 +23,7 @@
             style="position: absolute; transform: translate(-50%, -50%); top: 50%; left: 45%;">Get started</span>
         <span id="buyNTbarOption" class="topbarOption" onclick="window.location = '/soon'"
             style="position: absolute; transform: translate(-50%, -50%); top: 50%; left: 60%; ">Buy Now</span>
-        <span id="loginTBarOption"
+<span id="loginTBarOption"
             style="position: absolute; transform: translate(-50%, -50%); top: 50%; right: 3%; color: #c44a56; cursor: pointer; font-family: var(--poppins);">{%if session["username"]%}<span class="helloUname">Hello, {{ session["username"] }}.</span>{%else%}<a href="{{ url_for('login') }}">Login</a>{%endif%}</span>
     </div>
     <div class="popup_accountOptionsPopup" style="opacity: 0;">
