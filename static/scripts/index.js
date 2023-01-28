@@ -20,8 +20,8 @@ async function postData(url = '', data = {}) {
     });
     return response
   }
-  
+  /*
   postData('/logout', "logout")
     .then((data) => {
       console.log(data);
-    });
+    });*/
