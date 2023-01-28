@@ -90,6 +90,11 @@ def forgotPassword():
     '''forgotPassword'''
     return rt("/account/forgotPassword.html")
 
+@app.route('/support')
+def support():
+    '''support'''
+    return rt('/support/support.html')
+
 
 @app.route('/login', methods =["GET", "POST"])
 def login():
