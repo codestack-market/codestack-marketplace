@@ -4,8 +4,6 @@ import base64
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-appid = '7PV9WP-5PE6EG69QT'
-
 def sendMail(receiver,url):
     sender_address = 'help.codestack@gmail.com'
     sender_pass = 'vyiaemvzojgmdzkz'
