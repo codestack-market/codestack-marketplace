@@ -34,11 +34,14 @@
 .forgot {
     color: rgb(0, 136, 255);
     cursor: pointer;
-    text-decoration: underline;
     font-size: 13px;
     font-family: var(--notosans);
     text-align: right;
     margin-right: 15px;
+}
+
+.forgot:hover {
+    text-decoration: underline;
 }
 
 #passwordInput {
