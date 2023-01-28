@@ -1,8 +1,5 @@
 import smtplib
 import json
-import urllib.parse
-import requests
-import random
 import base64
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -34,40 +31,19 @@ def sendMail(receiver,url):
     print('Mail Sent')
 
 def encodeEmail(email):
-    res = int(''.join(format(ord(i), '08b') for i in email))
-    res_int = random.randint(0,10)
-    res = res_int*res
-    res = res.to_bytes(100,"big")
+    res = email.encode('utf-8')
     res = base64.urlsafe_b64encode(res)
-    res = res.decode("utf-8") 
-    key_dict = {"bin": res, "key": res_int}
+    res = res.decode("utf-8")
+    key_dict = {"bin": res}
     json_object = json.dumps(key_dict, indent = 4) 
     return json_object
 
 def decodeEmail(json_object):
     dictionary = json.loads(json_object)
     res = dictionary["bin"]
-    res = bytes(res ,'utf-8')
+    res = res.encode('utf-8')
     print(res)
     res = base64.urlsafe_b64decode(res)
     print(res)
-    res = int.from_bytes(res,"big")
-    print(res)
-    query = urllib.parse.quote_plus(f"solve {res}")
-    query_url = f"http://api.wolframalpha.com/v2/query?" \
-                f"appid={appid}" \
-                f"&input={query}" \
-                f"&includepodid=Result" \
-                f"&output=json"
-
-    r = requests.get(query_url).json()
-
-    data = r["queryresult"]["pods"][0]["subpods"][0]
-    plaintext = data["plaintext"]
-    print(plaintext)
-
-
-x = encodeEmail("ab7552@pleasantonusd.net")
-print(x)
-y = decodeEmail(x)
-print(y)
+    res = res.decode('utf-8')
+    return res
