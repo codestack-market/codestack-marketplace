@@ -24,8 +24,15 @@ db = client['CodeStack']
 accs = db["accounts"]
 emails = db["emails"]
 
-@app.route('/')
+@app.route('/', methods=["GET", "POST"])
 def index():
+    if request.method == 'POST':
+        response = json.dumps(request.get_json())
+        response = json.loads(response)
+        logout = response['logout']
+        if logout == "out":
+            session.pop('username', None)
+        return rt('index.html')
     '''Homepage'''
     return rt('index.html')
 
@@ -77,13 +84,6 @@ def signup():
             success="true"
         )
     return rt("/account/signup.html")
-
-@app.route('/logout', methods =["POST"])
-def logout():
-    '''logout'''
-    if request.method == "POST":
-        print(request)
-        # logout
 
 @app.route('/forgotPassword', methods =["GET", "POST"])
 def forgotPassword():
