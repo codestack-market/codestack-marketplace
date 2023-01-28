@@ -12,7 +12,7 @@
     font-family: var(--notosans);
 }
 
-#emailInput, #passwordInput {
+#emailInput, #passwordInput, #fName, #lName, #rNameInput, #rEmailInput, #rPswrdInput {
     height: 25px;
     width: 85%;
     font-size: 16px;
@@ -25,7 +25,6 @@
     font-family: 'Noto Sans', serif;
     background-color: #ce5458;
     border: 1px solid #c44a56;
-    border-radius: 3%;
     cursor: pointer;
     text-align: center;
     width: 85%;
@@ -37,7 +36,6 @@
     font-family: 'Noto Sans', serif;
     background-color: #ce5458;
     border: 1px solid #c44a56;
-    border-radius: 3%;
     cursor: pointer;
     text-align: center;
     width: 85%;
