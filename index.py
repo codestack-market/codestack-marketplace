@@ -63,7 +63,7 @@ def signup():
         response = json.dumps(request.get_json())
         response = json.loads(response)
         print(response)
-        email = response["email"].lower()
+        email = response["email"]
         phone = str(response["phone"].lower())
         password = str(response["password"])
         fname = response["fname"]
@@ -73,8 +73,23 @@ def signup():
             accs.insert_one({"contact":phone, "password":password, "firstname":fname, "lastname":lname})
         else:
             accs.insert_one({"contact":email, "password":password, "firstname":fname, "lastname":lname})
-        return rt('/account/signup.html')
+        return jsonify(
+            success="true"
+        )
     return rt("/account/signup.html")
+
+@app.route('/logout', methods =["POST"])
+def logout():
+    '''logout'''
+    if request.method == "POST":
+        print(request)
+        # logout
+
+@app.route('/forgotPassword', methods =["GET", "POST"])
+def forgotPassword():
+    '''forgotPassword'''
+    return rt("/account/forgotPassword.html")
+
 
 @app.route('/login', methods =["GET", "POST"])
 def login():
@@ -108,6 +123,14 @@ def login():
 @app.route('/confirmSignup')
 def confirmSignup():
     return rt('thanks.html')
+
+@app.route('/sudo-mode')
+def sudoMode():
+    return rt("/account/sudo-mode.html")
+
+@app.route("/email-auth")
+def emailAuth():
+    return rt("/account/email-auth.html")
 
 @app.errorhandler(404)
 def err404(e):
