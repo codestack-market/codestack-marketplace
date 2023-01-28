@@ -24,22 +24,19 @@ db = client['CodeStack']
 accs = db["accounts"]
 emails = db["emails"]
 
-@app.route('/', methods=["GET", "POST"])
+@app.route('/')
 def index():
-    if request.method == 'POST':
-        response = json.dumps(request.get_json())
-        response = json.loads(response)
-        logout = response['logout']
-        if logout == "out":
-            session.pop('username', None)
-        return rt('index.html')
-    '''Homepage'''
     return rt('index.html')
 
 @app.route('/favicon.ico')
 def favicon():
     '''Favicon route'''
     return send_from_directory('./', 'favicon.ico.png')
+
+@app.route('/logout')
+def logout():
+    session.pop('username', None)
+    return rt('/account/logout.html')
 
 @app.route('/marketplace/')
 def catalog():
