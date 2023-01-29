@@ -24,7 +24,7 @@ def scrape_js(query):
 
   # Parse the HTML content
     web = BeautifulSoup(response.content, "html.parser")
-
+#e
   # Find all the h3 elements that contain the package names
     package_elements = web.find_all(class_='db7ee1ac fw6 f4 black-90 dib lh-solid ma0 no-underline hover-black')
     packages = []
