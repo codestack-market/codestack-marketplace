@@ -14,7 +14,7 @@ def scrape_py(query):
   # Extract the package names 
     packages = []
     for package_element in package_elements:
-	    packages.append(f'https://pypi.org/project/{package_element.text.strip()}')
+		packages.append(f'https://pypi.org/project/{package_element.text.strip()}')
 
     return packages
 
@@ -27,10 +27,8 @@ def scrape_js(query):
 
   # Find all the h3 elements that contain the package names
     package_elements = web.find_all(class_='db7ee1ac fw6 f4 black-90 dib lh-solid ma0 no-underline hover-black')
-
-  # Extract the package names 
-  packages = []
-  for package_element in package_elements:
-	  packages.append(f'https://npmjs.com/package/{package_element.text.strip().split()[0]}')
+    packages = []
+    for package in package_elements:
+		packages.append(f'https://npmjs.com/package/{package_element.text.strip().split()[0]}')
 
     return packages
