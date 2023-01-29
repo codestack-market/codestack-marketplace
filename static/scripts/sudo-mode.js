@@ -1,4 +1,4 @@
-var redirect = document.URL.split("?redirect=")[1]
+var redirect = document.URL.split("?redirect=")[1] || "/"
 
 async function postData(url = '', data = {}) {
     const response = await fetch(url, {
