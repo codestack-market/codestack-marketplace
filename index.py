@@ -98,6 +98,10 @@ def logout():
         print(request)
         # logout
 
+@app.route('/orders')
+def orders():
+    return rt("account/orders.html")
+
 @app.route('/forgotPassword', methods =["GET", "POST"])
 def forgotPassword():
     '''forgotPassword'''
