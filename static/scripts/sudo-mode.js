@@ -10,11 +10,15 @@ async function postData(url = '', data = {}) {
 }
 
 _("#passwordInput").addEventListener("keydown", (e) => {
-    if (e.keyCode == 13) {
-        console.log("csudo")
-        postData("/csudo", { password: _("#passwordInput").value })
+    if (e.keyCode == 13) submit();
+})
+
+_(".confirm").addEventListener("click", submit);
+
+function submit() {
+    console.log("csudo")
+    postData("/csudo", { password: _("#passwordInput").value })
         .then(data => {
             console.dir(data);
         })
-    }
-})
+}
