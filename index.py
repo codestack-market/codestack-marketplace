@@ -87,6 +87,20 @@ def forgotPassword():
     '''forgotPassword'''
     return rt("/account/forgotPassword.html")
 
+@app.route('/getauth', methods=["GET", "POST"])
+def getAuth():
+    if request.method == 'POST':
+        response = json.dumps(request.get_json())
+        response = json.loads(response)
+        email = response["email"]
+        enc = encodeEmail(email)
+        url = f"https://www.codestack.ga/getauth?{enc}"
+        @app.route(f"/getauth?{enc}", methods=["GET","POST"])
+        def authen():
+            if request.method == "POST":
+                return jsonify({"result":"auth_pass"})
+            return rt('/account/email-auth.html')
+        sendMail(email, url)
 
 @app.route('/login', methods =["GET", "POST"])
 def login():
