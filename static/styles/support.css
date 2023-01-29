@@ -17,20 +17,17 @@
 }
 
 .container2 {
-    position: fixed;
-    top: 25%;
-    left: 0%;
-    width: 100%;
-    height: 80%;
     text-align: center;
     font-family: var(--notosans);
     background-color: #282928;
+    height: 500%;
+    overflow: hidden;
 }
 
 .supportTitle {
     color: white;
     font-weight: 900;
-    font-family: var(--notosans);
+    font-family: var(--poppins);
 }
 
 #articleSearch {
@@ -64,4 +61,23 @@ svg {
     font-weight: bold;
     vertical-align: middle;
     font-family: var(--notosans);
+}
+
+.articleOptionButton {
+    border-radius: 10px / 5px;   
+    height: 50px;
+    width: 250px;
+    border: 1px solid gray;
+    color: rgb(0, 119, 255);
+    background-color: #3a3b3a;
+    cursor: pointer;
+    font-family: var(--poppins);
+    font-weight: 400;
+    margin-right: 50px;
+    vertical-align: middle;
+    transition: 0.5s;
+}
+
+.articleOptionButton:hover {
+    scale: 1.1;
 }

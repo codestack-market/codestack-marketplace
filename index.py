@@ -78,6 +78,19 @@ def signup():
         )
     return rt("/account/signup.html")
 
+@app.route('/csudo', methods =['POST'])
+def cSudo():
+    '''csudo'''
+    if request.method == 'POST':
+        response = json.dumps(request.get_json())
+        response = json.loads(response)
+        password = str(response["password"].lower())
+        print(password)
+        # find pswrd and stuff idk
+        return jsonify(
+            success="true"
+        )
+
 @app.route('/logout', methods =["POST"])
 def logout():
     '''logout'''
@@ -129,11 +142,12 @@ def login():
 def confirmSignup():
     return rt('thanks.html')
 
-@app.route('/sudo-mode')
+@app.route('/sudo-mode', methods =['GET', 'POST'])
 def sudoMode():
+    '''sudoMode'''
     return rt("/account/sudo-mode.html")
 
-@app.route("/email-auth")
+@app.route("/emailAuth")
 def emailAuth():
     return rt("/account/email-auth.html")
 
