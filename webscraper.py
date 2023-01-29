@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 #functions!!!!
 def scrape_py(query):
     # Make a request to the PyPI search page
-    response = requests.get("https://pypi.org/search/?q=" + query)
+	response = requests.get("https://pypi.org/search/?q=" + query)
 
   # Parse the HTML content
     web = BeautifulSoup(response.content, "html.parser")
@@ -30,5 +30,4 @@ def scrape_js(query):
     packages = []
     for package in package_elements:
 		packages.append(f'https://npmjs.com/package/{package_element.text.strip().split()[0]}')
-
-    return packages
+	return packages
