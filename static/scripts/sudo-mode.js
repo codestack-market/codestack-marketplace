@@ -1,3 +1,5 @@
+var redirect = document.URL.split("?redirect=")[1]
+
 async function postData(url = '', data = {}) {
     const response = await fetch(url, {
         method: 'POST', // *GET, POST, PUT, DELETE, etc.
@@ -20,5 +22,6 @@ function submit() {
     postData("/csudo", { password: _("#passwordInput").value })
         .then(data => {
             console.dir(data);
+            setTimeout(() => window.location = redirect, 1000)
         })
 }
