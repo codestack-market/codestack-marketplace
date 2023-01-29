@@ -74,7 +74,7 @@
                     <br>
                     <input id="passwordInput" type="password">
                     <br><br>
-                    <button id="nextButton" onclick="reviewLogin()">Continue</button>
+                    <button id="nextButton" onclick="authEmail()">Continue</button>
                     <br><br>
                     <a onclick="showHidePswrd()"
                         style="color: rgb(0, 136, 255); cursor: pointer; text-decoration: underline; font-size: 12px;">
@@ -154,22 +154,6 @@
             _("#rEmailInput").value = sessionStorage.getItem("email") || sessionStorage.getItem("phone")
             _("#rPswrdInput").value = filler + password.slice(-3);
             _("#rNameInput").value = sessionStorage.getItem("fname") + " " + sessionStorage.getItem("lname")
-        }
-
-        function goToName() {
-            if (!validateEmail(_("#emailInput").value) && !validatePhone(_("#emailInput").value) || !validatePhone(_("#emailInput").value) && !validateEmail(_("#emailInput").value)) {
-                _(".shade").css("scale", "1")
-                _("#modal_erroremail").css("scale", "1")
-                return
-            }
-            if (validateEmail(_("#emailInput").value) && !validatePhone(_("#emailInput").value)) {
-                sessionStorage.setItem("email", _("#emailInput").value);
-            } else {
-                sessionStorage.setItem("phone", _("#emailInput").value);
-            }
-            sessionStorage.setItem("fname", _("#fName").value)
-            sessionStorage.setItem("lname", _("#lName").value)
-            window.location = "?s=2"
         }
 
         function showHidePswrd() {
@@ -273,9 +257,6 @@
             postData('/getauth', {email:email})
                 .then(data => {
                 console.dir(data);
-                let result = data.result;
-                if (result == 'auth_pass')
-                
             })
               .catch(error => console.error(error));
         

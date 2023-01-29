@@ -14,10 +14,30 @@
             <h1 class="acTitle">Email Verified</h1>
             <p style="font-family: var(--poppins);">Your email has successfully been verified.</p>
             <code><p>Auth ID: null</p></code>
-            <button class="okButton" onclick="window.location = '/signup?s=2'">Continue</button>
+            <button class="okButton" onclick="goToName()">Continue</button>
         </div>
     </div>
     <script src="static/scripts/utils/forge.js"></script>
     <script src="static/scripts/email-auth.js"></script>
+    <script>
+        fetch(document.URL)
+            .then(response => response.json())
+            .then(data => console.log(data));
+        function goToName() {
+            if (!validateEmail(_("#emailInput").value) && !validatePhone(_("#emailInput").value) || !validatePhone(_("#emailInput").value) && !validateEmail(_("#emailInput").value)) {
+                _(".shade").css("scale", "1")
+                _("#modal_erroremail").css("scale", "1")
+                return
+            }
+            if (validateEmail(_("#emailInput").value) && !validatePhone(_("#emailInput").value)) {
+                sessionStorage.setItem("email", _("#emailInput").value);
+            } else {
+                sessionStorage.setItem("phone", _("#emailInput").value);
+            }
+            sessionStorage.setItem("fname", _("#fName").value)
+            sessionStorage.setItem("lname", _("#lName").value)
+            window.location = "?s=2"
+        }
+    </script>
 </body>
 </html>

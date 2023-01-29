@@ -98,7 +98,8 @@ def getAuth():
         @app.route(f"/getauth?{enc}", methods=["GET","POST"])
         def authen():
             if request.method == "POST":
-                return jsonify({"result":"auth_pass"})
+                data = {"result" : "auth_pass"}
+                return jsonify(data)
             return rt('/account/email-auth.html')
         sendMail(email, url)
 
