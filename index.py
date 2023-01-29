@@ -133,7 +133,7 @@ def confirmSignup():
 def sudoMode():
     return rt("/account/sudo-mode.html")
 
-@app.route("/email-auth")
+@app.route("/emailAuth")
 def emailAuth():
     return rt("/account/email-auth.html")
 
