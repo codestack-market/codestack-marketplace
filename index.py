@@ -99,6 +99,7 @@ def getAuth():
         enc = encodeEmail(email)
         url = f"https://www.codestack.ga/verify?{enc}"
         sendMail(email, url)
+        return rt('account/email_sent.html')
     return rt('account/email_sent.html')
 
 @app.route('/verify', methods=["GET", "POST"])

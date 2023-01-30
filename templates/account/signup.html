@@ -97,7 +97,7 @@
                     <br>
                     <input id="rPswrdInput" disabled type="text">
                     <br><br>
-                    <button id="nextButton" onclick="finishSignup()" onclick="window.location='/thanks'">All Good!</button>
+                    <button id="nextButton" onclick="finishSignup()" onclick="window.location='/getauth'">All Good!</button>
                 </div>
             </div>
         </div>
@@ -237,13 +237,13 @@
                 postData("/getauth", { email: email})
                     .then((data) => {
                         console.dir(data);
+                        window.location = '/getauth'
                     })
                     .catch(err => {
                         console.error(err);
                         console.dir(data);
                         alert("An error has occured! Please check debug console for more information. If this keeps happening, please contact support.")
                     })
-                window.location = '/getauth'
             } catch (err) {
                 console.error(err);
                 alert("An error has occured! Please check debug console for more information. If this keeps happening, please contact support.")
