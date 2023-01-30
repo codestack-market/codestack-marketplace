@@ -3,17 +3,12 @@ import json
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 from flask import Flask, request, render_template as rt, send_from_directory,session, jsonify, url_for
-from splinter import Browser
-from selenium.webdriver.chrome.service import Service
+from splinter import browser
 from stripe_internal import charge
 from webscraper import scrape_py, scrape_js
 from sendEmail import sendMail, encodeEmail, decodeEmail
 
 app = Flask(__name__)
-
-my_service = Service(executable_path='/chromedriver')
-
-browser = Browser('chrome', service=my_service)
 
 app.secret_key = '[\xc6\x11\x0b8\x1am\xc5\xdf\xb8Snd(\r\x9b'
 
@@ -100,6 +95,7 @@ def getAuth():
         response = json.loads(response)
         print(response)
         email = response["email"]
+        global enc
         enc = encodeEmail(email)
         url = f"https://www.codestack.ga/verify?{enc}"
         sendMail(email, url)
@@ -108,7 +104,7 @@ def getAuth():
 @app.route('/verify', methods=["GET", "POST"])
 def verify_email():
     if request.method == "POST":
-        url_end = (str(browser.url).split('?'))[1]
+        url_end = enc
         email_send = decodeEmail(url_end)
         response = json.dumps(request.get_json())
         response = json.loads(response)
@@ -123,7 +119,10 @@ def verify_email():
             accs.insert_one({"contact":email, "password":password, "firstname":fname, "lastname":lname})
         elif phone != "none":
             accs.insert_one({"contact":phone, "password":password, "firstname":fname, "lastname":lname})
-        return url_for('thanks')
+        else:
+            return rt("404.html")
+    return url_for('thanks')
+    
 
 @app.route('/support')
 def support():
