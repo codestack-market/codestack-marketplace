@@ -4,13 +4,16 @@ from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 from flask import Flask, request, render_template as rt, send_from_directory,session, jsonify, url_for
 from splinter import Browser
+from selenium.webdriver.chrome.service import Service
 from stripe_internal import charge
 from webscraper import scrape_py, scrape_js
 from sendEmail import sendMail, encodeEmail, decodeEmail
 
 app = Flask(__name__)
 
-browser = Browser()
+my_service = Service(executable_path='/chromedriver')
+
+browser = Browser('chrome', service=my_service)
 
 app.secret_key = '[\xc6\x11\x0b8\x1am\xc5\xdf\xb8Snd(\r\x9b'
 
