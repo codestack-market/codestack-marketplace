@@ -95,13 +95,6 @@ def cSudo():
             success="true"
         )
 
-@app.route('/logout', methods =["POST"])
-def logout():
-    '''logout'''
-    if request.method == "POST":
-        print(request)
-        # logout
-
 @app.route('/orders')
 def orders():
     return rt("account/orders.html")
