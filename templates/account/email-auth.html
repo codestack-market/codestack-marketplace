@@ -24,16 +24,6 @@
             .then(response => response.json())
             .then(data => console.log(data));
         function goToName() {
-            if (!validateEmail(_("#emailInput").value) && !validatePhone(_("#emailInput").value) || !validatePhone(_("#emailInput").value) && !validateEmail(_("#emailInput").value)) {
-                _(".shade").css("scale", "1")
-                _("#modal_erroremail").css("scale", "1")
-                return
-            }
-            if (validateEmail(_("#emailInput").value) && !validatePhone(_("#emailInput").value)) {
-                sessionStorage.setItem("email", _("#emailInput").value);
-            } else {
-                sessionStorage.setItem("phone", _("#emailInput").value);
-            }
             sessionStorage.setItem("fname", _("#fName").value)
             sessionStorage.setItem("lname", _("#lName").value)
             window.location = "?s=2"

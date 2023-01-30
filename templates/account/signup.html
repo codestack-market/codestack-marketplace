@@ -251,13 +251,25 @@
             return response.json();
         }
 
-        function authEmail()
-            const email = sessionStorage.getItem("email") || "none"
+        function authEmail(){
+            if (!validateEmail(_("#emailInput").value) && !validatePhone(_("#emailInput").value) || !validatePhone(_("#emailInput").value) && !validateEmail(_("#emailInput").value)) {
+                _(".shade").css("scale", "1")                
+                _("#modal_erroremail").css("scale", "1")
+                return
+            }
+
+            if (validateEmail(_("#emailInput").value) && !validatePhone(_("#emailInput").value)) {
+                sessionStorage.setItem("email", _("#emailInput").value);
+            } else {
+                sessionStorage.setItem("phone", _("#emailInput").value);
+            }
+            const email = sessionStorage.getItem("email") || "none"          
             postData('/getauth', {email:email})
                 .then(data => {
                 console.dir(data);
             })
               .catch(error => console.error(error));
+        }
         
     </script>
 </body>

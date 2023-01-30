@@ -109,6 +109,7 @@ def getAuth():
     if request.method == 'POST':
         response = json.dumps(request.get_json())
         response = json.loads(response)
+        print(response)
         email = response["email"]
         enc = encodeEmail(email)
         url = f"https://www.codestack.ga/getauth?{enc}"
