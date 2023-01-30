@@ -78,6 +78,10 @@ def signup():
         )
     return rt("/account/signup.html")
 
+@app.route('/robot-chat')
+def robotChat():
+    return rt("/support/robot-chat.html")
+
 @app.route('/csudo', methods =['POST'])
 def cSudo():
     '''csudo'''
