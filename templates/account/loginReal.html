@@ -179,17 +179,6 @@
             });
             return response.json();
         }
-
-        function authLogin() {
-            if({{ auth }} == 'pass') {
-                window.location = `/`
-            }
-            if({{ auth }} =='fail') {
-                _(".shade").css("scale", "1")
-                _("#modal_erroremail").css("scale", "1")
-                return
-            }
-        }
     </script>
 </body>
 

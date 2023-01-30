@@ -16,7 +16,7 @@
 <body>
     <div class="bars_topMain">
         <br>
-        <img src="/static/assets/favicon2.png" onclick="window.location = 'index.html'" width="50px" height="50px"
+        <img src="/static/assets/favicon2.png" onclick="window.location = '/'" width="50px" height="50px"
             alt="Codestack Logo" class="logos_logoMain"
             style="vertical-align: middle; font-family: var(--poppins); cursor: pointer; position: absolute; transform: translate(-50%, -50%); left: 3%; top: 50%;">
         <span class="topbarOption" onclick="window.location = 'index.html#codestack_why'" id="topbarOption_why"
@@ -228,7 +228,6 @@
                 postData("/signup", { email: email, phone: phone, password: password, fname: fname, lname: lname })
                     .then((data) => {
                         console.dir(data);
-                        // redirect to
                     })
                     .catch(err => {
                         console.error(err);
