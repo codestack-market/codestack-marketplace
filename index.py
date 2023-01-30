@@ -2,12 +2,15 @@
 import json
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
-from flask import Flask, request, render_template as rt, send_from_directory,session, jsonify
+from flask import Flask, request, render_template as rt, send_from_directory,session, jsonify, url_for
+from splinter import Browser
 from stripe_internal import charge
 from webscraper import scrape_py, scrape_js
 from sendEmail import sendMail, encodeEmail, decodeEmail
 
 app = Flask(__name__)
+
+browser = Browser('chrome')
 
 app.secret_key = '[\xc6\x11\x0b8\x1am\xc5\xdf\xb8Snd(\r\x9b'
 
@@ -60,26 +63,9 @@ def soon():
         return rt('soon.html')
     return rt('soon.html')
 
-@app.route('/signup', methods =["GET", "POST"])
+@app.route('/signup')
 def signup():
     '''signup'''
-    if request.method == "POST":
-        response = json.dumps(request.get_json())
-        response = json.loads(response)
-        print(response)
-        email = response["email"]
-        phone = str(response["phone"].lower())
-        password = str(response["password"])
-        fname = response["fname"]
-        session['username'] = fname
-        lname = response["lname"]
-        if phone != "none":
-            accs.insert_one({"contact":phone, "password":password, "firstname":fname, "lastname":lname})
-        else:
-            accs.insert_one({"contact":email, "password":password, "firstname":fname, "lastname":lname})
-        return jsonify(
-            success="true"
-        )
     return rt("/account/signup.html")
 
 @app.route('/csudo', methods =['POST'])
@@ -112,14 +98,29 @@ def getAuth():
         print(response)
         email = response["email"]
         enc = encodeEmail(email)
-        url = f"https://www.codestack.ga/getauth?{enc}"
-        @app.route(f"/getauth?{enc}", methods=["GET","POST"])
-        def authen():
-            if request.method == "POST":
-                data = {"result" : "auth_pass"}
-                return jsonify(data)
-            return rt('/account/email-auth.html')
+        url = f"https://www.codestack.ga/verify?{enc}"
         sendMail(email, url)
+    return rt('account/email_sent.html')
+
+@app.route('/verify', methods=["GET", "POST"])
+def verify_email():
+    if request.method == "POST":
+        url_end = (str(browser.url).split('?'))[1]
+        email_send = decodeEmail(url_end)
+        response = json.dumps(request.get_json())
+        response = json.loads(response)
+        email = response["email"]
+        phone = str(response["phone"])
+        password = str(response["password"])
+        fname = response["fname"]
+        session['username'] = fname
+        lname = response["lname"]
+        print(response)
+        if email == email_send:
+            accs.insert_one({"contact":email, "password":password, "firstname":fname, "lastname":lname})
+        elif phone != "none":
+            accs.insert_one({"contact":phone, "password":password, "firstname":fname, "lastname":lname})
+        return url_for('thanks')
 
 @app.route('/support')
 def support():

@@ -225,7 +225,7 @@
                 const fname = sessionStorage.getItem("fname")
                 const lname = sessionStorage.getItem("lname")
                 const phone = sessionStorage.getItem("phone") || "none"
-                postData("/signup", { email: email, phone: phone, password: password, fname: fname, lname: lname })
+                postData("/verify", { email: email, phone: phone, password: password, fname: fname, lname: lname })
                     .then((data) => {
                         console.dir(data);
                     })
@@ -251,7 +251,7 @@
             return response.json();
         }
 
-        function authEmail(){
+        function goToName(){
             if (!validateEmail(_("#emailInput").value) && !validatePhone(_("#emailInput").value) || !validatePhone(_("#emailInput").value) && !validateEmail(_("#emailInput").value)) {
                 _(".shade").css("scale", "1")                
                 _("#modal_erroremail").css("scale", "1")
@@ -263,12 +263,9 @@
             } else {
                 sessionStorage.setItem("phone", _("#emailInput").value);
             }
-            const email = sessionStorage.getItem("email") || "none"          
-            postData('/getauth', {email:email})
-                .then(data => {
-                console.dir(data);
-            })
-              .catch(error => console.error(error));
+            sessionStorage.setItem("fname", _("#fName").value)
+            sessionStorage.setItem("lname", _("#lName").value)
+            window.location = "?s=2"
         }
         
     </script>
