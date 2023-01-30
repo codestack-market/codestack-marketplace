@@ -10,7 +10,7 @@ from sendEmail import sendMail, encodeEmail, decodeEmail
 
 app = Flask(__name__)
 
-browser = Browser('chrome')
+browser = Browser()
 
 app.secret_key = '[\xc6\x11\x0b8\x1am\xc5\xdf\xb8Snd(\r\x9b'
 
