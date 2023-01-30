@@ -40,7 +40,7 @@
                     <br>
                     <input id="emailInput" type="email">
                     <br><br>
-                    <button id="nextButton" onclick="goToName()">Continue</button>
+                    <button id="contButton" onclick="goToName()">Continue</button>
                     <br><br>
                     <a style="color: rgb(0, 106, 255); cursor: pointer; text-decoration: underline; font-size: 12px;"
                         href="account/login">
@@ -74,7 +74,7 @@
                     <br>
                     <input id="passwordInput" type="password">
                     <br><br>
-                    <button id="nextButton" onclick="reviewLogin()">Continue</button>
+                    <button id="nextButton" onclick="authEmail()">Continue</button>
                     <br><br>
                     <a onclick="showHidePswrd()"
                         style="color: rgb(0, 136, 255); cursor: pointer; text-decoration: underline; font-size: 12px;">
@@ -97,7 +97,7 @@
                     <br>
                     <input id="rPswrdInput" disabled type="text">
                     <br><br>
-                    <button id="nextButton" onclick="finishSignup()">All Good!</button>
+                    <button id="nextButton" onclick="finishSignup()" onclick="window.location='/thanks'">All Good!</button>
                 </div>
             </div>
         </div>
@@ -154,22 +154,6 @@
             _("#rEmailInput").value = sessionStorage.getItem("email") || sessionStorage.getItem("phone")
             _("#rPswrdInput").value = filler + password.slice(-3);
             _("#rNameInput").value = sessionStorage.getItem("fname") + " " + sessionStorage.getItem("lname")
-        }
-
-        function goToName() {
-            if (!validateEmail(_("#emailInput").value) && !validatePhone(_("#emailInput").value) || !validatePhone(_("#emailInput").value) && !validateEmail(_("#emailInput").value)) {
-                _(".shade").css("scale", "1")
-                _("#modal_erroremail").css("scale", "1")
-                return
-            }
-            if (validateEmail(_("#emailInput").value) && !validatePhone(_("#emailInput").value)) {
-                sessionStorage.setItem("email", _("#emailInput").value);
-            } else {
-                sessionStorage.setItem("phone", _("#emailInput").value);
-            }
-            sessionStorage.setItem("fname", _("#fName").value)
-            sessionStorage.setItem("lname", _("#lName").value)
-            window.location = "?s=2"
         }
 
         function showHidePswrd() {
@@ -244,7 +228,6 @@
                 postData("/signup", { email: email, phone: phone, password: password, fname: fname, lname: lname })
                     .then((data) => {
                         console.dir(data);
-                        window.location = '/thanks'
                     })
                     .catch(err => {
                         console.error(err);
@@ -267,6 +250,15 @@
             });
             return response.json();
         }
+
+        function authEmail()
+            const email = sessionStorage.getItem("email") || "none"
+            postData('/getauth', {email:email})
+                .then(data => {
+                console.dir(data);
+            })
+              .catch(error => console.error(error));
+        
     </script>
 </body>
 
