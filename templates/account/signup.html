@@ -40,7 +40,7 @@
                     <br>
                     <input id="emailInput" type="email">
                     <br><br>
-                    <button id="contButton" onclick="goToName()">Continue</button>
+                    <button id="contButton" onclick="authEmail()">Continue</button>
                     <br><br>
                     <a style="color: rgb(0, 106, 255); cursor: pointer; text-decoration: underline; font-size: 12px;"
                         href="account/login">
@@ -74,7 +74,7 @@
                     <br>
                     <input id="passwordInput" type="password">
                     <br><br>
-                    <button id="nextButton" onclick="authEmail()">Continue</button>
+                    <button id="nextButton" onclick="reviewLogin()">Continue</button>
                     <br><br>
                     <a onclick="showHidePswrd()"
                         style="color: rgb(0, 136, 255); cursor: pointer; text-decoration: underline; font-size: 12px;">
@@ -225,7 +225,7 @@
                 const fname = sessionStorage.getItem("fname")
                 const lname = sessionStorage.getItem("lname")
                 const phone = sessionStorage.getItem("phone") || "none"
-                postData("/signup", { email: email, phone: phone, password: password, fname: fname, lname: lname })
+                postData("/verify", { email: email, phone: phone, password: password, fname: fname, lname: lname })
                     .then((data) => {
                         console.dir(data);
                     })
@@ -251,13 +251,22 @@
             return response.json();
         }
 
-        function authEmail()
-            const email = sessionStorage.getItem("email") || "none"
-            postData('/getauth', {email:email})
-                .then(data => {
-                console.dir(data);
-            })
-              .catch(error => console.error(error));
+        function goToName(){
+            if (!validateEmail(_("#emailInput").value) && !validatePhone(_("#emailInput").value) || !validatePhone(_("#emailInput").value) && !validateEmail(_("#emailInput").value)) {
+                _(".shade").css("scale", "1")                
+                _("#modal_erroremail").css("scale", "1")
+                return
+            }
+
+            if (validateEmail(_("#emailInput").value) && !validatePhone(_("#emailInput").value)) {
+                sessionStorage.setItem("email", _("#emailInput").value);
+            } else {
+                sessionStorage.setItem("phone", _("#emailInput").value);
+            }
+            sessionStorage.setItem("fname", _("#fName").value)
+            sessionStorage.setItem("lname", _("#lName").value)
+            window.location = "?s=2"
+        }
         
     </script>
 </body>
