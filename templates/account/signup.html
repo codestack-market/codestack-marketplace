@@ -228,23 +228,24 @@
                 postData("/verify", { email: email, phone: phone, password: password, fname: fname, lname: lname })
                     .then((data) => {
                         console.dir(data);
-                    })
+                        postData("/getauth", { email: email })
+                            .then((data) => {
+                                console.dir(data);
+                                window.location = '/getauth'
+                            })
                     .catch(err => {
                         console.error(err);
                         console.dir(data);
                         alert("An error has occured! Please check debug console for more information. If this keeps happening, please contact support.")
                     })
-                postData("/getauth", { email: email})
-                    .then((data) => {
-                        console.dir(data);
-                        window.location = '/getauth'
-                    })
-                    .catch(err => {
-                        console.error(err);
-                        console.dir(data);
-                        alert("An error has occured! Please check debug console for more information. If this keeps happening, please contact support.")
-                    })
-            } catch (err) {
+            })
+            .catch(err => {
+                console.error(err);
+                console.dir(data);
+                alert("An error has occured! Please check debug console for more information. If this keeps happening, please contact support.")
+            })
+            } 
+            catch (err) {
                 console.error(err);
                 alert("An error has occured! Please check debug console for more information. If this keeps happening, please contact support.")
             }
