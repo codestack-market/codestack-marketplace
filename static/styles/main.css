@@ -35,6 +35,10 @@
     #buyNTbarOption {
         left: 50% !important;
     }
+
+    .logos_logoMain {
+        margin-left: 15px;
+    }
 }
 
 body {
