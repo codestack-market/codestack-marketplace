@@ -85,3 +85,40 @@
     color: lightgray;
     margin-top: 5px;
 }
+
+.buyButtons {
+    margin-top: 15px;
+}
+
+.addCart {
+    color: black;
+    font-family: var(--notosans);
+    background-color: #d65c60;
+    border: none;
+    border-radius: 10px / 5px;
+    height: 50px;
+    width: 150px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.buyNow {
+    color: black;
+    font-family: var(--notosans);
+    background-color: #c44a56;
+    border: none;
+    border-radius: 10px / 5px;
+    height: 50px;
+    width: 150px;
+    cursor: pointer;
+    margin-left: 25px;
+    font-size: 15px;
+}
+
+button:hover {
+    scale: 1.1;
+}
+
+button {
+    transition: 0.5s;
+}

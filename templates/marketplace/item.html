@@ -49,7 +49,18 @@
                     <input id="priceCopy" type="text" style="display: none;" value="$7.89">
                 </div>
                 <div class="descriptionBody">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nascetur ridiculus mus mauris vitae ultricies. Scelerisque fermentum dui faucibus in ornare quam viverra. In metus vulputate eu scelerisque felis imperdiet proin fermentum. Aliquet nibh praesent tristique magna sit. Venenatis a condimentum vitae sapien pellentesque habitant morbi tristique. Maecenas accumsan lacus vel facilisis volutpat est. Tempus iaculis urna id volutpat lacus laoreet. Orci eu lobortis elementum nibh tellus molestie nunc. Ut sem viverra aliquet eget sit amet tellus cras adipiscing. Proin fermentum leo vel orci porta. Scelerisque in dictum non consectetur a erat. Lacus luctus accumsan tortor posuere ac ut consequat semper.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Nascetur ridiculus mus mauris vitae ultricies. Scelerisque fermentum dui
+                    faucibus in ornare quam viverra. In metus vulputate eu scelerisque felis imperdiet proin fermentum.
+                    Aliquet nibh praesent tristique magna sit. Venenatis a condimentum vitae sapien pellentesque
+                    habitant morbi tristique. Maecenas accumsan lacus vel facilisis volutpat est. Tempus iaculis urna id
+                    volutpat lacus laoreet. Orci eu lobortis elementum nibh tellus molestie nunc. Ut sem viverra aliquet
+                    eget sit amet tellus cras adipiscing. Proin fermentum leo vel orci porta. Scelerisque in dictum non
+                    consectetur a erat. Lacus luctus accumsan tortor posuere ac ut consequat semper.
+                </div>
+                <div class="buyButtons">
+                    <button class="addCart">Add to Cart</button>
+                    <button class="buyNow">Buy Now</button>
                 </div>
             </div>
         </div>
@@ -62,11 +73,11 @@
         _(".priceActual").addEventListener("click", () => {
             _("#priceCopiedText").show();
             try {
-            var copyText = _("#priceCopy");
+                var copyText = _("#priceCopy");
 
-            copyText.select();
-            copyText.setSelectionRange(0, 99999); 
-            navigator.clipboard.writeText(copyText.value);
+                copyText.select();
+                copyText.setSelectionRange(0, 99999);
+                navigator.clipboard.writeText(copyText.value);
             } catch (err) {
                 _("#priceCopiedText").innerHTML = `Failed to copy price.<br> ${err}<br>HTTPS connection required.`
             }
