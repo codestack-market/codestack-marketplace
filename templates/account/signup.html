@@ -97,7 +97,7 @@
                     <br>
                     <input id="rPswrdInput" disabled type="text">
                     <br><br>
-                    <button id="nextButton" onclick="finishSignup(), window.location = '/getauth'" >All Good!</button>
+                    <button id="nextButton" onclick="finishSignup()" onclick="window.location='/getauth'">All Good!</button>
                 </div>
             </div>
         </div>
@@ -228,27 +228,27 @@
                 postData("/verify", { email: email, phone: phone, password: password, fname: fname, lname: lname })
                     .then((data) => {
                         console.dir(data);
-                    })
-                    .catch(err => {
-                        console.error(err);
-                        console.dir(data);
-                        alert("An error has occured! Please check debug console for more information. If this keeps happening, please contact support.")
-                    })
-                postData("/getauth", { email: email})
+                        postData("/getauth", { email: email })
                     .then((data) => {
                         console.dir(data);
+                        window.location = '/getauth'
                     })
                     .catch(err => {
                         console.error(err);
                         console.dir(data);
                         alert("An error has occured! Please check debug console for more information. If this keeps happening, please contact support.")
                     })
-            }
+            })
+            .catch(err => {
+                console.error(err);
+                console.dir(data);
+                alert("An error has occured! Please check debug console for more information. If this keeps happening, please contact support.")
+            })
+            } 
             catch (err) {
                 console.error(err);
                 alert("An error has occured! Please check debug console for more information. If this keeps happening, please contact support.")
             }
-            window.location='/getauth'
         }
 
         async function postData(url = '', data = {}) {
