@@ -20,6 +20,23 @@
     }
 }
 
+@media only screen and (max-width: 600px) {
+    .bars_topMain {
+        height: 75px;
+    }
+    #topbarOption_why {
+        display: none;
+    }
+
+    #tBar_op_start {
+        display: none;
+    }
+
+    #buyNTbarOption {
+        left: 50% !important;
+    }
+}
+
 body {
     background-color: var(--bg);
 }
