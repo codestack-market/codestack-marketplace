@@ -19,10 +19,10 @@
             style="vertical-align: middle; font-family: var(--poppins); cursor: pointer; position: absolute; transform: translate(-50%, -50%); left: 3%; top: 50%;">
         <span class="topbarOption" onclick="window.location = '#codestack_why'" id="topbarOption_why"
             style="position: absolute; transform: translate(-50%, -50%); top: 50%; left: 30%;">Why?</span>
-        <span class="topbarOption" onclick="window.location = '/signup'" id="topbarOption_why"
+        <span class="topbarOption" onclick="window.location = '/signup'" id="tBar_op_start"
             style="position: absolute; transform: translate(-50%, -50%); top: 50%; left: 45%;">Get started</span>
         <span id="buyNTbarOption" class="topbarOption" onclick="window.location = '/soon'"
-            style="position: absolute; transform: translate(-50%, -50%); top: 50%; left: 60%; ">Buy Now</span>
+            style="position: absolute; transform: translate(-50%, -50%); top: 50%; left: 60%; ">Marketplace</span>
 <span id="loginTBarOption"
             style="position: absolute; transform: translate(-50%, -50%); top: 50%; right: 3%; color: #c44a56; cursor: pointer; font-family: var(--poppins);">{%if session["username"]%}<span class="helloUname">Hello, {{ session["username"] }}.</span>{%else%}<a href="{{ url_for('login') }}">Login</a>{%endif%}</span>
     </div>
@@ -45,6 +45,7 @@
             <p class="text_description" style="font-size: 20px;">
                 A place for developers to easily locate & buy API's, code, and more!
             </p>
+            <button class="openMarketButton">Marketplace</button>
             <br><br>
             <hr style="width: 85%;">
         </div>
