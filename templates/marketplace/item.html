@@ -68,7 +68,7 @@
             copyText.setSelectionRange(0, 99999); 
             navigator.clipboard.writeText(copyText.value);
             } catch (err) {
-                _("#priceCopiedText").innerHTML = `Failed to copy price.<br> ${err}`
+                _("#priceCopiedText").innerHTML = `Failed to copy price.<br> ${err}<br>HTTPS connection required.`
             }
         })
     </script>
