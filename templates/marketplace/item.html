@@ -43,8 +43,7 @@
             <br>
             <div class="itemDescription">
                 <div class="priceDetails">
-                    <span class="priceDealPercentage">-20%</span> <span class="priceActual">$<span
-                            id="dollar">7</span>.<span id="cents">89</span> <span id="priceCopiedText">Price copied to
+                    <span class="priceDealPercentage">-20%</span> <span class="priceActual"><span class="oldPrice">$9.47</span> $7.89 <span id="priceCopiedText">Price copied to
                             clipboard</span></span>
                     <input id="priceCopy" type="text" style="display: none;" value="$7.89">
                 </div>
@@ -82,6 +81,9 @@
                 _("#priceCopiedText").innerHTML = `Failed to copy price.<br> ${err}<br>HTTPS connection required.`
             }
         })
+
+        const itemId = document.URL.split("?itemId=")[1];
+        console.log("fetching item with ID of " + itemId)
     </script>
 </body>
 

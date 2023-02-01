@@ -115,10 +115,17 @@
     font-size: 15px;
 }
 
+.oldPrice {
+    color: black;
+    font-size: 17px;
+    text-decoration: line-through;
+}
+
 button:hover {
     scale: 1.1;
 }
 
 button {
     transition: 0.5s;
+    outline: 0;
 }
