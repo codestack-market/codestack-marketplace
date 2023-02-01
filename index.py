@@ -37,7 +37,11 @@ def favicon():
 @app.route('/marketplace/')
 def catalog():
     '''Test catalog'''
-    return rt('catalog.html')
+    return rt('marketplace/catalog.html')
+
+@app.route('/marketplace/item')
+def item():
+    return rt("marketplace/item.html")
 
 @app.route('/thanks')
 def thanks():
