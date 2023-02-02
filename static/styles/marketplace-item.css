@@ -143,3 +143,10 @@ button {
         max-height: 1000px;
     }
 }
+
+@media only screen and (min-width: 1201px) {
+    .previewImage {
+        max-width: 1500px;
+        max-height: 1500px;
+    }
+}
