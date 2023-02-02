@@ -132,11 +132,12 @@ button {
 
 @media only screen and (max-width: 1024px) {
     .previewImage {
-        max-width: 400px;
-        max-height: 400px;
+        max-width: 350px;
+        max-height: 350px;
     }
     .image-preview {
         top: 30%;
+        left: 5%;
     }
     .itemInfo {
         top: 80%;
