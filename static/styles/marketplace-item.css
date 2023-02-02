@@ -129,3 +129,24 @@ button {
     transition: 0.5s;
     outline: 0;
 }
+
+@media only screen and (max-width: 1024px) {
+    .previewImage {
+        max-width: 500px;
+        max-height: 600px;
+    }
+}
+
+@media only screen and (min-width: 1025px) {
+    .previewImage {
+        max-width: 1000px;
+        max-height: 1000px;
+    }
+}
+
+@media only screen and (min-width: 1201px) {
+    .previewImage {
+        max-width: 1500px;
+        max-height: 1500px;
+    }
+}
