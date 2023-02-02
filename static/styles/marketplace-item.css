@@ -132,8 +132,27 @@ button {
 
 @media only screen and (max-width: 1024px) {
     .previewImage {
-        max-width: 500px;
-        max-height: 600px;
+        max-width: 400px;
+        max-height: 400px;
+    }
+    .image-preview {
+        top: 30%;
+    }
+    .itemInfo {
+        top: 70%;
+        left: 50%;
+        width: 300px;
+        overflow: scroll;
+        height: 400px;
+    }
+    .bbBreak {
+        display: block !important;
+    }
+    .buyNow {
+        margin-left: 0px !important;
+    }
+    body {
+        overflow-y: scroll;
     }
 }
 
@@ -144,7 +163,7 @@ button {
     }
 }
 
-@media only screen and (min-width: 1201px) {
+@media only screen and (min-width: 2304px) {
     .previewImage {
         max-width: 1500px;
         max-height: 1500px;
