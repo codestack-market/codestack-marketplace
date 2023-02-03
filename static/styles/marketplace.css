@@ -19,16 +19,40 @@
 
 .itemTitle {
     font-family: var(--notosans);
-    margin-left: 5px;
     color: rgb(238, 238, 238);
 }
 
 .itemContainer {
     margin-left: 15px;
-    border: 1px solid white;
-    border-radius: 10px / 5px;
     width: 250px;
-    padding-left: 2px;
+    padding-left: 7px;
     padding-right: 2px;
     padding-top: 2px;
+    cursor: pointer;
+}
+
+.ratingAmount {
+    color: rgb(0, 110, 255);
+    font-size: 13.5px;
+}
+
+.sellerName {
+    font-family: var(--notosans);
+    color: rgb(0, 110, 255);
+    font-size: 13.5px;
+}
+
+.itemDescription {
+    font-family: var(--poppins);
+    font-size: 13.5px;
+    color: rgb(12, 11, 11);
+}
+
+.itemRating {
+    color: yellow;
+    font-family: var(--poppins);
+}
+
+.ratingstar {
+    vertical-align: middle;
 }

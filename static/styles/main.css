@@ -54,6 +54,10 @@ html {
 
 }
 
+.verticalMiddle {
+    vertical-align: middle;
+}
+
 ::-webkit-scrollbar {
     display: none;
 }
