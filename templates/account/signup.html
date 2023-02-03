@@ -255,8 +255,7 @@
             const response = await fetch(url, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
-                    chartset:"utf-8"
+                    'Content-Type': 'application/json; charset=UTF-8',
                 },
                 body: JSON.stringify(data)
             });

@@ -101,8 +101,8 @@ def getAuth():
         enc = encodeEmail(email)
         url = f"https://www.codestack.ga/verify?{enc}"
         sendMail(email, url)
-        return rt('account/email_sent.html')
-    return rt('account/email_sent.html')
+        return ['true']
+    return rt('/account/email_sent.html')
 
 @app.route('/verify', methods=["GET", "POST"])
 def verify_email():
@@ -126,7 +126,7 @@ def verify_email():
             accs.insert_one({"contact":phone, "password":password, "firstname":fname, "lastname":lname})
         else:
             return rt("404.html")
-    return url_for('thanks')
+    return rt('thanks.html')
     
 
 @app.route('/support')
