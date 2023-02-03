@@ -31,9 +31,7 @@ def encodeEmail(email):
     res = email.encode('utf-8')
     res = base64.urlsafe_b64encode(res)
     res = res.decode("utf-8")
-    key_dict = {"bin": res}
-    json_object = json.dumps(key_dict, indent = 4) 
-    return json_object
+    return res
 
 def decodeEmail(enc):
     res = enc.encode('utf-8')
