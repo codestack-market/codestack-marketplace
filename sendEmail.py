@@ -1,5 +1,4 @@
 import smtplib
-import json
 import base64
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -36,10 +35,8 @@ def encodeEmail(email):
     json_object = json.dumps(key_dict, indent = 4) 
     return json_object
 
-def decodeEmail(json_object):
-    dictionary = json.loads(json_object)
-    res = dictionary["bin"]
-    res = res.encode('utf-8')
+def decodeEmail(enc):
+    res = enc.encode('utf-8')
     print(res)
     res = base64.urlsafe_b64decode(res)
     print(res)

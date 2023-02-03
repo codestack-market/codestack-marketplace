@@ -232,17 +232,17 @@
                             .then((data) => {
                                 console.dir(data);
                                 window.location = '/getauth'
-                            })
+                            })  
                     .catch(err => {
                         console.error(err);
                         console.dir(data);
                         alert("An error has occured! Please check debug console for more information. If this keeps happening, please contact support.")
                     })
-            })
-            .catch(err => {
-                console.error(err);
-                console.dir(data);
-                alert("An error has occured! Please check debug console for more information. If this keeps happening, please contact support.")
+                .catch(err => {
+                    console.error(err);
+                    console.dir(data);
+                    alert("An error has occured! Please check debug console for more information. If this keeps happening, please contact support.")
+                    })
             })
             } 
             catch (err) {
@@ -255,7 +255,8 @@
             const response = await fetch(url, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    chartset:"utf-8"
                 },
                 body: JSON.stringify(data)
             });
