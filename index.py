@@ -125,7 +125,7 @@ def verify_email():
         elif phone != "none":
             accs.insert_one({"contact":phone, "password":password, "firstname":fname, "lastname":lname})
         else:
-            return rt("404.html")
+            return url_for('getAuth')
     return rt('thanks.html')
     
 
