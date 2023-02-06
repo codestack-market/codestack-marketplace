@@ -45,7 +45,7 @@ def catalog():
     '''Test catalog'''
     return rt('catalog.html')
 
-@app.route('/thanks')
+@app.route('/thanks') 
 def thanks():
     '''Thanks'''
     return rt('thanks.html')
