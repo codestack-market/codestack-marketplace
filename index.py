@@ -99,9 +99,11 @@ def getAuth():
         email = response["email"]
         global enc
         enc = encodeEmail(email)
-        url = f"https://www.codestack.ga/verify?{enc}"
+        url = f"https://www.codestack.ga/verify?key={enc}"
         sendMail(email, url)
-        return ['true']
+        return jsonify(
+            success="true"
+        )
     return rt('/account/email_sent.html')
 
 @app.route('/verify', methods=["GET", "POST"])
@@ -125,7 +127,9 @@ def verify_email():
         elif phone != "none":
             accs.insert_one({"contact":phone, "password":password, "firstname":fname, "lastname":lname})
         else:
-            return url_for('getAuth')
+            return jsonify(
+            success="true"
+        )
     return rt('thanks.html')
     
 
@@ -164,18 +168,10 @@ def login():
                     return rt("/account/loginReal.html", auth="fail")
     return rt("/account/loginReal.html", auth ='')
                                  
-@app.route('/confirmSignup')
-def confirmSignup():
-    return rt('thanks.html')
-
 @app.route('/sudo-mode', methods =['GET', 'POST'])
 def sudoMode():
     '''sudoMode'''
     return rt("/account/sudo-mode.html")
-
-@app.route("/emailAuth")
-def emailAuth():
-    return rt("/account/email-auth.html")
 
 @app.errorhandler(404)
 def err404(e):

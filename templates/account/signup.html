@@ -231,6 +231,7 @@
                         postData("/getauth", { email: email })
                             .then((data) => {
                                 console.log(data);
+                                window.location = '/getauth'
                             })  
                     .catch(err => {
                         console.error(err);
