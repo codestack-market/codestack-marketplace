@@ -231,7 +231,6 @@
                         postData("/getauth", { email: email })
                             .then((data) => {
                                 console.log(data);
-                                window.location = '/getauth'
                             })  
                     .catch(err => {
                         console.error(err);
@@ -249,6 +248,7 @@
                 console.error(err);
                 alert("An error has occured! Please check debug console for more information. If this keeps happening, please contact support.")
             }
+            window.location = '/getauth'
         }
 
         async function postData(url = '', data = {}) {

@@ -2,7 +2,7 @@
 import json
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
-from flask import Flask, request, render_template as rt, send_from_directory,session, jsonify, url_for
+from flask import Flask, request, render_template as rt, send_from_directory,session, jsonify, url_for, redirect
 from stripe_internal import charge
 from webscraper import scrape_py, scrape_js
 from sendEmail import sendMail, encodeEmail, decodeEmail
@@ -102,7 +102,7 @@ def getAuth():
         url = f"https://www.codestack.ga/verify?key={enc}"
         sendMail(email, url)
         return jsonify(
-            success="true"
+            success ="true"
         )
     return rt('/account/email_sent.html')
 

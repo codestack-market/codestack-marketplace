@@ -15,8 +15,9 @@ def sendMail(receiver,url):
     #The body and the attachments for the mail
     sign = 'Sincerely,\nCodeStack MarketPlace'
     mail_content = f'''This email was sent in regards to your recent signup with CodeStack MarketPlace.
-    \nIf this was you, please go to {url}\n\n\n\n\n\n\n\n\n\n\n\n\n\n{sign.center(50)}.
-    If this wasn't you, you can ignore this email.'''
+    \nIf this was you, please go to {url}.
+    If this wasn't you, you can ignore this email.
+    \n\n\n\n\n\n\n\n\n\n\n\n\n\n{sign.center(50)}'''
     message.attach(MIMEText(mail_content, 'plain'))
     #Create SMTP session for sending the mail
     session = smtplib.SMTP('smtp.gmail.com', 587) #use gmail with port
