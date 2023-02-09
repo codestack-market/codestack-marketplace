@@ -44,7 +44,7 @@ def sendMail(receiver,url):
     </table>
     '''
     message.attach(MIMEText(html, 'html'))
-    message.attach(MIMEText(t, "plain"))
+    #message.attach(MIMEText(t, "plain"))
     #Create SMTP session for sending the mail
     session = smtplib.SMTP('smtp.gmail.com', 587) #use gmail with port
     session.starttls() #enable security
