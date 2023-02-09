@@ -13,7 +13,7 @@ def sendMail(receiver,url):
     message['To'] = receiver
     message['Subject'] = 'CodeStack MarketPlace Authentication Email'   #The subject line
     #The body and the attachments for the mail
-    text = f''''
+    t = f''''
     Non HTML version --------
     \nAn account was created with email address {receiver}.
     \nTo verify this account, visit {url}.
@@ -44,7 +44,7 @@ def sendMail(receiver,url):
     </table>
     '''
     message.attach(MIMEText(html, 'html'))
-    message.attach(MIMEText(text, "plain"))
+    message.attach(MIMEText(t, "plain"))
     #Create SMTP session for sending the mail
     session = smtplib.SMTP('smtp.gmail.com', 587) #use gmail with port
     session.starttls() #enable security
