@@ -137,7 +137,7 @@ def verify_email():
         else:
             return jsonify(
             success="true"
-        )
+        )   
     return rt('thanks.html')
     
 
@@ -162,19 +162,28 @@ def login():
             for x in query:
                 print(x)
                 if x["password"] == password:
-                    auth = 'pass'
-                    return rt("/account/loginReal.html", auth=auth)
+                    return jsonify(
+                        status="pass"
+                    )
                 else:
-                    auth = 'fail'
-                    return rt("/account/loginReal.html", auth=auth)
+                    return jsonify(
+                        status="fail"
+                    )
         else:
             query = accs.find({"contact": phone})
             for x in query:
                 if x["password"] == password:
-                    return rt("/account/loginReal.html", auth="pass")
+                    return jsonify(
+                        status="pass"
+                    )
                 else:
-                    return rt("/account/loginReal.html", auth="fail")
-    return rt("/account/loginReal.html", auth ='')
+                    return jsonify(
+                        status="fail"
+                    )
+        return jsonify(
+            status="fail"
+        )
+    return rt("/account/loginReal.html")
                                  
 @app.route('/sudo-mode', methods =['GET', 'POST'])
 def sudoMode():

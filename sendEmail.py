@@ -8,17 +8,23 @@ def sendMail(receiver,url):
     sender_pass = 'vyiaemvzojgmdzkz'
     receiver_address = receiver
     #Setup the MIME
-    message = MIMEMultipart()
+    message = MIMEMultipart('alternative')
     message['From'] = sender_address
     message['To'] = receiver
     message['Subject'] = 'CodeStack MarketPlace Authentication Email'   #The subject line
     #The body and the attachments for the mail
-    sign = 'Sincerely,\nCodeStack MarketPlace'
-    mail_content = f'''This email was sent in regards to your recent signup with CodeStack MarketPlace.
-    \nIf this was you, please go to {url}.
-    If this wasn't you, you can ignore this email.
-    \n\n\n\n\n\n\n\n\n\n\n\n\n\n{sign.center(50)}'''
-    message.attach(MIMEText(mail_content, 'plain'))
+    sign = 'Codestack Marketplace'
+    #mail_content = f'''This email was sent in regards to your recent signup with CodeStack MarketPlace.
+    #\nIf this was you, please go to {url}.
+    #If this wasn't you, you can ignore this email.
+    #\n\n\n\n\n\n\n\n\n\n\n\n\n\n{sign.center(50)}'''
+    html = f'''
+    <h1>Codestack Marketplace</h1>
+    <b>Hello</b>
+    <p style="color: black">This email was sent to verify a created account under the email of {receiver}.</p>
+    <p>If this wasn't you, you may discard this email</p>
+    '''
+    message.attach(MIMEText(html, 'html'))
     #Create SMTP session for sending the mail
     session = smtplib.SMTP('smtp.gmail.com', 587) #use gmail with port
     session.starttls() #enable security

@@ -95,7 +95,7 @@
             _(".shade").css("scale", "0")
         }, Math.random() * (1200 - 550) + 550);
 
-        if (document.URL.includes("?true")) {
+        if (document.URL.includes("?s=2")) {
             _("#passwordPannel").show()
             _("#emailPannel").hide()
         }
@@ -139,13 +139,11 @@
                 return
             }
             if (validateEmail(_("#emailInput").value) && !validatePhone(_("#emailInput").value)) {
-                window.location = `
-            /login?true-email-${_("#emailInput").value}
-            `
+                sessionStorage.setItem("email", _("#emailInput").value)
+                window.location = `?s=2`
             } else {
-                window.location = `
-            /login?true-phone-${_("#emailInput").value}
-            `
+                sessionStorage.setItem("phone", _("#emailInput").value)
+                window.location = `?s=2`
             }
 
         }
@@ -154,21 +152,25 @@
             if (e.keyCode == 27 && !loading) hideModal();
         })
 
-        function finishSignup() {
-            const email = document.URL.split("?true-email-")[1].replace("-pswrd-" + document.URL.split("-pswrd-")[1], "")
-            const password = _("#passwordInput").value;
-            const phone = document.URL.split("?true-phone-")
-            if (phone == document.URL) {
-                phone = "none"
-            }
+        async function finishSignup() {
+            var email = sessionStorage.getItem("email")
+            const password = await _("#passwordInput").value;
+            var phone = sessionStorage.getItem("phone");
+            if (phone == null) phone = "none"
+            if (email == null) email = "none"
+            console.log({ email: email, password: password, phone: phone })
             postData("/login", { email: email, phone: phone, password: password })
                 .then((data) => {
                     console.dir(data);
+                    if (data.status == "success") {
+                        window.location = '/'
+                    } else {
+                        _("#passwordPannel > div > b").innerHTML = "<span style='color: red'>Password or email invalid!</span>"
+                    }
                     // redirect to
                 })
             }
-            authLogin()
-
+            
         async function postData(url = '', data = {}) {
             const response = await fetch(url, {
                 method: 'POST',
