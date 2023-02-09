@@ -295,5 +295,5 @@ try {
   //_("#text").iText(decrypt)
 }
 catch (err) {
-  alert(err)
+  console.error(err)
 }
