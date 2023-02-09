@@ -19,6 +19,7 @@ def sendMail(receiver,url):
     #If this wasn't you, you can ignore this email.
     #\n\n\n\n\n\n\n\n\n\n\n\n\n\n{sign.center(50)}'''
     html = f'''
+    <span><a href="www.codestack.ga" target="_blank" style="color: black; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;">Codestack Marketplace</a></span>
     <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
         <td align="center">
@@ -31,6 +32,8 @@ def sendMail(receiver,url):
             <span style="padding-left:04px;padding-right:04px;font-size:16px;display:inline-block;letter-spacing:normal"><span dir="ltr" style="word-break:break-word;line-height:32px"><strong>Verify Email</strong></span></span>
             </a>
             </div>
+            <br><br>
+            <hr width="85%">
             <div style="background-color: darkgray; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; margin-top: 25px; color: white; height: 150px; width: 500px; padding-top: 50px;">
             You recieved this email because an account was created on Codestack Marketplace from this email.
             <br><br>
