@@ -13,11 +13,11 @@ def sendMail(receiver,url):
     message['To'] = receiver
     message['Subject'] = 'CodeStack MarketPlace Authentication Email'   #The subject line
     #The body and the attachments for the mail
-    sign = 'Codestack Marketplace'
-    #mail_content = f'''This email was sent in regards to your recent signup with CodeStack MarketPlace.
-    #\nIf this was you, please go to {url}.
-    #If this wasn't you, you can ignore this email.
-    #\n\n\n\n\n\n\n\n\n\n\n\n\n\n{sign.center(50)}'''
+    text = f''''
+    Non HTML version --------
+    \nAn account was created with email address {receiver}.
+    \nTo verify this account, visit {url}.
+    '''
     html = f'''
     <span><a href="www.codestack.ga" target="_blank" style="color: black; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;">Codestack Marketplace</a></span>
     <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
@@ -44,6 +44,7 @@ def sendMail(receiver,url):
     </table>
     '''
     message.attach(MIMEText(html, 'html'))
+    message.attach(MIMEText(text, "plain"))
     #Create SMTP session for sending the mail
     session = smtplib.SMTP('smtp.gmail.com', 587) #use gmail with port
     session.starttls() #enable security
