@@ -19,10 +19,21 @@ def sendMail(receiver,url):
     #If this wasn't you, you can ignore this email.
     #\n\n\n\n\n\n\n\n\n\n\n\n\n\n{sign.center(50)}'''
     html = f'''
-    <h1>Codestack Marketplace</h1>
-    <b>Hello</b>
-    <p style="color: black">This email was sent to verify a created account under the email of {receiver}.</p>
-    <p>If this wasn't you, you may discard this email</p>
+    <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td align="center">
+            <img src="https://www.codestack.ga/static/assets/favicon2.png" height="75px" width="75px">
+            <h1 style="font-family:'Helvetica Neue',Helvetica,sans-serif; color: black; ">Codestack Marketplace</h1>
+            <p style="font-size:14px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:#121212;line-height:1.5; color: black;">This email was sent to verify a created account under the email of {receiver}.</p>
+            <p style="font-size:14px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:#121212;line-height:1.5; color: black;">If this wasn't you, you may discard this email.</p>
+            <div align="center">
+            <a href="{url}" target="_blank" style="text-decoration:none;display:block;color:#ffffff;background-color:#eb0028;border-radius:4px;width:200px;border-top:0px solid transparent;font-weight:400;border-right:0px solid transparent;border-bottom:0px solid transparent;border-left:0px solid transparent;padding-top:04px;padding-bottom:04px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:16px;text-align:center;word-break:keep-all; height: 45px;" align="left">
+            <span style="padding-left:04px;padding-right:04px;font-size:16px;display:inline-block;letter-spacing:normal"><span dir="ltr" style="word-break:break-word;line-height:32px"><strong>Verify Email</strong></span></span>
+            </a>
+            </div>
+        </td>
+    </tr>
+    </table>
     '''
     message.attach(MIMEText(html, 'html'))
     #Create SMTP session for sending the mail
