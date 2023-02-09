@@ -20,6 +20,27 @@
     }
 }
 
+@media only screen and (max-width: 600px) {
+    .bars_topMain {
+        height: 75px;
+    }
+    #topbarOption_why {
+        display: none;
+    }
+
+    #tBar_op_start {
+        display: none;
+    }
+
+    #buyNTbarOption {
+        left: 50% !important;
+    }
+
+    .logos_logoMain {
+        margin-left: 15px;
+    }
+}
+
 body {
     background-color: var(--bg);
 }
@@ -31,6 +52,10 @@ html {
 .titles_mainTitle {
     font-family: 'Noto Sans', serif;
 
+}
+
+.verticalMiddle {
+    vertical-align: middle;
 }
 
 ::-webkit-scrollbar {
@@ -48,7 +73,7 @@ html {
     top: 0%;
     left: 0%;
     width: 100%;
-    height: 10%;
+    height: 65px;
     background-color: #4a8abe;
     text-align: center;
 }

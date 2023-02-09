@@ -50,3 +50,20 @@ body {
 #logoutPopup:hover {
     text-decoration: underline;
 }
+
+.openMarketButton {
+    font-family: var(--poppins);
+    cursor: pointer;
+    border-radius: 10px / 5px;
+    transition: 0.5s;
+    background-color: #4a8abe;
+    color: white;
+    border: none;
+    height: 50px;
+    width: 200px;
+    font-size: 17.5px;
+}
+
+.openMarketButton:hover {
+    scale: 1.1;
+}

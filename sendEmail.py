@@ -1,5 +1,4 @@
 import smtplib
-import json
 import base64
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -9,16 +8,23 @@ def sendMail(receiver,url):
     sender_pass = 'vyiaemvzojgmdzkz'
     receiver_address = receiver
     #Setup the MIME
-    message = MIMEMultipart()
+    message = MIMEMultipart('alternative')
     message['From'] = sender_address
     message['To'] = receiver
     message['Subject'] = 'CodeStack MarketPlace Authentication Email'   #The subject line
     #The body and the attachments for the mail
-    sign = 'Sincerely,\nCodeStack MarketPlace'
-    mail_content = f'''This email was sent in regards to your recent signup with CodeStack MarketPlace.
-    \nIf this was you, please go to {url}\n\n\n\n\n\n\n\n\n\n\n\n\n\n{sign.center(50)}.
-    If this wasn't you, you can ignore this email.'''
-    message.attach(MIMEText(mail_content, 'plain'))
+    sign = 'Codestack Marketplace'
+    #mail_content = f'''This email was sent in regards to your recent signup with CodeStack MarketPlace.
+    #\nIf this was you, please go to {url}.
+    #If this wasn't you, you can ignore this email.
+    #\n\n\n\n\n\n\n\n\n\n\n\n\n\n{sign.center(50)}'''
+    html = f'''
+    <h1>Codestack Marketplace</h1>
+    <b>Hello</b>
+    <p style="color: black">This email was sent to verify a created account under the email of {receiver}.</p>
+    <p>If this wasn't you, you may discard this email</p>
+    '''
+    message.attach(MIMEText(html, 'html'))
     #Create SMTP session for sending the mail
     session = smtplib.SMTP('smtp.gmail.com', 587) #use gmail with port
     session.starttls() #enable security
@@ -32,14 +38,10 @@ def encodeEmail(email):
     res = email.encode('utf-8')
     res = base64.urlsafe_b64encode(res)
     res = res.decode("utf-8")
-    key_dict = {"bin": res}
-    json_object = json.dumps(key_dict, indent = 4) 
-    return json_object
+    return res
 
-def decodeEmail(json_object):
-    dictionary = json.loads(json_object)
-    res = dictionary["bin"]
-    res = res.encode('utf-8')
+def decodeEmail(enc):
+    res = enc.encode('utf-8')
     print(res)
     res = base64.urlsafe_b64decode(res)
     print(res)

@@ -2,10 +2,12 @@
 import json
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
-from flask import Flask, request, render_template as rt, send_from_directory,session
+from flask import Flask, request, render_template as rt, send_from_directory,session, jsonify, url_for, redirect
 from stripe_internal import charge
 from webscraper import scrape_py, scrape_js
 from sendEmail import sendMail, encodeEmail, decodeEmail
+global enc
+enc =""
 
 app = Flask(__name__)
 
@@ -26,7 +28,6 @@ emails = db["emails"]
 
 @app.route('/')
 def index():
-    '''Homepage'''
     return rt('index.html')
 
 @app.route('/favicon.ico')
@@ -34,12 +35,21 @@ def favicon():
     '''Favicon route'''
     return send_from_directory('./', 'favicon.ico.png')
 
+@app.route('/logout')
+def logout():
+    session.pop('username', None)
+    return rt('/account/logout.html')
+
 @app.route('/marketplace/')
 def catalog():
     '''Test catalog'''
-    return rt('catalog.html')
+    return rt('marketplace/catalog.html')
 
-@app.route('/thanks')
+@app.route('/marketplace/item')
+def item():
+    return rt("marketplace/item.html")
+
+@app.route('/thanks') 
 def thanks():
     '''Thanks'''
     return rt('thanks.html')
@@ -56,39 +66,85 @@ def soon():
         return rt('soon.html')
     return rt('soon.html')
 
-@app.route('/signup', methods =["GET", "POST"])
+@app.route('/signup')
 def signup():
     '''signup'''
-    if request.method == "POST":
+    return rt("/account/signup.html")
+
+@app.route('/robot-chat')
+def robotChat():
+    return rt("/support/robot-chat.html")
+
+@app.route('/csudo', methods =['POST'])
+def cSudo():
+    '''csudo'''
+    if request.method == 'POST':
         response = json.dumps(request.get_json())
         response = json.loads(response)
-        print(response)
-        email = response["email"]
-        phone = str(response["phone"].lower())
-        password = str(response["password"])
-        fname = response["fname"]
-        session['username'] = fname
-        lname = response["lname"]
-        if phone != "none":
-            accs.insert_one({"contact":phone, "password":password, "firstname":fname, "lastname":lname})
-        else:
-            accs.insert_one({"contact":email, "password":password, "firstname":fname, "lastname":lname})
+        password = str(response["password"].lower())
+        print(password)
+        # find pswrd and stuff idk
         return jsonify(
             success="true"
         )
-    return rt("/account/signup.html")
 
-@app.route('/logout', methods =["POST"])
-def logout():
-    '''logout'''
-    if request.method == "POST":
-        print(request)
-        # logout
+@app.route('/orders')
+def orders():
+    return rt("account/orders.html")
 
 @app.route('/forgotPassword', methods =["GET", "POST"])
 def forgotPassword():
     '''forgotPassword'''
     return rt("/account/forgotPassword.html")
+
+@app.route('/getauth', methods=["GET", "POST"])
+def getAuth():
+    if request.method == 'POST':
+        print('e')
+        response = json.dumps(request.get_json())
+        response = json.loads(response)
+        print(response)
+        email = response["email"]
+        global enc
+        enc = encodeEmail(email)
+        url = f"https://www.codestack.ga/verify?key={enc}"
+        sendMail(email, url)
+        return jsonify(
+            success ="true"
+        )
+    return rt('/account/email_sent.html')
+
+@app.route('/verify', methods=["GET", "POST"])
+def verify_email():
+    if request.method == "POST":
+        print('e')
+        global enc
+        url_end = enc
+        email_send = decodeEmail(url_end)
+        response = json.dumps(request.get_json())
+        response = json.loads(response)
+        email = response["email"]
+        phone = str(response["phone"])
+        password = str(response["password"])
+        fname = response["fname"]
+        session['username'] = fname
+        lname = response["lname"]
+        print(response)
+        if email == email_send:
+            accs.insert_one({"contact":email, "password":password, "firstname":fname, "lastname":lname})
+        elif phone != "none":
+            accs.insert_one({"contact":phone, "password":password, "firstname":fname, "lastname":lname})
+        else:
+            return jsonify(
+            success="true"
+        )   
+    return rt('thanks.html')
+    
+
+@app.route('/support')
+def support():
+    '''support'''
+    return rt('/support/support.html')
 
 
 @app.route('/login', methods =["GET", "POST"])
@@ -106,31 +162,33 @@ def login():
             for x in query:
                 print(x)
                 if x["password"] == password:
-                    auth = 'pass'
-                    return rt("/account/loginReal.html", auth=auth)
+                    return jsonify(
+                        status="pass"
+                    )
                 else:
-                    auth = 'fail'
-                    return rt("/account/loginReal.html", auth=auth)
+                    return jsonify(
+                        status="fail"
+                    )
         else:
             query = accs.find({"contact": phone})
             for x in query:
                 if x["password"] == password:
-                    return rt("/account/loginReal.html", auth="pass")
+                    return jsonify(
+                        status="pass"
+                    )
                 else:
-                    return rt("/account/loginReal.html", auth="fail")
-    return rt("/account/loginReal.html", auth ='')
+                    return jsonify(
+                        status="fail"
+                    )
+        return jsonify(
+            status="fail"
+        )
+    return rt("/account/loginReal.html")
                                  
-@app.route('/confirmSignup')
-def confirmSignup():
-    return rt('thanks.html')
-
-@app.route('/sudo-mode')
+@app.route('/sudo-mode', methods =['GET', 'POST'])
 def sudoMode():
+    '''sudoMode'''
     return rt("/account/sudo-mode.html")
-
-@app.route("/email-auth")
-def emailAuth():
-    return rt("/account/email-auth.html")
 
 @app.errorhandler(404)
 def err404(e):

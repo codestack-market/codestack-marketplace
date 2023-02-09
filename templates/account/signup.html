@@ -21,10 +21,10 @@
             style="vertical-align: middle; font-family: var(--poppins); cursor: pointer; position: absolute; transform: translate(-50%, -50%); left: 3%; top: 50%;">
         <span class="topbarOption" onclick="window.location = 'index.html#codestack_why'" id="topbarOption_why"
             style="position: absolute; transform: translate(-50%, -50%); top: 50%; left: 35%;">Why?</span>
-        <span class="topbarOption" onclick="window.location = 'index.html#container_scrollerMain'" id="topbarOption_why"
+        <span class="topbarOption" onclick="window.location = ''" id="topbarOption_why"
             style="position: absolute; transform: translate(-50%, -50%); top: 50%; left: 50%;">Get started</span>
         <span id="buyNTbarOption" class="topbarOption" onclick="window.location = '/marketplace/'"
-            style="position: absolute; transform: translate(-50%, -50%); top: 50%; left: 65%; ">Buy Now</span>
+            style="position: absolute; transform: translate(-50%, -50%); top: 50%; left: 65%; ">Marketplace</span>
     </div>
     <div class="container_scrollerMain">
         <div style="position: absolute; width: 100%; height: 100%; top: 10%;">
@@ -156,22 +156,6 @@
             _("#rNameInput").value = sessionStorage.getItem("fname") + " " + sessionStorage.getItem("lname")
         }
 
-        function goToName() {
-            if (!validateEmail(_("#emailInput").value) && !validatePhone(_("#emailInput").value) || !validatePhone(_("#emailInput").value) && !validateEmail(_("#emailInput").value)) {
-                _(".shade").css("scale", "1")
-                _("#modal_erroremail").css("scale", "1")
-                return
-            }
-            if (validateEmail(_("#emailInput").value) && !validatePhone(_("#emailInput").value)) {
-                sessionStorage.setItem("email", _("#emailInput").value);
-            } else {
-                sessionStorage.setItem("phone", _("#emailInput").value);
-            }
-            sessionStorage.setItem("fname", _("#fName").value)
-            sessionStorage.setItem("lname", _("#lName").value)
-            window.location = "?s=2"
-        }
-
         function showHidePswrd() {
             if (_("#passwordInput").getAttribute("type") == "password") {
                 _("#passwordInput").setAttribute("type", "text")
@@ -182,7 +166,7 @@
 
         _("#emailInput").addEventListener("keydown", (e) => {
             if (e.keyCode == 13) {
-                goToPassword();
+                goToName();
             } else if (e.keyCode == 32) {
                 e.preventDefault()
                 _("#emailInput").value += "-"
@@ -241,32 +225,60 @@
                 const fname = sessionStorage.getItem("fname")
                 const lname = sessionStorage.getItem("lname")
                 const phone = sessionStorage.getItem("phone") || "none"
-                postData("/signup", { email: email, phone: phone, password: password, fname: fname, lname: lname })
+                postData("/verify", { email: email, phone: phone, password: password, fname: fname, lname: lname })
                     .then((data) => {
-                        console.dir(data);
-                        window.location = '/thanks'
-                    })
+                        console.log(data);
+                        postData("/getauth", { email: email })
+                            .then((data) => {
+                                console.log(data);
+                            })  
                     .catch(err => {
                         console.error(err);
-                        console.dir(data);
+                        console.log(data);
                         alert("An error has occured! Please check debug console for more information. If this keeps happening, please contact support.")
                     })
-            } catch (err) {
+                .catch(err => {
+                    console.error(err);
+                    console.log(data);
+                    alert("An error has occured! Please check debug console for more information. If this keeps happening, please contact support.")
+                    })
+            })
+            } 
+            catch (err) {
                 console.error(err);
                 alert("An error has occured! Please check debug console for more information. If this keeps happening, please contact support.")
             }
+            window.location = '/getauth'
         }
 
         async function postData(url = '', data = {}) {
             const response = await fetch(url, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json; charset=UTF-8',
                 },
                 body: JSON.stringify(data)
             });
             return response.json();
         }
+
+        function goToName(){
+            if (!validateEmail(_("#emailInput").value) && !validatePhone(_("#emailInput").value) || !validatePhone(_("#emailInput").value) && !validateEmail(_("#emailInput").value)) {
+                _(".shade").css("scale", "1")                
+                _("#modal_erroremail").css("scale", "1")
+                return
+            }
+
+            if (validateEmail(_("#emailInput").value) && !validatePhone(_("#emailInput").value)) {
+                sessionStorage.setItem("email", _("#emailInput").value);
+            } else {
+                sessionStorage.setItem("phone", _("#emailInput").value);
+            }
+            sessionStorage.setItem("fname", _("#fName").value)
+            sessionStorage.setItem("lname", _("#lName").value)
+            window.location = "?s=2"
+        }
+        
     </script>
 </body>
 
