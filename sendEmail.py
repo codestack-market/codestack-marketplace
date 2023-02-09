@@ -27,7 +27,7 @@ def sendMail(receiver,url):
             <p style="font-size:14px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:#121212;line-height:1.5; color: black;">This email was sent to verify a created account under the email of {receiver}.</p>
             <p style="font-size:14px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:#121212;line-height:1.5; color: black;">If this wasn't you, you may discard this email.</p>
             <div align="center">
-            <a href="{url}" target="_blank" style="text-decoration:none;display:block;color:#ffffff;background-color:#eb0028;border-radius:4px;width:200px;border-top:0px solid transparent;font-weight:400;border-right:0px solid transparent;border-bottom:0px solid transparent;border-left:0px solid transparent;padding-top:04px;padding-bottom:04px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:16px;text-align:center;word-break:keep-all; height: 45px;" align="left">
+            <a href="{url}" target="_blank" style="text-decoration:none;display:block;color:#ffffff;background-color:#eb0028;border-radius:4px;width:200px;border-top:0px solid transparent;font-weight:400;border-right:0px solid transparent;border-bottom:0px solid transparent;border-left:0px solid transparent;padding-top:04px;padding-bottom:04px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:16px;text-align:center;word-break:keep-all; height: 35px;" align="left">
             <span style="padding-left:04px;padding-right:04px;font-size:16px;display:inline-block;letter-spacing:normal"><span dir="ltr" style="word-break:break-word;line-height:32px"><strong>Verify Email</strong></span></span>
             </a>
             </div>
