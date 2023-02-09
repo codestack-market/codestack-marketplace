@@ -31,7 +31,7 @@
             <div class="scroller_404info">
                 <p class="text_description">Unfortunately we do not have this ready yet.</p>
                 <p class="text_description">However, you can input your email so we can notify you when we are ready!</p>
-                <input type="text" id="emailInput" name="emailInput" placeholder="Input your email here.">
+                <input type="text" id="email_input" name="emailInput" placeholder="Input your email here.">
                 <br>
                 <span id="applyEmailBtn" onclick="finishSignup()" style="color: white;
                 font-family: var(--poppins);
@@ -49,14 +49,23 @@
             </div>
         </div>
     </div>
-    <script src="../static/scripts/loaders/loader.js"></script>
+    <div class="modalPopup" id="modal_erroremail">
+        <br>
+        <span class="modalTitle">Email/Password invalid.</span>
+        <br>
+        <p class="modalDesc">Please try again.</p>
+        <button class="modalOk" onclick="hideModal()">Done</button>
+    </div>
+    <div class="shade">
+    </div>
     <script src="../static/scripts/utils/forge.js"></script>
+    <script src="../static/scripts/loaders/loader.js"></script>
     <script src="../static/scripts/login.js"></script>
     <script src="../static/scripts/main.js"></script>
     <script>
 
         function finishSignup() {
-            var email = document.getElementById("emailInput").value;
+            var email = document.getElementById("email_input").value;
             postData("/soon", { email: email})
                 .then((data) => {
                     console.dir(data);
