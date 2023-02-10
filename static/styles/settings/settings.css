@@ -1,0 +1,44 @@
+#welcome {
+    position: fixed;
+    transform: translate(-50%, -50%);
+    top: 20%;
+    left: 50%;
+    font-family: var(--notosans);
+    font-size: 24px;
+    border: 1px solid gray;
+    border-radius: 10px / 5px;
+    width: 400px;
+    height: 80px;
+}
+
+#welcome span {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    color: white;
+}
+
+#buttons {
+    position: fixed;
+    transform: translate(-50%, -50%);
+    top: 55%;
+    left: 50%;
+    font-family: var(--notosans);
+    border: 1px solid gray;
+    border-radius: 10px / 5px;
+    height: 400px;
+    width: 85%;
+}
+
+.settingOption {
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
+.settingBtnOption {
+    color: white;
+    font-family: var(--notosans);
+    font-size: 20px;
+    cursor: pointer;
+}
