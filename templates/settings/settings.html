@@ -11,34 +11,21 @@
 <body>
     <div id="welcome">
         <span>
-            Welcome, someone!
+            {%if session["username"]%}Welcome, {{ session["username"] }}{%else%}<script>window.location = '/'</script>{%endif%}
         </span>
     </div>
-    <div id="settingsOptions"></div>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Settings - Codestack Market</title>
-    <link rel="shortcut icon" href="/static/assets/favicon2.ico">
-    <link rel="stylesheet" href="/static/styles/settings/settings.css">
-    <link rel="stylesheet" href="/static/styles/main.css">
-</head>
-<body>
-    <div id="welcome">
-        <span>
-        Welcome, {%if session["username"]%} {{ session["username"] }} {%else%}<script>window.location = '/'</script>{%endif%}
-        </span>
-    </div>
-    <div id="buttons">
-        <div class="settingOption">
-            <span class="settingBtnOption">
-                Account
+    <div id="settingsOptions">
+        <div class="settingBtn">
+            <span class="settingBtnTitle">Account</span>
+            <hr width="85%">
+            <span class="settingBtnDisc">
+                View account settings...
             </span>
+        </div>
+        <div class="settingBtn">
+            <span class="settingBtnTitle">Payment</span>
+            <hr width="85%">
+            <span class="settingBtnDisc">View payment settings...</span>
         </div>
     </div>
 </body>

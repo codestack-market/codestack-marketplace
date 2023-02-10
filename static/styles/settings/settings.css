@@ -19,12 +19,6 @@
     font-size: 24px;
 }
 
-.settingBtnOption {
-    color: white;
-    font-family: var(--notosans);
-    font-size: 20px;
-    cursor: pointer;
-}
 #settingsOptions {
     position: fixed;
     transform: translate(-50%, -50%);
@@ -34,4 +28,33 @@
     border-radius: 10px / 5px;
     left: 50%;
     top: 70%;
+}
+
+.settingBtn {
+    margin-left: 20px;
+    margin-top: 15px;
+    width: 220px;
+    cursor: pointer;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 10px / 5px;
+    height: 100px;
+    padding-top: 15px;
+    transition: .5s;
+    float: left;
+}
+
+.settingBtn:hover {
+    scale: 1.1;
+}
+
+.settingBtnTitle {
+    color: white;
+    font-family: var(--notosans);
+    font-size: 18px;
+}
+
+.settingBtnDisc {
+    font-family: var(--poppins);
+    color: gray;
 }
