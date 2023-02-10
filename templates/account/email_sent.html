@@ -18,5 +18,16 @@
     </div>
     <script src="static/scripts/utils/forge.js"></script>
     <script src="static/scripts/loaders/loader.js"></script>
+    <script>
+        const bc = new BroadcastChannel("isVerified");
+        bc.onmessage = (event) => {
+            if (event.data == "verifiedTrue") {
+                _(".acTitle").innerText = "Account Verified ✅"
+                _(".authContainer > div > p").innerText = "You may now close this tab."
+                bc.close();
+                document.title = "Codestack - Account Verified"
+            }
+        }
+    </script>
 </body>
 </html>
