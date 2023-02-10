@@ -32,7 +32,7 @@
     color: black;
     font-family: var(--poppins);
     font-size: 13.5px;
-    width: 200px;
+    width: 300px;
 }
 
 .settingsEditBtn {
@@ -46,4 +46,41 @@
 
 .settingsOptions {
     margin-bottom: 15px;
+}
+
+h2 {
+    color: red;
+    font-weight: 200;
+    font-family: var(--poppins);
+}
+
+.disableAccount {
+    font-family: var(--poppins);
+    background: transparent;
+    color: white;
+    font-weight: 800;
+    border: 1.5px solid red;
+    height: 40px;
+    width: 150px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.deleteAccount {
+    font-family: var(--poppins);
+    background: red;
+    margin-left: 15px;
+    color: white;
+    font-weight: 800;
+    border: 1.5px solid red;
+    height: 40px;
+    width: 150px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#dangerZone {
+    position: absolute;
+    bottom: 2%;
+    right: 2%;
 }
