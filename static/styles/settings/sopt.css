@@ -1,0 +1,96 @@
+.container {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);    
+    border: 1px solid black;
+    border-bottom-left-radius: 10px / 5px;
+    border-bottom-right-radius: 10px / 5px;
+    width: 700px;
+    padding-left: 15px;
+    padding-right: 15px;
+    height: 85%;
+    display: none;
+    border-top: none;
+}
+
+.container h1 {
+    font-family: var(--notosans);
+    border-bottom: 1px solid black;
+    padding-right: 55px;
+    padding-left: 55px;
+    padding-bottom: 5px;
+    color: white;
+    text-align: center;
+}
+
+.settingsTitle {
+    color: white;
+    font-family: var(--notosans);
+    font-size: 16.5px;
+}
+
+.settingsDescription {
+    color: black;
+    font-family: var(--poppins);
+    font-size: 13.5px;
+    width: 300px;
+}
+
+.settingsEditBtn {
+    position: absolute;
+    right: 1%;
+    cursor: pointer;
+    height: 30px;
+    width: 60px;
+    outline: 0;
+}
+
+.settingsOptions {
+    margin-bottom: 15px;
+}
+
+h2 {
+    color: red;
+    font-weight: 200;
+    font-family: var(--poppins);
+}
+
+.disableAccount {
+    font-family: var(--poppins);
+    background: transparent;
+    color: white;
+    font-weight: 800;
+    border: 1.5px solid red;
+    height: 40px;
+    width: 150px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.deleteAccount {
+    font-family: var(--poppins);
+    background: red;
+    margin-left: 15px;
+    color: white;
+    font-weight: 800;
+    border: 1.5px solid red;
+    height: 40px;
+    width: 150px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#dangerZone {
+    position: absolute;
+    bottom: 2%;
+    right: 2%;
+}
+
+button {
+    transition: 0.5s;
+}
+
+button:hover {
+    scale: 1.05;
+}

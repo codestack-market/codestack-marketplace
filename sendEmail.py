@@ -43,6 +43,7 @@ def sendMail(receiver,url):
     </tr>
     </table>
     '''
+    
     message.attach(MIMEText(html, 'html'))
     #message.attach(MIMEText(t, "plain"))
     #Create SMTP session for sending the mail
