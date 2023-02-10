@@ -192,7 +192,7 @@ def sudoMode():
 
 @app.route('/settings')
 def settings():
-    return rt("/settings/settings.html")
+    return rt('/settings/settings.html')
 
 @app.errorhandler(404)
 def err404(e):
