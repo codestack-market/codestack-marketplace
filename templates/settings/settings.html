@@ -14,19 +14,20 @@
             {%if session["username"]%}Welcome, {{ session["username"] }}{%else%}<script>window.location = '/'</script>{%endif%}
         </span>
     </div>
-    <div id="settingsOptions">
-        <div class="settingBtn">
+    <div id="settingsOptions" onclick="window.location = '/settings/account'">
+        <div class="settingBtn" data="account">
             <span class="settingBtnTitle">Account</span>
             <hr width="85%">
             <span class="settingBtnDisc">
                 View account settings...
             </span>
         </div>
-        <div class="settingBtn">
+        <div class="settingBtn" onclick="window.location = '/settings/payment'">
             <span class="settingBtnTitle">Payment</span>
             <hr width="85%">
             <span class="settingBtnDisc">View payment settings...</span>
         </div>
     </div>
+    <script src="/static/scripts/utils/forge.js"></script>
 </body>
 </html>
