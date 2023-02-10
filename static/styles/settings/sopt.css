@@ -84,3 +84,11 @@ h2 {
     bottom: 2%;
     right: 2%;
 }
+
+button {
+    transition: 0.5s;
+}
+
+button:hover {
+    scale: 1.05;
+}
