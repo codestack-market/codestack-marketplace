@@ -22,6 +22,7 @@
     <script>
         const bc = new BroadcastChannel("isVerified");
         bc.onmessage = (event) => {
+            console.log(event.data);
             if (event.data == "verifiedTrue") {
                 _(".acTitle").innerText = "Account Verified ✅"
                 _(".authContainer > div > p").innerText = "You may now close this tab."

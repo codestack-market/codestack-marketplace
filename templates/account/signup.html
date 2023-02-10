@@ -177,6 +177,13 @@
             if (e.keyCode == 13) reviewLogin();
         })
 
+        _("#fName").addEventListener("keydown", (e) => {
+            if (e.keyCode == 13) goToPassword();
+        })
+        _("#lName").addEventListener("keydown", (e) => {
+            if (e.keyCode == 13) goToPassword();
+        })
+
         function reviewLogin() {
             sessionStorage.setItem("password", _("#passwordInput").value.ascii());
             window.location = "?s=4"
@@ -198,7 +205,7 @@
         }, 500)
 
         function goToPassword() {
-            if (_("#fName").value.replaceAll(" ", "") == "" && _("#lName").value.replaceAll(" ", "") == "") {
+            if (_("#fName").value.replaceAll(" ", "") == "" || _("#lName").value.replaceAll(" ", "") == "") {
                 _(".shade").css("scale", "1")
                 _("#modal_erroremail").css("scale", "1")
                 return
