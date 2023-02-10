@@ -190,6 +190,14 @@ def sudoMode():
     '''sudoMode'''
     return rt("/account/sudo-mode.html")
 
+@app.route('/settings')
+def settings():
+    return rt('/settings/settings.html')
+
+@app.route('/settings/account')
+def settingsAccount():
+    return rt('/settings/account.html')
+
 @app.errorhandler(404)
 def err404(e):
     '''error'''
