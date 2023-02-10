@@ -5,6 +5,14 @@ document.body.onload = function() {
     document.body.style.opacity = "1";
 }
 
+const bc = new BroadcastChannel("cmLogout")
+bc.onmessage = (event) => {
+    alert(event.data)
+    if (event.data == "logoutTrue") {
+        window.location = ''
+    }
+}
+
 /*
 
 when recieve data of logged in or not

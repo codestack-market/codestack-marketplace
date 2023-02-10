@@ -1,5 +1,12 @@
-var url = window.location;
+var url = document.URL;
 try {
+
+  if (!document.body.contains(document.querySelector("script[src='/static/scripts/loaders/loader.js']"))) {
+    const script = document.createElement("script")
+    script.src = "/static/scripts/loaders/loader.js"
+    document.body.appendChild(script)
+  }
+
   function _(query, all) {
     if (all) {
       if (query.startsWith("#") || query.startsWith(".")) {
