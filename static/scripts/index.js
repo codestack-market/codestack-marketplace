@@ -21,10 +21,15 @@ async function postData(url = '', data = {}) {
     return response
   }
 
+  var loading = false;
   _("#searchMarket").addEventListener("keydown", (e) => {
+    if (loading) return e.preventDefault();
     if (e.keyCode === 13) {
       if (_("#searchMarket").value.replaceAll(" ", "") == "") return;
-      window.location = '/marketplace/search?q=' + _("#searchMarket").value;
+      loading = true;
+      _(".openMarketButton").innerHTML = "<img src='/static/assets/loader-spinning.gif' height='25px' width='35px' style='vertical-align: middle'> Searching..."
+      _(".openMarketButton").attribute("disabled", "true")
+      setTimeout(() => window.location = '/marketplace/search?q=' + _("#searchMarket").value, 1000)
     } else {
       setTimeout(() => {
         if (_("#searchMarket").value.replaceAll(" ", "") == "") {
@@ -37,9 +42,12 @@ async function postData(url = '', data = {}) {
   })
 
   _(".openMarketButton").addEventListener("click", (e) => {
+    if (loading) return e.preventDefault();
     if (!_("#searchMarket").value.replaceAll(" ", "") == "") {
-      window.location = '/marketplace/search?q=' + _("#searchMarket").value;
-    } else {
+      loading = true
+      _(".openMarketButton").attribute("disabled", "true")
+      _(".openMarketButton").innerHTML = "<img src='/static/assets/loader-spinning.gif' height='25px' width='35px' style='vertical-align: middle'> Searching..."
+      setTimeout(() => window.location = '/marketplace/search?q=' + _("#searchMarket").value, 1000)    } else {
       window.location = '/marketplace'
     }
   })
