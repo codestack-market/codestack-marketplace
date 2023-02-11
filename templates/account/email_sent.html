@@ -7,16 +7,30 @@
     <title>Codestack - Authentication Email</title>
     <link rel="stylesheet" href="/static/styles/email-auth.css">
     <link rel="stylesheet" href="/static/styles/main.css">
-    <link rel="stylesheet" href="/static/assets/favicon2.ico">
+    <link rel="shortcut icon" href="/static/assets/favicon2.ico">
 </head>
 <body>
     <div class="authContainer" style="display: block !important;">
         <div style="margin-left: 50px">
             <h1 class="acTitle">Email Sent</h1>
             <p style="font-family: var(--poppins);">Verification email has been sent, please check your spam folder if you do not see it.</p>
+            <p style="font-family: var(--poppins);" id="p2">Please do not close this tab.</p>
         </div>
     </div>
     <script src="static/scripts/utils/forge.js"></script>
     <script src="static/scripts/loaders/loader.js"></script>
+    <script>
+        const bc = new BroadcastChannel("isVerified");
+        bc.onmessage = (event) => {
+            console.log(event.data);
+            if (event.data == "verifiedTrue") {
+                _(".acTitle").innerText = "Account Verified ✅"
+                _(".authContainer > div > p").innerText = "You may now close this tab."
+                _("#p2").remove();
+                bc.close();
+                document.title = "Codestack - Account Verified"
+            }
+        }
+    </script>
 </body>
 </html>

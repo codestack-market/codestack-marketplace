@@ -1,0 +1,22 @@
+h1 {
+    font-family: var(--notosans);
+    color: white;
+}
+
+hr {
+    width: 85%;
+}
+
+a {
+    color: blue;
+    font-family: var(--poppins);
+}
+
+.license {
+    text-align: left;
+    position: fixed;
+    transform: translate(-50%, 0%);
+    left: 55%;
+    font-family: var(--poppins);
+    color: lightgray;
+}

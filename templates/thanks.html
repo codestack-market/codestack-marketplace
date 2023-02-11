@@ -51,6 +51,8 @@
         const option = document.URL.split("&mode=")[1]
         if (option == "signup") {
             document.querySelector("#signupDone").style.display = "block"
+            const bc = new BroadcastChannel("isVerified");
+            bc.postMessage("verifiedTrue")
         } else if (option == "soon") {
             document.querySelector("#thanksDone").style.display = "block"
         }
