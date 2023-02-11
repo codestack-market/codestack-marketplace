@@ -25,6 +25,22 @@ async function postData(url = '', data = {}) {
     if (e.keyCode === 13) {
       if (_("#searchMarket").value.replaceAll(" ", "") == "") return;
       window.location = '/marketplace/search?q=' + _("#searchMarket").value;
+    } else {
+      setTimeout(() => {
+        if (_("#searchMarket").value.replaceAll(" ", "") == "") {
+          _(".openMarketButton").innerHTML = "Marketplace"
+        } else {
+          _(".openMarketButton").innerHTML = "Search"
+        }
+      }, 100)
+    }
+  })
+
+  _(".openMarketButton").addEventListener("click", (e) => {
+    if (!_("#searchMarket").value.replaceAll(" ", "") == "") {
+      window.location = '/marketplace/search?q=' + _("#searchMarket").value;
+    } else {
+      window.location = '/marketplace'
     }
   })
   /*
