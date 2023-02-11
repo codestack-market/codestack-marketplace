@@ -61,8 +61,8 @@ def soon():
         response = json.dumps(request.get_json())
         response = json.loads(response)
         print(response)
-        email = response["email"]
-        emails.insert_one({"email":email})
+        #email = response["email"]
+        #emails.insert_one({"email":email})
         print("finished!")
         return jsonify(
             success="true"
