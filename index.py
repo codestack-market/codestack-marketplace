@@ -121,7 +121,7 @@ def verify_email():
     if request.method == "POST":
         print('e')
         print(enc)
-        email_send = decodeEmail(url_end)
+        email_send = decodeEmail(enc)
         response = json.dumps(request.get_json())
         response = json.loads(response)
         email = response["email"]
