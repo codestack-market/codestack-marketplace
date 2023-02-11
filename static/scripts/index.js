@@ -23,7 +23,7 @@ async function postData(url = '', data = {}) {
 
   _("#searchMarket").addEventListener("keydown", (e) => {
     if (e.keyCode === 13) {
-      if (_("#searchMarket").value.replaceAll(" ", "" == "")) return;
+      if (_("#searchMarket").value.replaceAll(" ", "") == "") return;
       window.location = '/marketplace/search?q=' + _("#searchMarket").value;
     }
   })
