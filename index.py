@@ -162,7 +162,7 @@ def tos():
 
 @app.route('/privacy')
 def privacy():
-    return rt('legal/privacy.html');
+    return rt('legal/privacy.html')
 
 @app.route('/login', methods =["GET", "POST"])
 def login():

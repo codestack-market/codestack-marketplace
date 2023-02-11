@@ -1,6 +1,6 @@
 _("#loginTBarOption").addEventListener("click", (e) => {
     // display menu
-    if (!(_("#loginTBarOption").innerHTML.includes('Login'))) {
+    if (!(_("#loginTBarOption").innerHTML.includes('Sign in'))) {
         const popup = _(".popup_accountOptionsPopup")
         if (popup.css("opacity") == "1") {
             popup.css("opacity", "0")
