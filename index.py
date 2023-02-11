@@ -51,7 +51,7 @@ def item():
 @app.route('/thanks') 
 def thanks():
     '''Thanks'''
-    return rt('thanks.html')
+    return rt('thanksnormal.html')
 
 @app.route('/soon', methods=["GET", "POST"])
 def soon():
