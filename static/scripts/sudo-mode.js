@@ -2,7 +2,7 @@ var redirect = document.URL.split("?redirect=")[1] || "/"
 
 async function postData(url = '', data = {}) {
     const response = await fetch(url, {
-        method: 'POST', // *GET, POST, PUT, DELETE, etc.
+        method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },

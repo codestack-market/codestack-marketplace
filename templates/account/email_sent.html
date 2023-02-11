@@ -17,17 +17,17 @@
             <p style="font-family: var(--poppins);" id="p2">Please do not close this tab.</p>
         </div>
     </div>
-    <script src="static/scripts/utils/forge.js"></script>
-    <script src="static/scripts/loaders/loader.js"></script>
+    <script src="/static/scripts/utils/forge.js"></script>
+    <script src="/static/scripts/loaders/loader.js"></script>
     <script>
-        const bc = new BroadcastChannel("isVerified");
-        bc.onmessage = (event) => {
+        const bc3 = new BroadcastChannel("isVerified");
+        bc3.onmessage = (event) => {
             console.log(event.data);
             if (event.data == "verifiedTrue") {
                 _(".acTitle").innerText = "Account Verified ✅"
                 _(".authContainer > div > p").innerText = "You may now close this tab."
                 _("#p2").remove();
-                bc.close();
+                bc3.close();
                 document.title = "Codestack - Account Verified"
             }
         }

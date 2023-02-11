@@ -12,6 +12,11 @@
 </head>
 
 <body>
+    <div class="signinModal">
+        <button onclick="window.location = '/login'">Sign In</button>
+        <br>
+        <span>New member? Go <a href="/signup" style="color: rgb(0, 110, 255);">here</a></span>
+    </div>
     <div class="bars_topMain">
         <br>
         <img src="/static/assets/favicon2.png" onclick="window.location = ''" width="50px" height="50px"
@@ -26,7 +31,7 @@
         <span id="loginTBarOption"
             style="position: absolute; transform: translate(-50%, -50%); top: 50%; right: 3%; color: #c44a56; cursor: pointer; font-family: var(--poppins);">{%if
             session["username"]%}<span class="helloUname">Hello, {{ session["username"] }}.</span>{%else%}<a
-                href="{{ url_for('login') }}">Login</a>{%endif%}</span>
+                href="{{ url_for('login') }}" style="color: #c44a56; text-decoration: none;">Hello, Sign in.</a><script>document.querySelector(".signinModal").style.display = "block"</script>{%endif%}</span>
     </div>
     <div class="popup_accountOptionsPopup" style="opacity: 0;">
         <p style="font-family: var(--notosans); font-size: 15px; text-align: center;"><b>{%if
@@ -49,7 +54,9 @@
             <p class="text_description" style="font-size: 20px;">
                 A place for developers to easily locate & buy API's, code, and more!
             </p>
-            <button class="openMarketButton" onclick="window.location ='/soon'">Marketplace</button>
+            <input id="searchMarket" type="text" placeholder="Search the marketplace">
+            <br><br>
+            <button class="openMarketButton">Marketplace</button>
             <br><br>
             <hr style="width: 85%;">
         </div>
@@ -69,6 +76,7 @@
         <p>Contact us: <a href="mailto:help.codestack@gmail.com" target="_blank">help.codestack@gmail.com</a></p>
         <p><a href="/tos">TOS</a> - <a href="/license">License</a> - <a href="/privacy">Privacy Policy</a></p>
     </div>
+    
     <script src="/static/scripts/loaders/loader.js"></script>
     <script src="/static/scripts/utils/forge.js"></script>
     <script src="/static/scripts/index.js"></script>

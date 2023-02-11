@@ -132,7 +132,7 @@
             _("#namePannel").show()
             _("#emailPannel").hide()
         }
-        
+
         if (document.URL.includes("?s=3") && !sessionStorage.getItem("password")) {
             _("#passwordPannel").show()
             _("#emailPannel").hide()
@@ -210,7 +210,7 @@
                 _("#modal_erroremail").css("scale", "1")
                 return
             }
-            var specialChars =  /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+            var specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
             if (_("#fName").value.match(specialChars) || _("#lName").value.match(specialChars)) {
                 _(".shade").css("scale", "1")
                 _("#modal_erroremail").css("scale", "1")
@@ -238,24 +238,25 @@
                         postData("/getauth", { email: email })
                             .then((data) => {
                                 console.log(data);
-                            })  
-                    .catch(err => {
-                        console.error(err);
-                        console.log(data);
-                        alert("An error has occured! Please check debug console for more information. If this keeps happening, please contact support.")
+                                sessionStorage.clear();
+                                window.location = '/getauth'
+                            })
+                            .catch(err => {
+                                console.error(err);
+                                console.log(data);
+                                alert("An error has occured! Please check debug console for more information. If this keeps happening, please contact support.")
+                            })
+                            .catch(err => {
+                                console.error(err);
+                                console.log(data);
+                                alert("An error has occured! Please check debug console for more information. If this keeps happening, please contact support.")
+                            })
                     })
-                .catch(err => {
-                    console.error(err);
-                    console.log(data);
-                    alert("An error has occured! Please check debug console for more information. If this keeps happening, please contact support.")
-                    })
-            })
-            } 
+            }
             catch (err) {
                 console.error(err);
                 alert("An error has occured! Please check debug console for more information. If this keeps happening, please contact support.")
             }
-            window.location = '/getauth'
         }
 
         async function postData(url = '', data = {}) {
@@ -269,9 +270,9 @@
             return response.json();
         }
 
-        function goToName(){
+        function goToName() {
             if (!validateEmail(_("#emailInput").value) && !validatePhone(_("#emailInput").value) || !validatePhone(_("#emailInput").value) && !validateEmail(_("#emailInput").value)) {
-                _(".shade").css("scale", "1")                
+                _(".shade").css("scale", "1")
                 _("#modal_erroremail").css("scale", "1")
                 return
             }
@@ -285,7 +286,7 @@
             sessionStorage.setItem("lname", _("#lName").value)
             window.location = "?s=2"
         }
-        
+
     </script>
 </body>
 

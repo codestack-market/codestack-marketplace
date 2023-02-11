@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,14 +9,14 @@
     <link rel="stylesheet" href="../static/styles/main.css">
     <link rel="stylesheet" href="../static/styles/404.css">
     <link rel="shortcut icon" href="../static/assets/favicon2.ico">
-    <link rel="stylesheet" href="../static/styles/login.css">
+    <link rel="stylesheet" href="../static/styles/soon.css">
 </head>
 
 <body>
     <div class="bars_topMain">
         <br>
-        <img src="../static/assets/favicon2.png" onclick="window.location = '/'" width="50px" height="50px" alt="Codestack Logo"
-            class="logos_logoMain"
+        <img src="../static/assets/favicon2.png" onclick="window.location = '/'" width="50px" height="50px"
+            alt="Codestack Logo" class="logos_logoMain"
             style="vertical-align: middle; font-family: var(--poppins); cursor: pointer; position: absolute; transform: translate(-50%, -50%); left: 3%; top: 50%;">
         <span class="topbarOption" onclick="window.location = '/#codestack_why'" id="topbarOption_why"
             style="position: absolute; transform: translate(-50%, -50%); top: 50%; left: 35%;">Why?</span>
@@ -27,31 +28,24 @@
     <div class="container_scrollerMain">
         <div style="position: absolute; width: 100%; height: 100%; top: 10%;">
             <h1 class="titles_404label">Whoops!</h1>
-            <h1 class="titles_mainTitle titles_404notfound" style="color: #c44a56; font-size: 50px !important;">You've caught us before we're ready!</h1>
+            <h1 class="titles_mainTitle titles_404notfound" style="color: #c44a56; font-size: 50px !important;">You've
+                caught us before we're ready!</h1>
             <div class="scroller_404info">
                 <p class="text_description">Unfortunately we do not have this ready yet.</p>
-                <p class="text_description">However, you can input your email so we can notify you when we are ready!</p>
+                <p class="text_description">However, you can input your email so we can notify you when we are ready!
+                </p>
                 <input type="text" id="email_input" name="emailInput" placeholder="Input your email here.">
                 <br>
-                <span id="applyEmailBtn" onclick="finishSignup()" style="color: white;
-                font-family: var(--poppins);
-                font-size: 16px;
-                background-color: #4a8abe;
-                cursor: pointer;
-                width: 90px;
-                height: 40px;
-                border: none;
-                border-radius: 2%;
-                margin-top: 15px;">
+                <button id="applyEmailBtn">
                     Apply
-            </span>
+                </button>
                 <p><a href="/" class="links_mainLink"><i>Return to home</i></a></p>
             </div>
         </div>
     </div>
     <div class="modalPopup" id="modal_erroremail">
         <br>
-        <span class="modalTitle">Email/Password invalid.</span>
+        <span class="modalTitle">Email invalid.</span>
         <br>
         <p class="modalDesc">Please try again.</p>
         <button class="modalOk" onclick="hideModal()">Done</button>
@@ -62,29 +56,6 @@
     <script src="../static/scripts/loaders/loader.js"></script>
     <script src="../static/scripts/login.js"></script>
     <script src="../static/scripts/main.js"></script>
-    <script>
-
-        function finishSignup() {
-            var email = document.getElementById("email_input").value;
-            postData("/soon", { email: email})
-                .then((data) => {
-                    console.dir(data);
-                    // redirect to
-                })
-            window.location = '/thanks'
-        }
-
-        async function postData(url = '', data = {}) {
-            const response = await fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            });
-            return response.json();
-        }
-    </script>
 </body>
 
 </html>
