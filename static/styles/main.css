@@ -181,3 +181,25 @@ input:focus, textarea:focus {
     border: none;
     border-radius: 2%;
 }
+
+.termsInfo {
+    position: fixed;
+    bottom: 0%;
+    left: 1%;
+    font-family: var(--poppins);
+    font-size: 13px;
+    color: lightgray;
+    z-index: 5;
+}
+
+.termsInfo a {
+    color: white;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: .5s;
+}
+
+.termsInfo a:hover {
+    color: rgb(0, 81, 255);
+    border-bottom: 1px solid rgb(0, 81, 255);
+}
