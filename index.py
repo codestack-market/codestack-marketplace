@@ -117,7 +117,6 @@ def getAuth():
 def verify_email():
     if request.method == "POST":
         print('e')
-        enc
         print(enc)
         email_send = decodeEmail(url_end)
         response = json.dumps(request.get_json())
