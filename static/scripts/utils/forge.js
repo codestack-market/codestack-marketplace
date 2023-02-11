@@ -2,9 +2,10 @@ var url = document.URL;
 try {
 
   if (!document.body.contains(document.querySelector("script[src='/static/scripts/loaders/loader.js']"))) {
-    const script = document.createElement("script")
-    script.src = "/static/scripts/loaders/loader.js"
-    document.body.appendChild(script)
+    console.log("does not contain")
+    //const script = document.createElement("script")
+    //script.src = "/static/scripts/loaders/loader.js"
+    //document.body.appendChild(script)
   }
 
   function _(query, all) {

@@ -19,4 +19,12 @@ a {
     left: 55%;
     font-family: var(--poppins);
     color: lightgray;
+    overflow-y: scroll;
+    height: 15000%;
+    width: 85%;
+}
+
+.container_scrollerMain {
+    height: 100%;
+    overflow-y: scroll;
 }

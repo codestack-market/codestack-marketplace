@@ -207,3 +207,19 @@ input:focus, textarea:focus {
     color: rgb(0, 81, 255);
     border-bottom: 1px solid rgb(0, 81, 255);
 }
+
+#goBack {
+    position: fixed;
+    top: 0%;
+    left: 0.5%;
+    z-index: 9999;
+    cursor: pointer;
+    font-family: var(--notosans);
+    color: lightgray;
+    font-size: 14px;
+}
+
+button[disabled] {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
