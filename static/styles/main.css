@@ -33,11 +33,15 @@
     }
 
     #buyNTbarOption {
-        left: 50% !important;
+        left: 35% !important;
     }
 
     .logos_logoMain {
         margin-left: 15px;
+    }
+
+    .signinModal {
+        right: -22% !important;
     }
 }
 
