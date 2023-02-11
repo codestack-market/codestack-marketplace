@@ -1,4 +1,6 @@
 function hideModal() {
+    console.log(_(".modalOk").disabled)
+    if (_(".modalOk").disabled == true) return;
     _(".modalPopup").css("scale", "0")
     _(".shade").css("scale", "0")
 }

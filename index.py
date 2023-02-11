@@ -61,9 +61,12 @@ def soon():
         response = json.dumps(request.get_json())
         response = json.loads(response)
         print(response)
-        email = response["email"]
-        emails.insert_one({"email":email})
-        return rt('soon.html')
+        #email = response["email"]
+        #emails.insert_one({"email":email})
+        print("finished!")
+        return jsonify(
+            success="true"
+        )
     return rt('soon.html')
 
 @app.route('/signup')
@@ -162,7 +165,7 @@ def tos():
 
 @app.route('/privacy')
 def privacy():
-    return rt('legal/privacy.html');
+    return rt('legal/privacy.html')
 
 @app.route('/login', methods =["GET", "POST"])
 def login():
@@ -214,6 +217,10 @@ def settings():
 @app.route('/settings/account')
 def settingsAccount():
     return rt('/settings/account.html')
+
+@app.route('/settings/payment')
+def settingsPayment():
+    return rt('/settings/payment.html')
 
 @app.errorhandler(404)
 def err404(e):

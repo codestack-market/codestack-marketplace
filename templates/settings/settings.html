@@ -12,10 +12,12 @@
     <div id="welcome">
         <span>
             {%if session["username"]%}Welcome, {{ session["username"] }}{%else%}<script>window.location = '/'</script>{%endif%}
+            <p style="font-family: var(--poppins); font-size: 12px; color: black; width: 100%;">Click the buttons below to access settings for that category.</p>
         </span>
+        
     </div>
-    <div id="settingsOptions" onclick="window.location = '/settings/account'">
-        <div class="settingBtn" data="account">
+    <div id="settingsOptions">
+        <div class="settingBtn" onclick="window.location = '/settings/account'">
             <span class="settingBtnTitle">Account</span>
             <hr width="85%">
             <span class="settingBtnDisc">
