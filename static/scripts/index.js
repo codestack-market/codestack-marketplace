@@ -20,6 +20,12 @@ async function postData(url = '', data = {}) {
     });
     return response
   }
+
+  _("#searchMarket").addEventListener("keydown", (e) => {
+    if (e.keyCode === 13) {
+      window.location = '/marketplace/search?q=' + _("#searchMarket").value;
+    }
+  })
   /*
   postData('/logout', "logout")
     .then((data) => {
