@@ -29,7 +29,7 @@ async function postData(url = '', data = {}) {
       loading = true;
       _(".openMarketButton").innerHTML = "<img src='/static/assets/loader-spinning.gif' height='25px' width='35px' style='vertical-align: middle'> Searching..."
       _(".openMarketButton").attribute("disabled", "true")
-      setTimeout(() => window.location = '/marketplace/search?q=' + _("#searchMarket").value, 1000)
+      setTimeout(() => window.location = '/marketplace/search?q=' + _("#searchMarket").value, getRand(500, 1100))
     } else {
       setTimeout(() => {
         if (_("#searchMarket").value.replaceAll(" ", "") == "") {
@@ -47,7 +47,8 @@ async function postData(url = '', data = {}) {
       loading = true
       _(".openMarketButton").attribute("disabled", "true")
       _(".openMarketButton").innerHTML = "<img src='/static/assets/loader-spinning.gif' height='25px' width='35px' style='vertical-align: middle'> Searching..."
-      setTimeout(() => window.location = '/marketplace/search?q=' + _("#searchMarket").value, 1000)    } else {
+      setTimeout(() => window.location = '/marketplace/search?q=' + _("#searchMarket").value, getRand(500, 1100))
+      } else {
       window.location = '/marketplace'
     }
   })
