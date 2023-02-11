@@ -47,25 +47,6 @@
     </div>
 
     <script src="/static/scripts/loaders/loader.js"></script>
-    <script>
-        const option = document.URL.split("&mode=")[1]
-        if (option == "signup") {
-            document.querySelector("#signupDone").style.display = "block"
-            const bc = new BroadcastChannel("isVerified");
-            bc.postMessage("verifiedTrue")
-        } else if (option == "soon") {
-            document.querySelector("#thanksDone").style.display = "block"
-        }
-        async function postData(url = '', data = {}) {
-            const response = await fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            });
-        }
-    </script>
 </body>
 
 </html>

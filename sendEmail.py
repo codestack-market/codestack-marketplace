@@ -34,7 +34,7 @@ def sendMail(receiver,url):
             </div>
             <br><br>
             <hr width="85%">
-            <div style="background-color: darkgray; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; margin-top: 25px; color: white; height: 150px; width: 500px; padding-top: 50px;">
+            <div style="background-color: darkgray; padding-left: 5px; padding-right: 5px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; margin-top: 25px; color: white; height: 125px; width: 500px; padding-top: 50px;">
             You recieved this email because an account was created on Codestack Marketplace from this email.
             <br><br>
             If this wasn't you, but you still want an account, visit <a href="https://www.codestack.ga/signup" target="_blank" style=" color: white; text-decoration: underline;">https://www.codestack.ga/signup</a>
