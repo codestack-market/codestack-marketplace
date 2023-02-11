@@ -222,6 +222,10 @@ def settingsAccount():
 def settingsPayment():
     return rt('/settings/payment.html')
 
+
+@app.route('/marketplace/search', methods =['GET', 'POST'])
+def search():
+    return rt('/soon.html')
 @app.errorhandler(404)
 def err404(e):
     '''error'''
