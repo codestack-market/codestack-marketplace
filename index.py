@@ -6,7 +6,6 @@ from flask import Flask, request, render_template as rt, send_from_directory,ses
 from stripe_internal import charge
 from webscraper import scrape_py, scrape_js
 from sendEmail import sendMail, encodeEmail, decodeEmail
-global enc
 enc =""
 
 app = Flask(__name__)
@@ -118,8 +117,8 @@ def getAuth():
 def verify_email():
     if request.method == "POST":
         print('e')
-        global enc
-        url_end = enc
+        enc
+        print(enc)
         email_send = decodeEmail(url_end)
         response = json.dumps(request.get_json())
         response = json.loads(response)
