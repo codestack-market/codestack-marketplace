@@ -147,6 +147,15 @@ def support():
     return rt('/support/support.html')
 
 
+@app.route('/license')
+def license():
+    return rt('license.html')
+
+
+@app.route('/licenseRaw')
+def licenseRaw():
+    return rt('LICENSE')
+
 @app.route('/login', methods =["GET", "POST"])
 def login():
     if request.method =="POST":
