@@ -225,7 +225,11 @@ def settingsPayment():
 
 @app.route('/marketplace/search', methods =['GET', 'POST'])
 def search():
-    return rt('/soon.html')
+    if request.method == 'POST':
+        return jsonify(
+            items="well you weren\'t supposed to see this yet. this doesn't work yet :("
+        )
+    return rt('/marketplace/search.html')
 @app.errorhandler(404)
 def err404(e):
     '''error'''
