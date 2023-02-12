@@ -1,0 +1,6 @@
+CACHE MANIFEST
+# mywebapp.appcache v1
+# this is my cache manifest 
+index.html
+styles/index.cc
+styles/main.css
