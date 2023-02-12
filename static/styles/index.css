@@ -82,10 +82,10 @@ body {
 }
 
 .signinModal button {
-    background-color: #f0ac6c;
+    background-color: #ce5458;
     color: black;
     font-family: var(--poppins);
-    border: 1px solid #ed9863;
+    border: 1px solid #c44a56;
     border-radius: 5px / 2.5px;
     margin-top: 15px;
     cursor: pointer;
