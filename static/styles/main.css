@@ -223,3 +223,10 @@ button[disabled] {
     cursor: not-allowed;
     opacity: 0.5;
 }
+
+.errorModal {
+}
+
+.underline {
+    text-decoration: underline;
+}
