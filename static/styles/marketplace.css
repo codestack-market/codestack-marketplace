@@ -56,3 +56,22 @@
 .ratingstar {
     vertical-align: middle;
 }
+
+#searchMarketInput {
+    font-family: var(--poppins);
+    font-size: 14px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 45%;
+    top: 50%;
+    width: 70%;
+    height: 35px;
+    border-radius: 10px / 5px;
+    border: 2px solid transparent;
+    transition: .3s;
+    padding-left: 15px;
+}
+
+#searchMarketInput:focus {
+    border: 2px solid #ed9863;
+}
