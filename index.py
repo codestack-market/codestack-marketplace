@@ -130,12 +130,16 @@ def verify_email():
         print(response)
         if email == email_send:
             accs.insert_one({"contact":email, "password":password, "firstname":fname, "lastname":lname})
-        elif phone != "none":
-            accs.insert_one({"contact":phone, "password":password, "firstname":fname, "lastname":lname})
-        else:
             return jsonify(
             success="true"
-        )   
+        )
+        elif phone != "none":
+            accs.insert_one({"contact":phone, "password":password, "firstname":fname, "lastname":lname})
+            return jsonify(
+            success="true"
+        )
+        else:
+            return rt('404.html')
     return rt('thanks.html')
     
 
