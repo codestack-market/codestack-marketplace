@@ -6,7 +6,6 @@ from flask import Flask, request, render_template as rt, send_from_directory,ses
 from stripe_internal import charge
 from webscraper import scrape_py, scrape_js
 from sendEmail import sendMail, encodeEmail, decodeEmail
-enc =""
 
 app = Flask(__name__)
 
@@ -107,20 +106,18 @@ def getAuth():
         response = json.loads(response)
         print(response)
         email = response["email"]
-        global enc
         enc = encodeEmail(email)
-        url = f"https://www.codestack.ga/verify?key={enc}"
+        url = f"https://www.codestack.ga/verify/?key={enc}"
         sendMail(email, url)
         return jsonify(
             success ="true"
         )
     return rt('/account/email_sent.html')
 
-@app.route('/verify', methods=["GET", "POST"])
+@app.route('/verify/', methods=["GET", "POST"])
 def verify_email():
     if request.method == "POST":
-        print('e')
-        print(enc)
+        enc = request.args.get('key')
         email_send = decodeEmail(enc)
         response = json.dumps(request.get_json())
         response = json.loads(response)
