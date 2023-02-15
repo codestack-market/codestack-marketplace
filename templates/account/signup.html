@@ -232,7 +232,7 @@
                 const fname = sessionStorage.getItem("fname")
                 const lname = sessionStorage.getItem("lname")
                 const phone = sessionStorage.getItem("phone") || "none"
-                postData("/verify", { email: email, phone: phone, password: password, fname: fname, lname: lname })
+                postData("/verify/", { email: email, phone: phone, password: password, fname: fname, lname: lname })
                     .then((data) => {
                         console.log(data);
                         postData("/getauth", { email: email })
