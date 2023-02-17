@@ -49,10 +49,16 @@
     <script src="/static/scripts/loaders/loader.js"></script>
     <script>
         const option = document.URL.split("&mode=")[1]
+        const id_key = document.URL.split("?key=")[1].replace("&mode=" + document.URL.split("&mode=")[1],"")
         if (option == "signup") {
             document.querySelector("#signupDone").style.display = "block"
             const bc = new BroadcastChannel("isVerified");
             bc.postMessage("verifiedTrue")
+            postData('/verify', {id_key: id_key})
+            .then((data) => {
+                console.dir(data);
+                // redirect to
+            })
         } else if (option == "soon") {
             document.querySelector("#thanksDone").style.display = "block"
         }

@@ -107,18 +107,19 @@ def getAuth():
         print(response)
         email = response["email"]
         enc = encodeEmail(email)
-        url = f"https://www.codestack.ga/verify/?key={enc}"
+        url = f"https://www.codestack.ga/verify?key={enc}&mode=signup"
         sendMail(email, url)
         return jsonify(
             success ="true"
         )
     return rt('/account/email_sent.html')
 
-@app.route('/verify/', methods=["GET", "POST"])
+@app.route('/verify', methods=["GET", "POST"])
 def verify_email():
     if request.method == "POST":
-        enc = request.args.get('key')
-        print(enc)
+        response = json.dumps(request.get_json())
+        response = json.loads(response)
+        enc = response["id_key"]
         email_send = decodeEmail(enc)
         response = json.dumps(request.get_json())
         response = json.loads(response)
