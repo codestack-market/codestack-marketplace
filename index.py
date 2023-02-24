@@ -106,7 +106,9 @@ def getAuth():
         response = json.loads(response)
         print(response)
         email = response["email"]
+        print(email)
         enc = encodeEmail(email)
+        print(enc)
         url = f"https://www.codestack.ga/verify?key={enc}&mode=signup"
         sendMail(email, url)
         return jsonify(
@@ -119,8 +121,6 @@ def verify_email():
     if request.method == "POST":
         response = json.dumps(request.get_json())
         response = json.loads(response)
-        enc = response["id_key"]
-        email_send = decodeEmail(enc)
         response = json.dumps(request.get_json())
         response = json.loads(response)
         email = response["email"]
@@ -130,7 +130,7 @@ def verify_email():
         session['username'] = fname
         lname = response["lname"]
         print(response)
-        if email == email_send:
+        if email:
             accs.insert_one({"contact":email, "password":password, "firstname":fname, "lastname":lname})
             return jsonify(
             success="true"
@@ -228,7 +228,7 @@ def settingsPayment():
 def search():
     if request.method == 'POST':
         return jsonify(
-            items="well you weren\'t supposed to see this yet. this doesn't work yet :("
+            items="well you weren't supposed to see this yet. this doesn't work yet :("
         )
     return rt('/marketplace/search.html')
 @app.errorhandler(404)
