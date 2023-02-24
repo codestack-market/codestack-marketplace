@@ -20,6 +20,16 @@
     <script src="/static/scripts/utils/forge.js"></script>
     <script src="/static/scripts/loaders/loader.js"></script>
     <script>
+        async function postData(url = '', data = {}) {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+            return response.json();
+        }
         const bc3 = new BroadcastChannel("isVerified");
         bc3.onmessage = (event) => {
             console.log(event.data);
