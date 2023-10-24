@@ -25,9 +25,11 @@
         <a class="topbarOption" href="/why" id="topbarOption_why" style="left: 30%;">Why?</a>
         <a class="topbarOption" href="/register" id="tBar_op_start" style="left: 45%;">Get started</a>
         <a id="buyNTbarOption" class="topbarOption" href="/soon" style="left: 60%;">Marketplace</a>
-        <span id="loginTBarOption">{%if
-            session["username"]%}<span class="helloUname">Hello, {{ session["username"] }}.</span>{%else%}<a
-                href="{{ url_for('login') }}" style="color: #c44a56; text-decoration: none;">Hello, Sign in.</a>
+        <span id="loginTBarOption">
+            {%if session["username"]%}
+            <span class="helloUname">Hello, {{ session["username"] }}.</span>
+            {%else%}
+            <a href="{{ url_for('login') }}" style="color: #c44a56; text-decoration: none;">Hello, Sign in.</a>
             <script>document.querySelector(".signinModal").style.display = "block"</script>{%endif%}
         </span>
     </div>
