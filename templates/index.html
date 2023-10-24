@@ -22,12 +22,12 @@
         <img src="/static/assets/favicon2.png" onclick="window.location = ''" width="50px" height="50px"
             alt="Codestack Logo" class="logos_logoMain"
             style="vertical-align: middle; font-family: var(--poppins); cursor: pointer; position: absolute; transform: translate(-50%, -50%); left: 3%; top: 50%;">
-        <span class="topbarOption" onclick="window.location = '#codestack_why'" id="topbarOption_why"
-            style="position: absolute; transform: translate(-50%, -50%); top: 50%; left: 30%;">Why?</span>
-        <span class="topbarOption" onclick="window.location = '/signup'" id="tBar_op_start"
-            style="position: absolute; transform: translate(-50%, -50%); top: 50%; left: 45%;">Get started</span>
-        <span id="buyNTbarOption" class="topbarOption" onclick="window.location = '/soon'"
-            style="position: absolute; transform: translate(-50%, -50%); top: 50%; left: 60%; ">Marketplace</span>
+        <a class="topbarOption" href="/why" id="topbarOption_why"
+            style="position: absolute; transform: translate(-50%, -50%); top: 50%; left: 30%;">Why?</a>
+        <a class="topbarOption" href="/register" id="tBar_op_start"
+            style="position: absolute; transform: translate(-50%, -50%); top: 50%; left: 45%;">Get started</a>
+        <a id="buyNTbarOption" class="topbarOption" href="/soon"
+            style="position: absolute; transform: translate(-50%, -50%); top: 50%; left: 60%; ">Marketplace</a>
         <span id="loginTBarOption"
             style="position: absolute; transform: translate(-50%, -50%); top: 50%; right: 3%; color: #c44a56; cursor: pointer; font-family: var(--poppins);">{%if
             session["username"]%}<span class="helloUname">Hello, {{ session["username"] }}.</span>{%else%}<a

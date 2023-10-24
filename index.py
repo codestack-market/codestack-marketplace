@@ -67,9 +67,9 @@ def soon():
         )
     return rt('soon.html')
 
-@app.route('/signup')
+@app.route('/register')
 def signup():
-    '''signup'''
+    '''register'''
     return rt("/account/signup.html")
 
 @app.route('/robot-chat')
