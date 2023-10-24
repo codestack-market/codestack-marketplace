@@ -34,6 +34,27 @@ body {
     font-family: var(--poppins);
 }
 
+#loginTBarOption>a {
+    color: #c44a56;
+    text-decoration: none;
+}
+
+#topbarOption_why {
+    left: 30%;
+}
+
+#tBar_op_start {
+    left: 45%;
+}
+
+#buyNTbarOption {
+    left: 60%;
+}
+
+.signinModal > span > a {
+    color: rgb(0, 110, 255);
+}
+
 .popup_accountOptionsPopup img {
     vertical-align: middle;
     margin-left: 10px;

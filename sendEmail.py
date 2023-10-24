@@ -5,7 +5,7 @@ from email.mime.text import MIMEText
 
 def sendMail(receiver,url):
     sender_address = 'help.codestack@gmail.com'
-    sender_pass = 'vyiaemvzojgmdzkz'
+    sender_pass = 'codestack'
     receiver_address = receiver
     #Setup the MIME
     message = MIMEMultipart('alternative')

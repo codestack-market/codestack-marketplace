@@ -110,6 +110,7 @@ def getAuth():
         enc = encodeEmail(email)
         print(enc)
         url = f"https://www.codestack.ga/verify?key={enc}&mode=signup"
+        print(url)
         sendMail(email, url)
         return jsonify(
             success ="true"
