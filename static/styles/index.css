@@ -17,6 +17,23 @@ body {
     z-index: 888;
 }
 
+.topbarOption {
+    text-decoration: none;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+}
+
+#loginTBarOption {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    right: 3%;
+    color: #c44a56;
+    cursor: pointer;
+    font-family: var(--poppins);
+}
+
 .popup_accountOptionsPopup img {
     vertical-align: middle;
     margin-left: 10px;

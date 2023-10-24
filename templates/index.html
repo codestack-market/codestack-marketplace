@@ -22,16 +22,14 @@
         <img src="/static/assets/favicon2.png" onclick="window.location = ''" width="50px" height="50px"
             alt="Codestack Logo" class="logos_logoMain"
             style="vertical-align: middle; font-family: var(--poppins); cursor: pointer; position: absolute; transform: translate(-50%, -50%); left: 3%; top: 50%;">
-        <a class="topbarOption" href="/why" id="topbarOption_why"
-            style="position: absolute; transform: translate(-50%, -50%); top: 50%; left: 30%;">Why?</a>
-        <a class="topbarOption" href="/register" id="tBar_op_start"
-            style="position: absolute; transform: translate(-50%, -50%); top: 50%; left: 45%;">Get started</a>
-        <a id="buyNTbarOption" class="topbarOption" href="/soon"
-            style="position: absolute; transform: translate(-50%, -50%); top: 50%; left: 60%; ">Marketplace</a>
-        <span id="loginTBarOption"
-            style="position: absolute; transform: translate(-50%, -50%); top: 50%; right: 3%; color: #c44a56; cursor: pointer; font-family: var(--poppins);">{%if
+        <a class="topbarOption" href="/why" id="topbarOption_why" style="left: 30%;">Why?</a>
+        <a class="topbarOption" href="/register" id="tBar_op_start" style="left: 45%;">Get started</a>
+        <a id="buyNTbarOption" class="topbarOption" href="/soon" style="left: 60%;">Marketplace</a>
+        <span id="loginTBarOption">{%if
             session["username"]%}<span class="helloUname">Hello, {{ session["username"] }}.</span>{%else%}<a
-                href="{{ url_for('login') }}" style="color: #c44a56; text-decoration: none;">Hello, Sign in.</a><script>document.querySelector(".signinModal").style.display = "block"</script>{%endif%}</span>
+                href="{{ url_for('login') }}" style="color: #c44a56; text-decoration: none;">Hello, Sign in.</a>
+            <script>document.querySelector(".signinModal").style.display = "block"</script>{%endif%}
+        </span>
     </div>
     <div class="popup_accountOptionsPopup" style="opacity: 0;">
         <p style="font-family: var(--notosans); font-size: 15px; text-align: center;"><b>{%if
@@ -43,7 +41,8 @@
         <br>
         <span class="acO_listItem">- Orders</span> <span class="acO_listItem">Payment Info -</span>
         <br>
-        <p style="text-align: center; margin: 0; margin-top: 20px;" class="acO_listItem" onclick="window.location = '/settings'">All Settings</p>
+        <p style="text-align: center; margin: 0; margin-top: 20px;" class="acO_listItem"
+            onclick="window.location = '/settings'">All Settings</p>
         <span id="logoutPopup" onclick="window.location='/logout'">Logout</span>
     </div>
     <div class="container_scrollerMain" id="container_scrollerMain" style="scroll-behavior: smooth;">
@@ -74,9 +73,10 @@
     </div>
     <div class="termsInfo">
         <p>Contact us: <a href="mailto:help.codestack@gmail.com" target="_blank">help.codestack@gmail.com</a></p>
-        <p><a href="/tos" target="_blank">TOS</a> - <a href="/license" target="_blank">License</a> - <a href="/privacy" target="_blank">Privacy Policy</a></p>
+        <p><a href="/tos" target="_blank">TOS</a> - <a href="/license" target="_blank">License</a> - <a href="/privacy"
+                target="_blank">Privacy Policy</a></p>
     </div>
-    
+
     <script src="/static/scripts/loaders/loader.js"></script>
     <script src="/static/scripts/utils/forge.js"></script>
     <script src="/static/scripts/index.js"></script>
